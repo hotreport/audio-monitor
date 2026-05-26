@@ -90,6 +90,8 @@
   .cat-hifi { background:rgba(255,165,0,0.06); color:#E0A860; border:1px solid rgba(255,165,0,0.12); }
   .cat-vinyl { background:rgba(255,215,0,0.06); color:#D4C080; border:1px solid rgba(255,215,0,0.10); }
   .cat-portable { background:rgba(0,255,200,0.06); color:#60D4B0; border:1px solid rgba(0,255,200,0.10); }
+  .cat-luxury { background:rgba(200,160,80,0.08); color:#D4B060; border:1px solid rgba(200,160,80,0.15); }
+  .cat-instrument { background:rgba(120,80,220,0.08); color:#A080E0; border:1px solid rgba(120,80,220,0.15); }
   .push-date { font-size:10px; color:var(--text-dim); margin-left:auto; white-space:nowrap; }
   .push-card-title { font-size:13px; font-weight:600; color:var(--text-bright); line-height:1.5; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .push-card-desc { font-size:11px; color:var(--text-dim); line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
@@ -282,6 +284,8 @@
       <button class="push-filter-btn" onclick="filterPush('headphone',this)">耳机</button>
       <button class="push-filter-btn" onclick="filterPush('hifi',this)">Hi-Fi</button>
       <button class="push-filter-btn" onclick="filterPush('vinyl',this)">黑胶/CD</button>
+      <button class="push-filter-btn" onclick="filterPush('luxury',this)">奢牌联名</button>
+      <button class="push-filter-btn" onclick="filterPush('instrument',this)">智能乐器</button>
     </div>
     <div class="push-grid" id="pushGrid"></div>
     <div class="push-footer">
@@ -654,6 +658,73 @@ const PUSH_NEWS = [
     desc:'精准锚定模拟音质与现代无线聆听的平衡点，支持蓝牙连接与多房间音频系统适配。',
     link:'https://www.denon.com/zh-cn/product/turntables/dp-500bt/DP-500BT.html',
     img:'https://cdn.mos.cms.futurecdn.net/fgHVvHNEBXdQbSDk29LnY9.jpg', scene:true },
+  // —— 奢牌联名（奢侈品牌音频产品，时间放宽至2023年起）——
+  { date:'2026-01-08', brand:'Hermès', type:'new', cat:'luxury',
+    title:'Hermès 推出首款黑胶唱机 Turntable 及 Baladeur 蓝牙音箱',
+    desc:'爱马仕2026春夏"心向辽阔"亮相上海：Turntable唱机（镜面光泽+哑光皮革/复古相机双按钮设计）、Baladeur Swift小牛皮音箱（同轴立体声/单机+立体配对+多房间互联），将皮具工艺延伸至声音领域。',
+    link:'https://news.qq.com/rain/a/20260109A01BCP00',
+    img:'https://luxurywatcher.com/uploads/article/3/5/35563/1770614648303.jpg', scene:true },
+  { date:'2025-05-27', brand:'Hermès', type:'new', cat:'luxury',
+    title:'Hermès 首款头戴式耳机 Pippa 发布，小牛皮包裹的奢华聆听',
+    desc:'继唱机、音箱后，爱马仕推出Pippa牛皮头戴式耳机，延续品牌马术工艺美学，将经典皮具工艺与高保真音频技术融合，打造"可佩戴的声音艺术品"。',
+    link:'https://www.parisselectbook.com/en/2025/05/27/hermes-headphones-redefine-high-end-listening/',
+    img:'https://assets.hermes.cn/is/image/hermesproduct/耳机--0009297%2000-front-wm-2-0-0-800-800_g.jpg', scene:false },
+  { date:'2025-02-26', brand:'Chanel', type:'new', cat:'luxury',
+    title:'Chanel Première Sound 耳机项链表发布，高级时装音频新物种',
+    desc:'Première Sound融合Première腕表与有线入耳式耳机，黄18K金镀层精钢+黑色皮革珍珠项链设计，配备麦克风/遥控功能（音量/播放/通话），Lily-Rose Depp代言。',
+    link:'https://nowre.com/fashion/943632/chanel-tuichu-premiere-sound-xilie/',
+    img:'https://inews.gtimg.com/om_bt/OGVUEbC6Dhsp42knXHbj6FQwC6i5J9gC5_vIwkqwk4fPUAA/641', scene:true },
+  { date:'2025-12-01', brand:'Devialet', type:'collab', cat:'luxury',
+    title:'Devialet × Krug 香槟世家联名「Lost Editions」沉浸声感礼盒',
+    desc:'法国帝瓦雷与Krug香槟携手，以Phantom音响解码Krug Grande Cuvée三款失传年份的声景纹理，打造五感沉浸式品鉴体验，限量发售。',
+    link:'https://www.devialet.cn/zh-cn/about-us/our-stories/story-krug/',
+    scene:false },
+  { date:'2024-10-14', brand:'B&O', type:'collab', cat:'luxury',
+    title:'B&O × Ferrari 联名系列第二弹发布，意式赛车灵魂注入音频',
+    desc:'B&O与法拉利第二度联名：Beolab 50落地箱、Beosound Theatre条形音响、Beovision Theatre电视系统，全系Grigio Corsa赛车铝合金+跃马徽标+红色声学透镜。',
+    link:'https://audioxpress.com/news/bang-olufsen-and-ferrari-unveil-second-special-edition-ferrari-collection',
+    img:'https://audioxpress.com/assets/upload/images/1/20241015085313_The-Ferrari-Collection-2024-BL-50--BV-Theatre-Digital-0049-TWeb.jpg', scene:true },
+  { date:'2024-01-30', brand:'LV', type:'new', cat:'luxury',
+    title:'Louis Vuitton Nanogram 智能音箱发布，飞碟造型+哈曼调音',
+    desc:'LV首款便携智能音箱：精钢喷砂铝制飞碟造型，Harman专业声学开发，VVN皮革饰边+Damoflage迷彩印花+Monogram花朵图案，支持多房间互联。',
+    link:'https://www.36kr.com/p/2626743424499971',
+    img:'https://img.36krcdn.com/hsossms/20240130/v2_9572f9cee6d94eb7820694e6222aa972@6026234_oswg261960oswg1269oswg1900_img_jpg?x-oss-process=image/quality,q_100/format,jpg/interlace,1/format,jpg/interlace,1', scene:true },
+  { date:'2023-06-12', brand:'LV', type:'color', cat:'luxury',
+    title:'LV Horizon Light Up 便携音箱推出春夏新配色',
+    desc:'Monogram穿孔压纹皮革+抛光哑光精钢+360°沉浸式音频+LED灯带，粉彩色系更新，延续2021年首发Horizon Light Up的时尚科技路线。',
+    link:'https://nowre.com/tech/781496/louis-vuitton-horizon-light-up-bianxieyinxiangtuichuxinpeise/',
+    img:'https://pic.soupin.com/21/1205/1827/058_12887.jpg', scene:true },
+  // —— 智能乐器（AI + 乐器创新品类）——
+  { date:'2025-12-12', brand:'Donner', type:'new', cat:'instrument',
+    title:'Donner HUSH-X PRO 获 EBRUN 全球好物 Silver Award',
+    desc:'2025旗舰无头便携智能电吉他：H-2芯片+7种吉他音色模拟+19种放大器模型+30+吉他效果器、Alnico V拾音器、USB-C OTG直连手机录音。',
+    link:'https://www.donnermusic.com/zh-CN/products/hush-x-pro',
+    img:'https://www.donnermusic.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fm1.6609b4a2.png&w=1080&q=75', scene:false },
+  { date:'2025-11-01', brand:'拿火', type:'new', cat:'instrument',
+    title:'拿火 LAVA STUDIO AI 音乐工作站海外众筹破226万美元',
+    desc:'桌面级AI音乐工作站：近百款效果器/音箱AI音色复刻+AI音轨分离+多轨编曲DAW+监听音响，Kickstarter打破全球乐器品类众筹纪录，罗永浩科技春晚推荐。',
+    link:'https://www.163.com/dy/article/KNLC9KJH05118DFD.html',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0310%2F29c714f4j00tbnuue004nd001eq00rwg.jpg&thumbnail=660x2147483647&quality=80&type=jpg', scene:true },
+  { date:'2025-08-12', brand:'LiberLive', type:'new', cat:'instrument',
+    title:'LiberLive C2 无弦智能吉他发布，再度定义无弦吉他新范式',
+    desc:'新一代折叠无弦吉他：风格包体系（数十种音色+节奏型+鼓点）、近30款专业音色+2000+高级和弦、3分钟上手弹唱，天猫/京东/抖音智能乐器品类销冠。',
+    link:'https://www.sohu.com/a/932099114_121012205',
+    img:'https://liberlivesite.com/cdn/shop/files/Liberlive-no-string-guitar.webp?v=1760608782&width=3840', scene:false },
+  { date:'2025-06-24', brand:'恩雅', type:'new', cat:'instrument',
+    title:'恩雅 NEXG 2N 智能音响古典吉他上市',
+    desc:'NEXG系列新增尼龙弦古典款：碳纤维一体成型琴身（仅2.3kg）、SP1智能音频系统+50W铝磁喇叭、可拆卸折叠结构、防啸叫悬浮音腔设计。',
+    link:'https://www.enyamusic.cn/product/nexg',
+    img:'https://www.yiqijita.com/wp-content/uploads/2025/02/483543-362c7236c4490b3469b975a1907ab7bf721dc5e5def3400a6344db128973784b.jpg', scene:false },
+  { date:'2025-06-01', brand:'恩雅', type:'new', cat:'instrument',
+    title:'恩雅 NEXG 2 智能音频碳纤维吉他发布，38寸仅2.3kg',
+    desc:'碳纤维一体成型琴身、SP1音频处理系统、50W铝磁内置喇叭、可拆卸折叠设计装包即走，支持静音练习+舞台演出+户外演奏多模式切换。',
+    link:'https://www.enya-music.com/pages/nexg2-features',
+    img:'https://www.yiqijita.com/wp-content/uploads/2025/02/483543-362c7236c4490b3469b975a1907ab7bf721dc5e5def3400a6344db128973784b.jpg', scene:false },
+  { date:'2025-05-08', brand:'Donner', type:'new', cat:'instrument',
+    title:'Donner HUSH C 尼龙弦电木吉他发布，古典音色+现代静音',
+    desc:'HUSH系列首款尼龙弦型号：HUSH Custom Piezo压电拾音器+HPS-II二段EQ、薄C型琴颈+滚轮式曲度调节、多音频接口输出、无头便携设计。',
+    link:'https://exound.com/articles/b6ff2483-ee8f-4e2d-848c-92d49e633587',
+    img:'https://static.exound.com/attachments/cbf2da85-6206-42c8-871b-db8ff9ed2b37.png', scene:false },
 ];
 
 /* ===== 完整动态列表 ===== */
@@ -801,13 +872,13 @@ let trendChartInst=null, compareChartInst=null;
 let compareYear='2026', compareBrands=null;
 
 /* ===== 新品推送 ===== */
-const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑胶/CD', portable:'便携' };
-const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable' };
+const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑胶/CD', portable:'便携', luxury:'奢牌联名', instrument:'智能乐器' };
+const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
