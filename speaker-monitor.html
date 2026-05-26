@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>音频品牌监控看板</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --green: #4DFF00;
+    --green-dim: rgba(77,255,0,0.55);
+    --green-bg: rgba(77,255,0,0.06);
+    --green-border: rgba(77,255,0,0.20);
+    --red: #FF4D4D;
+    --red-bg: rgba(255,77,77,0.10);
+    --orange: #FFA500;
+    --orange-bg: rgba(255,165,0,0.10);
+    --yellow: #FFD700;
+    --bg: #0A0A0A;
+    --bg-secondary: #111111;
+    --card: #161616;
+    --card-hover: #1C1C1C;
+    --border: rgba(255,255,255,0.06);
+    --border-light: rgba(255,255,255,0.10);
+    --text: #E0E0E0;
+    --text-dim: #888888;
+    --gray: #888888;
+    --light-gray: #666666;
+    --text-bright: #FFFFFF;
+    --accent: var(--green);
+    --tag-bg: rgba(255,255,255,0.06);
+    --tag-border: rgba(255,255,255,0.10);
+    --shadow: 0 2px 20px rgba(0,0,0,0.4);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); font-size:13px; line-height:1.6; }
+
+  .page { max-width:1200px; margin:0 auto; padding:28px 16px 60px; }
+
+  /* === HEADER === */
+  .header { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+  .header-icon { width:42px; height:42px; border-radius:10px; background:var(--card); display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:800; color:var(--green); flex-shrink:0; border:1px solid var(--green-border); letter-spacing:-1px; }
+  h1 { font-size:22px; font-weight:800; letter-spacing:-0.3px; color:var(--text-bright); }
+  h1 span.accent { color:var(--green); }
+  .subtitle { font-size:12px; color:var(--text-dim); margin-bottom:28px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .subtitle .dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.7)} }
+
+  .section-title { font-size:15px; font-weight:700; color:var(--text-bright); margin:32px 0 14px; padding-left:12px; border-left:2px solid var(--green); display:flex; align-items:center; gap:8px; letter-spacing:0.2px; }
+  .section-title .count { font-size:11px; font-weight:500; color:var(--text-dim); background:var(--tag-bg); padding:2px 10px; border-radius:10px; border:1px solid var(--border); }
+
+  .card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; border:1px solid var(--border); }
+
+  /* === 新品推送 === */
+  .push-banner { background: linear-gradient(135deg, #0D0D0D 0%, #111111 40%, #0A0A0A 100%); border-radius:var(--radius); padding:22px 24px; position:relative; overflow:hidden; margin-bottom:16px; border:1px solid var(--border); }
+  .push-banner::before { content:''; position:absolute; top:-60px; right:-40px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(77,255,0,0.04) 0%, transparent 70%); pointer-events:none; }
+  .push-banner-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; position:relative; z-index:1; flex-wrap:wrap; gap:8px; }
+  .push-banner-title { font-size:18px; font-weight:700; color:var(--text-bright); display:flex; align-items:center; gap:8px; }
+  .push-banner-status { font-size:11px; color:var(--text-dim); display:flex; align-items:center; gap:6px; }
+  .push-banner-status .dot { background:var(--green); box-shadow:0 0 6px var(--green); width:6px; height:6px; border-radius:50%; }
+  .push-filter-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; position:relative; z-index:1; }
+  .push-filter-btn { font-size:11px; padding:4px 12px; border-radius:20px; border:1px solid var(--border-light); background:transparent; color:var(--text-dim); cursor:pointer; transition:all .15s; font-weight:500; }
+  .push-filter-btn:hover { border-color:var(--text-dim); color:var(--text); }
+  .push-filter-btn.active { background:var(--green); color:#000; border-color:var(--green); font-weight:700; }
+  .push-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:12px; position:relative; z-index:1; }
+  .push-card { background:rgba(22,22,22,0.92); border-radius:12px; padding:0; cursor:pointer; transition:all .2s; text-decoration:none; color:var(--text); display:flex; overflow:hidden; border:1px solid var(--border); }
+  .push-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.3); border-color:var(--border-light); }
+    .push-card-img { width:100px; min-height:100px; flex-shrink:0; overflow:hidden; position:relative; background:#111; }
+  .push-card-img img { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-width:82%; max-height:82%; object-fit:contain; transition:transform .25s; }
+  .push-card-img img.scene { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; top:0; left:0; transform:none; }
+  .push-card:hover .push-card-img img { transform:translate(-50%,-50%) scale(1.04); }
+  .push-card:hover .push-card-img img.scene { transform:scale(1.06); }
+  .push-card-img .img-fallback { width:100px; height:100px; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:800; letter-spacing:1px; flex-shrink:0; }
+  .push-card-body { padding:12px 14px; flex:1; min-width:0; }
+  .push-card-top { display:flex; align-items:center; gap:5px; margin-bottom:6px; flex-wrap:wrap; }
+  .push-brand { font-size:10px; padding:2px 7px; border-radius:5px; font-weight:600; white-space:nowrap; }
+  .push-type { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:600; white-space:nowrap; }
+  .type-new { background:var(--red-bg); color:var(--red); }
+  .type-collab { background:rgba(200,170,100,0.10); color:#C8AA64; }
+  .type-color { background:var(--orange-bg); color:var(--orange); }
+  .type-feature { background:rgba(0,180,255,0.08); color:#00B4FF; }
+  .type-event { background:rgba(255,215,0,0.08); color:var(--yellow); }
+  .cat-speaker { background:rgba(255,255,255,0.06); color:var(--text); border:1px solid rgba(255,255,255,0.08); }
+  .cat-headphone { background:rgba(0,180,255,0.06); color:#6EC8FF; border:1px solid rgba(0,180,255,0.12); }
+  .cat-hifi { background:rgba(255,165,0,0.06); color:#E0A860; border:1px solid rgba(255,165,0,0.12); }
+  .cat-vinyl { background:rgba(255,215,0,0.06); color:#D4C080; border:1px solid rgba(255,215,0,0.10); }
+  .cat-portable { background:rgba(0,255,200,0.06); color:#60D4B0; border:1px solid rgba(0,255,200,0.10); }
+  .push-date { font-size:10px; color:var(--text-dim); margin-left:auto; white-space:nowrap; }
+  .push-card-title { font-size:13px; font-weight:600; color:var(--text-bright); line-height:1.5; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .push-card-desc { font-size:11px; color:var(--text-dim); line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .push-card-arrow { font-size:11px; color:var(--text-dim); margin-top:6px; display:flex; align-items:center; gap:3px; font-weight:500; }
+  .push-footer { display:flex; align-items:center; justify-content:space-between; margin-top:14px; font-size:11px; position:relative; z-index:1; flex-wrap:wrap; gap:6px; color:var(--text-dim); }
+  .push-see-all { color:var(--text); text-decoration:none; font-size:12px; font-weight:600; border-bottom:1px solid var(--border); }
+  .push-see-all:hover { border-bottom-color:var(--green); color:var(--green); }
+
+  /* === 品牌矩阵 === */
+  .brand-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:10px; }
+  .brand-card { background:var(--card); border-radius:12px; box-shadow:var(--shadow); padding:14px 16px; transition:all .2s; cursor:default; position:relative; overflow:hidden; border:1px solid var(--border); }
+  .brand-card:hover { box-shadow:0 6px 24px rgba(0,0,0,0.4); transform:translateY(-2px); border-color:var(--border-light); }
+  .brand-card.intl { border-left:3px solid rgba(255,255,255,0.25); }
+  .brand-card.cn { border-left:3px solid var(--orange); }
+  .brand-name { font-size:14px; font-weight:700; color:var(--text-bright); margin-bottom:3px; display:flex; align-items:center; gap:4px; }
+  .brand-tag { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:600; }
+  .tag-intl { background:var(--tag-bg); color:var(--text-dim); border:1px solid var(--tag-border); }
+  .tag-cn { background:rgba(255,165,0,0.08); color:var(--orange); }
+  .brand-latest { font-size:11px; color:var(--text-dim); margin-top:4px; }
+  .brand-links { margin-top:8px; display:flex; gap:5px; flex-wrap:wrap; }
+  .brand-links a { font-size:10px; color:var(--text-dim); text-decoration:none; border:1px solid var(--border-light); border-radius:6px; padding:2px 8px; display:inline-flex; align-items:center; gap:2px; transition:all .15s; }
+  .brand-links a:hover { background:var(--green-bg); border-color:var(--green-border); color:var(--text); }
+  .own-badge { font-size:9px; background:var(--green); color:#000; border-radius:4px; padding:1px 6px; font-weight:700; }
+
+  /* === 品牌地图 === */
+  .brand-map-card { width:100%; background:var(--card); border-radius:14px; padding:12px; border:1px solid var(--border); box-shadow:var(--shadow); position:relative; }
+  .map-zoom-area { position:relative; overflow:hidden; border-radius:8px; cursor:grab; user-select:none; -webkit-user-select:none; }
+  .map-zoom-area:active { cursor:grabbing; }
+  .map-zoom-content { transform-origin:0 0; position:relative; }
+  .map-zoom-content > svg { display:block; width:100%; height:auto; }
+  .map-zoom-content > svg .land { fill:rgba(255,255,255,0.04); stroke:rgba(255,255,255,0.08); stroke-width:0.5; }
+  .map-zoom-content > svg .graticule { stroke:rgba(255,255,255,0.03); stroke-width:0.3; fill:none; }
+  .map-lines-svg { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:5; }
+  .map-lines-svg .anchor-dot { transition:opacity .2s; opacity:0.9; }
+  .map-lines-svg .leader-line { fill:none; stroke-width:1; stroke-dasharray:5,4; opacity:0.45; stroke-linejoin:round; }
+  /* HTML bubbles overlay */
+  .map-bubbles-layer { position:absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:10; }
+  .map-bubble-html { position:absolute; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:grab; transition:transform .2s ease, box-shadow .2s; transform:translate(-50%,-50%); pointer-events:auto; text-align:center; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); border:1.5px solid; box-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  .map-bubble-html:hover { transform:translate(-50%,-50%) scale(1.12); z-index:30 !important; box-shadow:0 4px 24px rgba(0,0,0,0.5); }
+  .map-bubble-html.dragging { transition:none !important; transform:translate(-50%,-50%) scale(1.08) !important; z-index:40 !important; cursor:grabbing; opacity:0.92; }
+  .map-bubble-html .bub-flag { line-height:1; margin-bottom:1px; }
+  .map-bubble-html .bub-name { font-weight:700; color:var(--text-bright); line-height:1.2; }
+  .map-bubble-html .bub-country { font-size:8px; color:rgba(255,255,255,0.55); margin-top:1px; letter-spacing:0.3px; }
+  /* Tooltip card */
+  .map-tooltip { position:absolute; background:rgba(22,22,22,0.97); border:1px solid var(--border-light); border-radius:12px; padding:14px 16px; min-width:210px; max-width:270px; box-shadow:0 8px 32px rgba(0,0,0,0.6); z-index:100; pointer-events:none; opacity:0; transition:opacity .18s; white-space:normal; }
+  .map-bubble-html:hover > .map-tooltip { opacity:1; pointer-events:auto; }
+  .map-tooltip.right { left:calc(50% + var(--r,40px) + 10px); top:50%; transform:translateY(-50%); }
+  .map-tooltip.left { right:calc(50% + var(--r,40px) + 10px); top:50%; transform:translateY(-50%); }
+  .map-tooltip .tip-name { font-size:14px; font-weight:700; color:var(--text-bright); margin-bottom:2px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .map-tooltip .tip-latest { font-size:11px; color:var(--text); line-height:1.5; margin-bottom:8px; }
+  .map-tooltip .tip-links { display:flex; gap:4px; flex-wrap:wrap; }
+  .map-tooltip .tip-links a { font-size:10px; color:var(--text-dim); text-decoration:none; border:1px solid var(--border-light); border-radius:6px; padding:2px 8px; display:inline-flex; align-items:center; gap:2px; transition:all .15s; }
+  .map-tooltip .tip-links a:hover { background:var(--green-bg); border-color:var(--green-border); color:var(--text); }
+  /* Zoom controls */
+  .map-controls { position:absolute; top:12px; right:12px; z-index:50; display:flex; gap:4px; }
+  .map-ctrl-btn { width:28px; height:28px; border-radius:8px; border:1px solid var(--border-light); background:rgba(22,22,22,0.85); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:600; transition:all .15s; backdrop-filter:blur(6px); }
+  .map-ctrl-btn:hover { background:var(--card-hover); border-color:var(--text-dim); color:var(--text-bright); }
+  .map-ctrl-btn.reset { font-size:10px; font-weight:500; width:auto; padding:0 10px; }
+  .map-footer { display:flex; align-items:center; justify-content:space-between; margin-top:6px; }
+  .map-legend { display:flex; gap:12px; font-size:10px; color:var(--text-dim); }
+  .map-legend span { display:flex; align-items:center; gap:4px; }
+  .map-legend i { width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .map-zoom-hint { font-size:10px; color:var(--light-gray); }
+
+  /* === 价格看板 === */
+  .price-table { width:100%; border-collapse:collapse; }
+  .price-table th { font-size:12px; font-weight:600; color:var(--text-dim); text-align:left; padding:10px; border-bottom:1px solid var(--border); letter-spacing:0.3px; }
+  .price-table td { padding:10px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle; color:var(--text); }
+  .price-table tr:last-child td { border-bottom:none; }
+  .price-table tr:hover td { background:rgba(255,255,255,0.02); }
+  .product-img { width:56px; height:56px; object-fit:contain; border-radius:10px; background:#FFFFFF; border:1px solid var(--border); transition:transform .15s,box-shadow .15s; }
+  .product-img:hover { transform:scale(1.08); box-shadow:0 0 12px rgba(77,255,0,0.15); }
+  .product-img-cell { width:64px; text-align:center; }
+  .product-img-cell a { display:inline-block; line-height:0; }
+  .product-img-error { width:56px; height:56px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; letter-spacing:0.5px; transition:transform .15s; background:#FFFFFF; border:1px solid var(--border); }
+  .product-img-error:hover { transform:scale(1.08); }
+  .price-now { font-weight:700; color:var(--red); font-size:14px; }
+  .price-orig { font-size:11px; color:var(--text-dim); text-decoration:line-through; margin-left:4px; }
+  .price-drop { font-size:11px; color:var(--green); font-weight:600; margin-left:4px; }
+  .platform-links a { font-size:11px; color:var(--text-dim); text-decoration:none; font-weight:500; }
+  .platform-links a:hover { text-decoration:underline; color:var(--text); }
+  .filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .filter-btn { font-size:12px; padding:5px 14px; border-radius:20px; border:1px solid var(--border-light); background:transparent; cursor:pointer; color:var(--text-dim); transition:all .15s; font-weight:500; }
+  .filter-btn:hover { border-color:var(--text-dim); color:var(--text); }
+  .filter-btn.active { background:var(--green); color:#000; border-color:var(--green); font-weight:700; }
+
+  /* === 趋势图 === */
+  .chart-wrapper { position:relative; width:100%; height:340px; }
+  .chart-legend { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:10px; font-size:12px; color:var(--text-dim); }
+  .legend-dot { width:10px; height:10px; border-radius:3px; display:inline-block; margin-right:4px; }
+  .festival-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .ftag { font-size:11px; padding:3px 10px; border-radius:6px; background:rgba(255,165,0,0.08); color:var(--orange); font-weight:500; border:1px solid rgba(255,165,0,0.12); }
+
+  /* === 对比图控制区 === */
+  .compare-controls { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:14px; align-items:flex-start; }
+  .control-group { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .control-label { font-size:12px; color:var(--text-dim); font-weight:600; white-space:nowrap; }
+  .year-btn { font-size:11px; padding:4px 12px; border-radius:6px; border:1px solid var(--border-light); background:transparent; color:var(--text-dim); cursor:pointer; transition:all .15s; font-weight:500; }
+  .year-btn:hover { border-color:var(--text-dim); color:var(--text); }
+  .year-btn.active { background:var(--green); color:#000; border-color:var(--green); font-weight:700; }
+  .compare-select { font-size:11px; padding:4px 8px; border-radius:6px; border:1px solid var(--border-light); background:var(--card); color:var(--text); }
+  .brand-toggles { display:flex; flex-wrap:wrap; gap:6px; }
+  .brand-toggle { font-size:11px; padding:3px 10px; border-radius:6px; border:1px solid var(--border-light); background:transparent; color:var(--text-dim); cursor:pointer; transition:all .15s; font-weight:500; user-select:none; }
+  .brand-toggle:hover { border-color:var(--text-dim); color:var(--text); }
+  .brand-toggle.active { background:rgba(77,255,0,0.10); border-color:var(--green-border); color:var(--green); }
+
+  /* === 动态区 === */
+  .news-list { list-style:none; }
+  .news-list li { padding:12px 0; border-bottom:1px solid var(--border); display:flex; gap:10px; align-items:flex-start; }
+  .news-list li:last-child { border-bottom:none; }
+  .news-list li:hover { background:rgba(255,255,255,0.015); }
+  .news-date { font-size:11px; color:var(--text-dim); white-space:nowrap; min-width:70px; }
+  .news-brand-tag { font-size:11px; padding:2px 7px; border-radius:6px; background:var(--tag-bg); color:var(--text-dim); white-space:nowrap; font-weight:600; border:1px solid var(--border); }
+  .news-text { color:var(--text); flex:1; }
+  .news-link { font-size:11px; color:var(--text-dim); margin-left:6px; text-decoration:none; font-weight:500; white-space:nowrap; }
+  .news-link:hover { text-decoration:underline; color:var(--text); }
+
+  /* === 工具栏 === */
+  .toolbar { display:flex; gap:8px; align-items:center; margin-bottom:22px; flex-wrap:wrap; }
+  .toolbar-label { font-size:12px; color:var(--text-dim); font-weight:500; }
+  .update-time { font-size:12px; color:var(--text-dim); margin-left:auto; }
+  .nav-btn { font-size:12px; padding:5px 14px; border-radius:8px; border:1px solid var(--border-light); background:transparent; color:var(--text-dim); cursor:pointer; text-decoration:none; font-weight:500; transition:all .15s; }
+  .nav-btn:hover { background:var(--green-bg); border-color:var(--green-border); color:var(--text); }
+
+  /* === Tab === */
+  .tabs { display:flex; gap:0; border-bottom:2px solid var(--border); margin-bottom:16px; }
+  .tab { padding:8px 18px; font-size:13px; cursor:pointer; border-bottom:2px solid transparent; color:var(--text-dim); transition:all .15s; margin-bottom:-2px; font-weight:500; }
+  .tab:hover { color:var(--text); }
+  .tab.active { color:var(--green); border-bottom-color:var(--green); font-weight:700; }
+
+  /* === 监控说明 === */
+  .guide-card { font-size:12px; line-height:2; color:var(--text-dim); }
+  .guide-card strong { color:var(--text-bright); }
+  .guide-card .highlight { color:var(--orange); font-weight:600; }
+
+  @media (max-width:640px) {
+    .brand-map-card { padding:8px; }
+    .map-bubble-html .bub-flag { font-size:10px !important; }
+    .map-bubble-html .bub-name { font-size:8px !important; }
+    .map-bubble-html .bub-country { display:none; }
+    .map-tooltip { display:none; }
+    .map-controls { top:8px; right:8px; }
+    .map-zoom-hint { display:none; }
+    .push-grid { grid-template-columns:1fr; }
+    .push-banner { padding:16px; }
+    h1 { font-size:18px; }
+    .page { padding:16px 10px 40px; }
+    .push-card { flex-direction:column; }
+    .push-card-img { width:100%; min-height:80px; max-height:120px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-icon">A</div>
+    <div>
+      <h1>音频品牌<span class="accent">监控看板</span></h1>
+    </div>
+  </div>
+  <p class="subtitle">
+    <span class="dot"></span>
+    <span>覆盖音箱 / 耳机 / 黑胶 / Hi-Fi / 全音频品类</span>
+    <span style="color:var(--light-gray);">|</span>
+    <span>新品动态 / 价格趋势 / 节日活动</span>
+    <span style="color:var(--light-gray);">|</span>
+    <span>最后更新：<span id="lastUpdate"></span></span>
+  </p>
+
+  <div class="toolbar">
+    <span class="toolbar-label">快速跳转：</span>
+    <a href="#push-section" class="nav-btn">新品推送</a>
+    <a href="#brand-section" class="nav-btn">品牌地图</a>
+    <a href="#price-section" class="nav-btn">价格看板</a>
+    <a href="#trend-section" class="nav-btn">价格趋势</a>
+    <a href="#news-section" class="nav-btn">全部动态</a>
+    <span class="update-time">数据参考：2026年5月</span>
+  </div>
+
+  <!-- ====== 新品推送 ====== -->
+  <div id="push-section" class="section-title">新品推送 / 每日监控 <span class="count" id="pushTotal">0 条</span></div>
+  <div class="push-banner">
+    <div class="push-banner-top">
+      <div class="push-banner-title">音频圈新鲜事</div>
+      <div class="push-banner-status"><span class="dot"></span>监控运行中 / 下次刷新：<span id="nextRefresh"></span></div>
+    </div>
+    <div class="push-filter-row" id="pushFilterRow">
+      <button class="push-filter-btn active" onclick="filterPush('all',this)">全部</button>
+      <button class="push-filter-btn" onclick="filterPush('speaker',this)">音箱</button>
+      <button class="push-filter-btn" onclick="filterPush('headphone',this)">耳机</button>
+      <button class="push-filter-btn" onclick="filterPush('hifi',this)">Hi-Fi</button>
+      <button class="push-filter-btn" onclick="filterPush('vinyl',this)">黑胶/CD</button>
+    </div>
+    <div class="push-grid" id="pushGrid"></div>
+    <div class="push-footer">
+      <span>今日已抓取 <strong id="pushCount">0</strong> 条资讯</span>
+      <a class="push-see-all" href="#news-section">查看全部动态 ↓</a>
+    </div>
+  </div>
+
+  <!-- ====== 品牌地图 ====== -->
+  <div id="brand-section" class="section-title">品牌地图 <span class="count">18 品牌</span></div>
+  <div class="brand-map-card" id="brandMapCard"></div>
+
+  <!-- ====== 价格看板 ====== -->
+  <div id="price-section" class="section-title">旗舰 / 热门型号价格看板 <span class="count">25 款</span></div>
+  <div class="card">
+    <div class="filter-row" id="catFilterRow" style="margin-bottom:6px">
+      <button class="filter-btn active" onclick="filterCategory('all',this)">全部</button>
+      <button class="filter-btn" onclick="filterCategory('speaker',this)">音箱</button>
+      <button class="filter-btn" onclick="filterCategory('headphone',this)">耳机</button>
+      <button class="filter-btn" onclick="filterCategory('other',this)">其他</button>
+    </div>
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" onclick="filterBrand('all',this)">全部品牌</button>
+    </div>
+    <table class="price-table" id="priceTable">
+      <thead><tr><th>产品图</th><th>品牌</th><th>型号</th><th>定价</th><th>当前促销价</th><th>降幅</th><th>平台跳转</th></tr></thead>
+      <tbody id="priceBody"></tbody>
+    </table>
+  </div>
+
+  <!-- ====== 趋势图 ====== -->
+  <div id="trend-section" class="section-title">全年价格趋势（节日活动标注）</div>
+  <div class="card">
+    <div style="margin-bottom:12px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+      <span style="font-size:12px;color:var(--text-dim);font-weight:500;">选择型号：</span>
+      <select id="trendSelect" style="font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border-light);background:var(--card);color:var(--text);min-width:220px;"></select>
+      <span style="font-size:12px;color:var(--text-dim);font-weight:500;margin-left:8px;">年份：</span>
+      <select id="trendYearSelect" style="font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border-light);background:var(--card);color:var(--text);" onchange="renderTrendChart()"></select>
+    </div>
+    <div class="chart-legend" id="trendLegend"></div>
+    <div class="chart-wrapper"><canvas id="trendChart" role="img" aria-label="全年价格趋势图"></canvas></div>
+    <div class="festival-tags" id="festivalTags"></div>
+  </div>
+
+  <!-- ====== 多品牌对比 ====== -->
+  <div class="section-title">同类产品全年价格对比</div>
+  <div class="card">
+    <div class="compare-controls">
+      <div class="control-group">
+        <span class="control-label">年份</span>
+        <button class="year-btn" data-year="2024" onclick="setCompareYear('2024',this)">2024</button>
+        <button class="year-btn" data-year="2025" onclick="setCompareYear('2025',this)">2025</button>
+        <button class="year-btn active" data-year="2026" onclick="setCompareYear('2026',this)">2026</button>
+        <button class="year-btn" data-year="multi" onclick="setCompareYear('multi',this)">多年叠加</button>
+      </div>
+      <div class="control-group">
+        <span class="control-label">月份</span>
+        <select id="monthStart" class="compare-select" onchange="renderCompareChart()"></select>
+        <span style="color:var(--text-dim);">—</span>
+        <select id="monthEnd" class="compare-select" onchange="renderCompareChart()"></select>
+      </div>
+      <div class="control-group" style="flex-basis:100%;">
+        <span class="control-label">品牌</span>
+        <div class="brand-toggles" id="brandToggles"></div>
+      </div>
+    </div>
+    <div class="chart-legend" id="compareChartLegend"></div>
+    <div class="chart-wrapper" style="height:360px;"><canvas id="compareChart" role="img" aria-label="多品牌价格对比折线图"></canvas></div>
+  </div>
+
+  <!-- ====== 品牌动态 ====== -->
+  <div id="news-section" class="section-title">品牌动态 <span class="count" id="newsTotal">0 条</span></div>
+  <div class="card">
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('all',this)">全部</div>
+      <div class="tab" onclick="switchTab('new',this)">新品上新</div>
+      <div class="tab" onclick="switchTab('collab',this)">联名</div>
+      <div class="tab" onclick="switchTab('color',this)">新配色</div>
+      <div class="tab" onclick="switchTab('feature',this)">功能迭代</div>
+    </div>
+    <ul class="news-list" id="newsList"></ul>
+  </div>
+
+  <!-- ====== 监控说明 ====== -->
+  <div class="section-title">每日监控指引</div>
+  <div class="card guide-card">
+    <p><strong>自动化监控已设置</strong>：WorkBuddy 每日 09:00 自动搜索音频品牌动态并追加到看板。</p>
+    <p>价格数据由自动化每日核查（WebSearch 聚合查价 + Suning/官网直抓），偏差 >10% 自动更新。</p>
+    <p>节日提醒时间节点：<span class="highlight">春节（1月）/ 38女王节（3月）/ 618（6月）/ 818（8月）/ 双11（11月）/ 双12（12月）</span></p>
+    <p style="margin-top:6px;color:var(--text-dim);">新品推送覆盖全音频品类：音箱、耳机（TWS/头戴/开放式）、黑胶唱机、CD机、DAC、功放、Hi-Fi 器材等</p>
+  </div>
+</div>
+
+<script>
+document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric'});
+(function(){function t(){const n=new Date(),x=new Date(n);x.setHours(x.getHours()+1,0,0,0);const d=Math.max(0,Math.floor((x-n)/1000)),m=Math.floor(d/60),s=d%60;document.getElementById('nextRefresh').textContent=m+'分'+s+'秒';}t();setInterval(t,1000);})();
+
+/* ===== 品牌数据 ===== */
+const BRANDS = [
+  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'x Hendrix 60周年限定 + Bromley 450' },
+  { name:'B&O', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=B%26O+音箱', tmall:'https://search.tmall.com/search.aspx?q=B%26O+音箱', amazon:'https://www.amazon.cn/s?k=Bang+Olufsen+speaker', official:'https://www.bang-olufsen.com/zh/cn' }, latest:'x Fragment Design 联名 5.20发售 + Beosound Haven' },
+  { name:'JBL', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=JBL+音箱', tmall:'https://search.tmall.com/search.aspx?q=JBL+音箱', amazon:'https://www.amazon.cn/s?k=JBL+speaker', official:'https://cn.jbl.com' }, latest:'PartyBox 330/130 发布 + Xtreme 5/Go 5' },
+  { name:'Bose', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=Bose+音箱', tmall:'https://search.tmall.com/search.aspx?q=Bose+音箱', amazon:'https://www.amazon.cn/s?k=Bose+speaker', official:'https://www.bose.cn' }, latest:'Lifestyle Ultra系列 5.15发售 + SoundLink Plus' },
+  { name:'哈曼卡顿', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=哈曼卡顿+音箱', tmall:'https://search.tmall.com/search.aspx?q=哈曼卡顿+音箱', amazon:'https://www.amazon.cn/s?k=Harman+Kardon+speaker', official:'https://www.harmankardon.cn' }, latest:'Aura Studio 5 黑金典藏版 + Onyx Studio 9' },
+  { name:'索尼', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=索尼+音箱', tmall:'https://search.tmall.com/search.aspx?q=索尼+音箱', amazon:'https://www.amazon.cn/s?k=Sony+speaker', official:'https://www.sony.com.cn/category/speakers' }, latest:'WH-1000X ColleXion 5.20发售 4799元 + 砂岩色XM6' },
+  { name:'猫王', tag:'cn', country:'中国', links:{ jd:'https://mall.jd.com/index-1000005719.html', tmall:'https://search.tmall.com/search.aspx?q=猫王+音箱', official:'https://www.radio1964.com/' }, latest:'小王子 26年新蓝牙款' },
+  { name:'漫步者', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=漫步者+音箱', tmall:'https://search.tmall.com/search.aspx?q=漫步者+音箱', official:'https://www.edifier.com.cn' }, latest:'CES 2026 多款旗舰首发' },
+  { name:'惠威', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=惠威+音箱', tmall:'https://search.tmall.com/search.aspx?q=惠威+音箱', official:'https://www.hivi.com.cn' }, latest:'M200MKIII+' },
+  { name:'MORROR ART', tag:'cn', country:'中国', links:{ jd:'https://morrorart.jd.com/', tmall:'https://search.tmall.com/search.aspx?q=MORROR+ART+音箱', official:'https://future-mirror.com/' }, latest:'显示蓝牙耳机 5.21发布（双壳态+灵动屏）', isOwn:true },
+  { name:'丹拿', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=丹拿+音箱', tmall:'https://search.tmall.com/search.aspx?q=丹拿+音箱', amazon:'https://www.amazon.cn/s?k=Dynaudio+speaker', official:'https://www.dynaudio.com/' }, latest:'Evoke 系列 / Xeo 无线' },
+  { name:'宝华韦健', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=宝华韦健+音箱', tmall:'https://search.tmall.com/search.aspx?q=宝华韦健+音箱', amazon:'https://www.amazon.cn/s?k=Bowers+Wilkins+speaker', official:'https://www.bowerswilkins.com/' }, latest:'800 Diamond / 700 S3' },
+  { name:'森海塞尔', tag:'intl', country:'德国', links:{ jd:'https://search.jd.com/Search?keyword=森海塞尔+耳机', tmall:'https://search.tmall.com/search.aspx?q=森海塞尔+耳机', amazon:'https://www.amazon.cn/s?k=Sennheiser+headphone', official:'https://search.jd.com/Search?keyword=森海塞尔' }, latest:'Momentum 5 Wireless 5.26正式发布 $399.99 + MTW 5' },
+  { name:'舒尔', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=舒尔+耳机', tmall:'https://search.tmall.com/search.aspx?q=舒尔+耳机', amazon:'https://www.amazon.cn/s?k=Shure+headphone', official:'https://www.shure.com/' }, latest:'AONIC 5 / SE846' },
+  { name:'铁三角', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=铁三角+耳机', tmall:'https://search.tmall.com/search.aspx?q=铁三角+耳机', amazon:'https://www.amazon.cn/s?k=Audio-Technica+headphone', official:'https://www.audio-technica.com.cn/' }, latest:'ATH-M50x 经典监听' },
+  { name:'AKG', tag:'intl', country:'奥地利', links:{ jd:'https://search.jd.com/Search?keyword=AKG+耳机', tmall:'https://search.tmall.com/search.aspx?q=AKG+耳机', amazon:'https://www.amazon.cn/s?k=AKG+headphone', official:'https://www.akaipro.com/' }, latest:'K702 / Y700NC' },
+  { name:'Nothing', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Nothing+耳机', tmall:'https://search.tmall.com/search.aspx?q=Nothing+耳机', amazon:'https://www.amazon.cn/s?k=Nothing+earbuds', official:'https://nothing.tech/' }, latest:'Ear (3) 旗舰 TWS' },
+  { name:'Teenage Engineering', tag:'intl', country:'瑞典', links:{ jd:'https://search.jd.com/Search?keyword=Teenage+Engineering', official:'https://teenage.engineering/', amazon:'https://www.amazon.cn/s?k=Teenage+Engineering' }, latest:'OP-1 Field / TX-6' },
+];
+
+/* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
+const PRICES = [
+  { brand:'Marshall', model:'Emberton III', orig:1499, promo:1199, category:'speaker', platform:'京东/天猫/官网', img:'https://ec-res.marshall.cn/2/2025/7/30/1753869587437687_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100137193368.html' },
+  { brand:'Marshall', model:'Acton III BT', orig:3499, promo:1738, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/10/14/17604101329699684_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100035465065.html' },
+  { brand:'Marshall', model:'Stanmore III', orig:4499, promo:2789, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/7/30/1753870430157424_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100024554085.html' },
+  { brand:'B&O', model:'Beosound A1 3rd', orig:2690, promo:2318, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/71gT0XSdL3L._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10150658657456.html' },
+  { brand:'B&O', model:'Beosound A5', orig:6990, promo:6490, category:'speaker', platform:'官网/天猫', img:'https://m.media-amazon.com/images/I/71kw8QDATGL._AC_SX500_SY500_.jpg', link:'https://www.bang-olufsen.com/zh/cn/speakers/beosound-a5' },
+  { brand:'JBL', model:'Charge 6', orig:1299, promo:999, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/8179N0kJ2QL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100216609711.html' },
+  { brand:'JBL', model:'Xtreme 4', orig:2299, promo:1799, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/419cpmyt-uL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100096212800.html' },
+  { brand:'Bose', model:'SoundLink Flex 2', orig:1699, promo:1164, category:'speaker', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/415WfdWr7BL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10163275486014.html' },
+  { brand:'Bose', model:'SoundLink Max 2', orig:2999, promo:2639, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/81e+naGCcmL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100112376940.html' },
+  { brand:'哈曼卡顿', model:'Onyx Studio 9', orig:2999, promo:1899, category:'speaker', platform:'京东/天猫', img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g7/M00/01/0F/ChMkK2f0-kSIXNzeAANm6TbSVsQAAq87wNxm58AA2cB427.jpg', link:'https://search.jd.com/Search?keyword=哈曼卡顿+Onyx+Studio+9' },
+  { brand:'哈曼卡顿', model:'Aura Studio 4', orig:4299, promo:3499, category:'speaker', platform:'京东/天猫', img:'https://2d.zol-img.com.cn/product/242_698x437/31/cefAXzghIzUcs.jpg', link:'https://search.jd.com/Search?keyword=哈曼卡顿+Aura+Studio+4' },
+  { brand:'索尼', model:'SRS-XB100', orig:449, promo:281, category:'speaker', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/716FMuWpp4L._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=索尼+SRS-XB100' },
+  { brand:'索尼', model:'SRS-XG500', orig:3299, promo:2699, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/815ZnoyRd3S._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=索尼+SRS-XG500' },
+  { brand:'猫王', model:'M11 联名款', orig:1599, promo:1299, category:'speaker', platform:'天猫官旗', img:'https://airsmart-web.oss-cn-shanghai.aliyuncs.com/upload/images/%E4%BA%A7%E5%93%81/%E7%8C%AB%E7%8E%8B/B612/P1.jpg', link:'https://search.tmall.com/search.aspx?q=猫王+M11+音箱' },
+  { brand:'漫步者', model:'D32 Plus', orig:699, promo:549, category:'speaker', platform:'京东/天猫', img:'https://www.edifier.com.tw/upload/catalog_b/ALL_catalog_24G08_FG5TFbmoZO.jpg', link:'https://search.jd.com/Search?keyword=漫步者+D32+Plus' },
+  { brand:'惠威', model:'M200MKIII+', orig:2280, promo:1470, category:'speaker', platform:'京东/天猫', img:'https://img4.pconline.com.cn/pconline/images/product/20230425/8721613.jpg', link:'https://search.jd.com/Search?keyword=惠威+M200MKIII' },
+  { brand:'丹拿', model:'Evoke 20', orig:19800, promo:16800, category:'speaker', platform:'京东/官网', img:'https://dynaudio.com/hubfs/01.%20Dynaudio/Home%20Audio/Evoke/Packshots/main-module-images/Dynaudio-Evoke-20_black_front.png', link:'https://search.jd.com/Search?keyword=丹拿+Evoke+20' },
+  { brand:'宝华韦健', model:'707 S3', orig:15800, promo:13800, category:'speaker', platform:'京东/官网', img:'https://m.media-amazon.com/images/I/41bHgyWVGBL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=宝华韦健+707+S3' },
+  { brand:'森海塞尔', model:'Momentum 4', orig:2999, promo:1689, category:'headphone', platform:'京东/天猫/官网', img:'https://cdn.shopify.com/s/files/1/0314/8863/9112/files/MOMENTUM_4_Black.jpg', link:'https://search.jd.com/Search?keyword=森海塞尔+Momentum+4' },
+  { brand:'舒尔', model:'SE846', orig:3999, promo:3499, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/31cZwPU-80L._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=舒尔+SE846' },
+  { brand:'铁三角', model:'ATH-M50x', orig:1099, promo:899, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/41UBMEo1VpL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=铁三角+ATH-M50x' },
+  { brand:'AKG', model:'K702', orig:1299, promo:999, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/51EvWI6BG8L._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=AKG+K702' },
+  { brand:'Nothing', model:'Ear (a)', orig:699, promo:599, category:'headphone', platform:'京东/官网', img:'https://m.media-amazon.com/images/I/41QxdAF8WgL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=Nothing+Ear+a' },
+  { brand:'漫步者', model:'花再 Auro Ace', orig:339, promo:279, category:'headphone', platform:'京东/天猫', img:'https://cn-oss.edifier.com/Uploads/images/2026/05/15/2026051518473317788420535310.png', link:'https://www.edifier.com/cn/product/product-909.html' },
+  { brand:'Teenage Engineering', model:'OP-1 Field', orig:4499, promo:4299, category:'other', platform:'官网', img:'https://assets.teenage.engineering/_img/6509496bb045b1bd68c0375b_1024.webp', link:'https://teenage.engineering/products/op-1-field' },
+  { brand:'MORROR ART', model:'R1 唱片歌词音箱', orig:4299, promo:3799, category:'speaker', platform:'京东/天猫/官网', img:'https://2d.zol-img.com.cn/product/229_698x437/147/cez3rDVlzjaig.jpg', link:'https://item.jd.com/100233406494.html' },
+
+];
+
+const PRICE_SEARCH = {
+  'Marshall':'https://search.jd.com/Search?keyword=Marshall+音箱&enc=utf-8',
+  'B&O':'https://search.tmall.com/search.aspx?q=B%26O+音箱',
+  'JBL':'https://search.jd.com/Search?keyword=JBL+音箱',
+  'Bose':'https://search.jd.com/Search?keyword=Bose+音箱',
+  '哈曼卡顿':'https://search.jd.com/Search?keyword=哈曼卡顿+音箱',
+  '索尼':'https://search.jd.com/Search?keyword=索尼+音箱',
+  '猫王':'https://search.tmall.com/search.aspx?q=猫王+音箱',
+  '漫步者':'https://search.jd.com/Search?keyword=漫步者+音箱',
+  '惠威':'https://search.jd.com/Search?keyword=惠威+音箱',
+  'MORROR ART':'https://morrorart.jd.com/',
+  '丹拿':'https://search.jd.com/Search?keyword=丹拿+音箱',
+  '宝华韦健':'https://search.jd.com/Search?keyword=宝华韦健+音箱',
+  '森海塞尔':'https://search.jd.com/Search?keyword=森海塞尔+耳机',
+  '舒尔':'https://search.jd.com/Search?keyword=舒尔+耳机',
+  '铁三角':'https://search.jd.com/Search?keyword=铁三角+耳机',
+  'AKG':'https://search.jd.com/Search?keyword=AKG+耳机',
+  'Nothing':'https://search.jd.com/Search?keyword=Nothing+耳机',
+  'Teenage Engineering':'https://search.jd.com/Search?keyword=Teenage+Engineering',
+
+};
+
+/* ===== 图片规则（2026-05-22 定稿） =====
+ * ⚠️ 严禁使用品牌 Logo 做缩略图！
+ * 图片优先级：场景图 → 产品图（绝不降级到 Logo）
+ * scene:true  → 品牌色背景 + object-fit:cover（场景图/宣传图/展会图，填满有氛围）
+ * scene:false → contain 留白，背景色由 bg 字段决定：
+ *   - 无 bg  → 白色 #FFFFFF（透明底产品图，白底留白边）
+ *   - 有 bg  → 指定色（纯色底产品图，背景与产品底同色，留同色边）
+ * 趋势类资讯：可用文章内截图，或取文中提及的代表性产品做封面
+ * 细节图：可取产品局部特写作为填充
+ * 核心原则：标题是中心思想，图片必须与标题呼应
+ * 每次新增资讯后必须自查：①配图是否与标题相关 ②是否为场景图/产品图（非Logo）
+ */
+const PUSH_NEWS = [
+  // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
+  // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
+
+  // —— 音箱（5.26 新增1条 + 历史整理）——
+  { date:'2026-05-21', brand:'杰士', type:'new', cat:'speaker',
+    title:'Klipsch The Sevens II / The Nines II 有源音箱发布',
+    desc:'80周年纪念款，融合安桥功放技术；Sevens II 配6.5寸低音，Nines II配8寸低音+ DTS:X + XLR输入；Tractrix号角+BMC障板+Dirac Live空间校正，HDMI eARC / Google Cast / AirPlay 2 / 黑胶直连。',
+    link:'https://finance.sina.com.cn/tech/mobile/n/n/2026-05-21/doc-inhyrmms9204098.shtml',
+    img:'https://img4.pconline.com.cn/pconline/images/pconline_cms/20260506/50468293.jpg', scene:true },
+  { date:'2026-05-12', brand:'JBL', type:'new', cat:'speaker',
+    title:'JBL PartyBox 330 / 130 全新发布，AI 音效增强+蓝牙6.0',
+    desc:'330（280W/双6.5寸低音/18h续航/可换电池）$629.95；130（200W/5.25寸低音/15h续航/IPX4）$449.95；全系六边形新设计+Auracast串联+JBL AI智能均衡，6月7日预售。',
+    link:'https://news.harman.com/releases/jbl-partybox-330-and-partybox-130-deliver-punchy-sound-next-level-light-shows-and-bolder-designs',
+    img:'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw4e8cd5e4/images/JBL_PartyBox_330_Hero_Black.png', scene:true },
+  { date:'2026-05-20', brand:'哈曼卡顿', type:'new', cat:'speaker',
+    title:'哈曼卡顿 Aura Studio 5 黑金典藏版开售',
+    desc:'琉璃五代年度限定配色，黑金质感+经典360°环绕声+影院投影灯效，520上市京东自营独占。',
+    link:'https://item.jd.com/100354057198.html',
+    img:'https://m.media-amazon.com/images/I/71gPmF5TK9L._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-05-05', brand:'Bose', type:'new', cat:'speaker',
+    title:'Bose Lifestyle Ultra 系列正式发布，5.15 发售',
+    desc:'含 Ultra Soundbar（$1,099）、Ultra 无线扬声器（$299）、Ultra 低音炮（$899），支持 Dolby Atmos + AirPlay 2 + Google Cast，剑指 Sonos。',
+    link:'https://www.bose.com/pressroom/bose-lifestyle-collection',
+    img:'https://assets.bosecreative.com/transform/2508f3e8-ccb4-47c9-9a38-2dbe60ad24ca/LSUS-DriftwoodSand_ThreeQuarter_Left?io=width:800,height:667,transform:fit', scene:true },
+  { date:'2026-05-13', brand:'Marshall', type:'collab', cat:'speaker',
+    title:'Marshall x Hendrix 六十周年限定系列发布',
+    desc:'致敬1966年Jimi Hendrix首度启用Marshall音箱，焕新设计Acton III蓝牙音箱联名限量版，迷幻风格视觉。',
+    link:'https://hypebeast.cn/2026/5/marshall-x-hendrix-sixty-anniversary-collab-release',
+    img:'https://variety.com/wp-content/uploads/2026/05/Screen-Shot-2026-05-12-at-1.19.56-PM.png?w=800&h=600&crop=1',
+    scene:true },
+  { date:'2026-05-11', brand:'Bose', type:'new', cat:'speaker',
+    title:'Bose SoundLink Plus 正式发售，限量沁柠黄配色',
+    desc:'经典黑、暮色蓝及限量版沁柠黄三款配色，售价 2,499 元。同步发布 SoundLink Micro 2nd Gen。',
+    link:'https://www.bose.cn/zh_cn/pressroom/featured/bose-soundlink-plus-and-soundlink-micro-2nd-gen.html',
+    img:'https://m.media-amazon.com/images/I/71nrGtFhTjL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-04-30', brand:'B&O', type:'collab', cat:'speaker',
+    title:'B&O Beosound Haven 米兰设计周首发',
+    desc:'Bang & Olufsen 与意大利石材品牌 Antolini 联手，探索"声音即建筑语言"的设计理念。',
+    link:'https://www.dezeen.com/2026/04/30/beosound-haven-dezeen-showroom/',
+    img:'https://static.dezeen.com/uploads/2026/04/beosound-haven-speaker-bang-and-olufsen-antolini_dezeen_2364_col_0-852x1278.jpg', scene:true },
+  { date:'2026-04-17', brand:'Bose', type:'color', cat:'speaker',
+    title:'Bose 推出"落日暖桃"新色系，覆盖 SoundLink 全系列',
+    desc:'专为 SoundLink Micro II、SoundLink Flex II 及 SoundLink Plus 打造。',
+    link:'https://finance.sina.com.cn/tech/mobile/n/n/2026-04-17/doc-inhuuptk3346740.shtml',
+    img:'https://m.media-amazon.com/images/I/71Xf6Xs6lfL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-03-31', brand:'JBL', type:'new', cat:'speaker',
+    title:'JBL Xtreme 5 / Go 5 全新发布',
+    desc:'更大尺寸、更细腻音质，IP67 防水防尘，Xtreme 5 全新底座设计增强稳定性。',
+    link:'https://www.jbl.com/XTREME-5.html',
+    img:'https://www.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw565225fa/LS_JBL_XTREME_5_3_4_RIGHT_SQUAD_0051_x3.png', scene:true },
+  { date:'2026-03-30', brand:'漫步者', type:'new', cat:'speaker',
+    title:'漫步者多款桌面音频新品全面上市',
+    desc:'N300 宽度仅 10cm 配合 15 减震脚垫；R20 与光冷小方可嵌入显示器下方，覆盖百元入门至旗舰。',
+    link:'https://post.smzdm.com/p/az8lzn5r/',
+    img:'https://m.media-amazon.com/images/I/61s0CsQk-VL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-01-13', brand:'Marshall', type:'collab', cat:'speaker',
+    title:'Marshall Emberton III 2026 马年新春限定款',
+    desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
+    link:'https://www.marshall.cn/product/MD00234_4',
+    img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
+  // —— 耳机（5.26 新增1条+更新2条 + 历史整理）——
+  { date:'2026-05-26', brand:'森海塞尔', type:'new', cat:'headphone',
+    title:'森海塞尔 Momentum 5 Wireless 正式发布，$399.99',
+    desc:'42mm动圈（HD600血统）、Snapdragon Sound+aptX Lossless、Dolby Atmos空间音频、8麦克风ANC（人声降噪3倍提升）、57小时续航、用户可更换电池、蓝牙5.4（可升6.0）、三色可选（黑/白/牛仔蓝），6.16美国开售。',
+    link:'https://newsroom.sennheiser.com/introducing-momentum-5-wireless-your-sound-revelation-starts-here-1bf69i',
+    img:'https://m.media-amazon.com/images/I/71cT5O4%2BrnL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-05-22', brand:'安克', type:'new', cat:'headphone',
+    title:'安克 Liberty 5 Pro Max 发布，AI 芯片+AMOLED 触控屏',
+    desc:'Thus A1 存算一体AI芯片（5GFLOPS/150倍提升）、吉尼斯「全球最清晰通话」认证、1.78寸AMOLED触控充电盒、12h/50h续航、100种语言AI翻译、1799元。',
+    link:'https://finance.sina.com.cn/tech/roll/2026-05-22/doc-inhyurwk6046509.shtml',
+    img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g8/M00/07/0E/ChMkLWoPmIaIATsZAAB_IUsmCz4AAIfMwCmNIMAAH85914.jpg', scene:false },
+  { date:'2026-05-20', brand:'B&O', type:'collab', cat:'headphone',
+    title:'B&O x Fragment Design 联名系列发售',
+    desc:'H100 头戴耳机 €1,950 / A1 便携音箱 €399 / Shape 壁挂系统 €6,000 / Beosystem 9000c CD系统 €60,000（日本限定），5.20 东京首发6.3全球发售。',
+    link:'https://www.bang-olufsen.com/zh-cn/mo/story/fragment-collaboration',
+    img:'https://www.wallpaper.com/images/2026/05/bang-olufsen-fragment-design-collaboration-1.jpg', scene:true },
+  { date:'2026-05-21', brand:'索尼', type:'new', cat:'headphone',
+    title:'索尼 WH-1000X ColleXion 十周年典藏版正式发售',
+    desc:'国行 4,799 元（首发 4,399 元）；30mm单向碳纤维振膜、格莱美调音师调音、V3处理器、DSEE Ultimate旗舰版、360 Upmix三模式、蓝牙6.0、续航32小时。',
+    link:'https://www.ithome.com/0/952/775.htm',
+    img:'https://m.media-amazon.com/images/I/71W3jW%2Bm2mL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-05-21', brand:'MORROR ART', type:'new', cat:'headphone',
+    title:'MORROR ART 首款显示蓝牙耳机发布，双壳态创新',
+    desc:'"原声壳"低调日常+"灵动屏"OLED动态展示（电子吧唧），40mm 大动圈+尊宝调校，四色可选（波普橘/格雷银/巴恩棕/解构黑），可做项链/胸针配饰。',
+    link:'https://www.pingwest.com/a/313896',
+    img:'https://cdn.pingwest.com/portal/2026/05/21/portal/2026/05/21/BKRetfnNPX5aJ574CHW76dmiXD5Gtsm8', scene:true },
+  { date:'2026-05-21', brand:'小米', type:'new', cat:'headphone',
+    title:'小米首款耳夹式耳机正式发布，首销 799 元',
+    desc:'单耳仅 5.5g、11mm 大尺寸动圈、LHDC 5.0 + Hi-Res 金标、IP57 防尘抗水、兼容苹果生态、支持超级小爱翻译/录音/物品查找。',
+    link:'https://finance.sina.com.cn/stock/t/2026-05-21/doc-inhyshrk5780388.shtml',
+    img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g8/M00/07/0E/ChMkLWoPmIaIATsZAAB_IUsmCz4AAIfMwCmNIMAAH85914.jpg', scene:true },
+  { date:'2026-05-18', brand:'韶音', type:'new', cat:'headphone',
+    title:'Shokz Day 深圳发布三款 OWS 新品',
+    desc:'OpenDots 2（杜比音效/AI降噪）、OpenSwim Pro 2（IP68+64GB+游泳数据监测）、OpenDots Air（0.28mm超薄钛片+听书模式）三款开放式耳机同步亮相。',
+    link:'https://finance.sina.com.cn/roll/2026-05-18/doc-inhyhpyt2928786.shtml',
+    img:'https://m.media-amazon.com/images/I/518kXLdsc9L._AC_SX500_SY500_.jpg', scene:true },
+  { date:'2026-05-16', brand:'行业', type:'event', cat:'headphone',
+    title:'第三届深圳国际耳机展开幕，228品牌新品云集',
+    desc:'展区超5000㎡，森海塞尔/铁三角/HIFIMAN/山灵/水月雨等300+品牌参展，三大旗舰静电耳机同台亮相。',
+    link:'http://www.fi-play.com/?p=103756',
+    img:'https://www.avfline.com/wp-content/uploads/2026/05/64c0bdb9df9e4f2588b3b6170a3bf06atplv-obj-1.jpg', scene:true },
+  { date:'2026-05-14', brand:'森海塞尔', type:'new', cat:'headphone',
+    title:'森海塞尔 Momentum True Wireless 5 发布',
+    desc:'第四代旗舰 TWS，全新 7mm 动铁+动圈混合单元，aptX Lossless，IP68 防水，续航 32 小时。',
+    link:'https://search.jd.com/Search?keyword=森海塞尔+Momentum+True+Wireless+5',
+    img:'https://m.media-amazon.com/images/I/71cT5O4%2BrnL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2026-05-15', brand:'漫步者', type:'new', cat:'headphone',
+    title:'花再 Auro Ace 头戴耳机上市，侧面点阵屏可显示歌词',
+    desc:'32mm大动圈、后腔倒相孔声学设计、蓝牙6.0双模连接、62小时超长续航、130g轻量化机身，支持自定义点阵屏主题/频谱与手机拍照控制，售价 279 元。',
+    link:'https://www.ithome.com/0/950/910.htm',
+    img:'https://cn-oss.edifier.com/Uploads/images/2026/05/15/2026051518473317788420535310.png', scene:false },
+  { date:'2026-05-21', brand:'倍思', type:'feature', cat:'headphone',
+    title:'倍思 OWS 耳夹耳机 Q1 全球出货量第二',
+    desc:'Omdia 数据：2026 Q1 倍思在 OWS 耳夹耳机品类全球出货量排名第二，非手机厂商中排名第一，覆盖 Bass/Bowie/Inspire 全产品线。',
+    link:'https://www.sohu.com/a/1025575253_190834',
+    img:'http://dingyue.ws.126.net/2026/0521/119a8877j00tfd4av0011d000i200o3g.jpg', scene:true },
+  { date:'2026-03-28', brand:'OPPO', type:'new', cat:'headphone',
+    title:'OPPO Enco Clip2 开放式耳夹耳机发布',
+    desc:'对标华为 FreeClip 2，全能均衡型开放式耳夹耳机，上代首发定价 799 元，新品预计同价位段。',
+    link:'https://www.oppo.com/en/newsroom/press/oppo-launches-enco-clip2/',
+    img:'https://img1.mydrivers.com/img/20260428/12ace1e14dcd4e2a8cbae6fcb3783611.png', scene:true },
+  // —— Hi-Fi / 黑胶 / 展会 ——
+  { date:'2026-05-21', brand:'行业', type:'event', cat:'hifi',
+    title:'第六届北京国际音响展 5.21-24 隆重举行',
+    desc:'14000㎡展区，B&W 鹦鹉螺出声展示、Focal Utopia Cinema 亮相、Avantgarde 喇叭花号角旗舰，含大师课堂+HiFi音乐节。',
+    link:'https://www.51audio.com/news/NewsDetail/2831',
+    img:'https://img1.bjd.com.cn/2026/05/21/e93478934ea4b6706659ec3dad072028d3632db8.jpg', scene:true },
+  { date:'2026-05-18', brand:'行业', type:'feature', cat:'headphone',
+    title:'蓝牙核心规范 6.3 正式发布',
+    desc:'蓝牙技术联盟发布核心规范 6.3，聚焦测距精度提升、扩展接口容量增加、射频效率优化三大方向，利好全品类音频设备。',
+    link:'https://finance.sina.com.cn/tech/digi/2026-05-18/doc-inhyhpys0813454.shtml',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0518%2Fe0a32b10j00tf7knf00bkd0014000ccg.jpg&thumbnail=660x2147483647&quality=80&type=jpg', scene:true },
+  { date:'2026-05-17', brand:'飞利浦', type:'event', cat:'hifi',
+    title:'飞利浦影音携全线新品亮相 TAS 2026 上海展',
+    desc:'以"在上海听百年真声"为主题，V9000F 斩获展会推荐奖，覆盖黑胶、CD、功放、音箱全场景。',
+    link:'https://hea.china.com/articles/20260518/202605181871433.html',
+    img:'https://img4.pconline.com.cn/pconline/images/pconline_cms/20260506/50468293.jpg', scene:true },
+  { date:'2026-05-16', brand:'宝华韦健', type:'new', cat:'hifi',
+    title:'B&W 805 D5 旗舰书架箱发布，碳纤维穹顶技术下放',
+    desc:'全新 Continuum 锥盆中低音 + 钛膜球顶高音，显著提升高频解析力与低频下潜，延续英伦声学调性。',
+    link:'https://www.bowerswilkins.com/',
+    img:'https://www.bowerswilkins.com/dw/image/v2/BGJH_PRD/on/demandware.static/-/Sites-master-catalog-soundunited/default/dw028da6fb/bowers/PDP/707-S3/707-S3-Satin-White/707-S3-Satin-White_Image_1.png', scene:false },
+  { date:'2026-05-16', brand:'山灵', type:'new', cat:'hifi',
+    title:'山灵深圳耳机展首发三款新品：Majestic 马年限定 / Q2 / UA6 II',
+    desc:'Majestic 马年限定典藏之作、便携播放器 Q2、桌面解码耳放 UA6 II 同步亮相第三届深圳国际耳机展。',
+    link:'https://www.sohu.com/a/1023878846_121631906',
+    img:'https://inrorwxhljimlp5p.ldycdn.com/cloud/jmBprKkilrSRjkioomppio/01-800-800.jpg', scene:true },
+  { date:'2026-05-15', brand:'BEAMS', type:'collab', cat:'vinyl',
+    title:'BEAMS Records 复古便携 CD 机柑橘色登场',
+    desc:'亮眼柑橘配色搭配透明机身，掀起又一波模拟时代复古浪潮，CD 随身听市场持续升温。',
+    link:'https://hypebeast.cn/2026/5/beams-records-portable-cd-player-orange-release-date-information',
+    img:'https://files.nowre.com/articles/2026/05/4141.jpg', scene:true },
+  { date:'2026-05-13', brand:'丹拿', type:'new', cat:'hifi',
+    title:'丹拿 Evoke 20 荣获 What Hi-Fi? 五星推荐',
+    desc:'丹麦精工设计，Cerotar+ 丝膜软球顶高音，Esotar3 技术下放，中端书架箱标杆之作。',
+    link:'https://www.dynaudio.com/',
+    img:'https://dynaudio.com/hubfs/01.%20Dynaudio/Home%20Audio/Evoke/Packshots/main-module-images/Dynaudio-Evoke-20_black_front.png', scene:false },
+  { date:'2026-05-11', brand:'山灵', type:'new', cat:'hifi',
+    title:'山灵 EC Play 便携 CD 播放器开售，998 元',
+    desc:'CS43198 旗舰 DAC、3.5mm+4.4mm 双接口、蓝牙 6.0、12 小时续航，418g 轻量化设计，三色可选。',
+    link:'https://new.qq.com/rain/a/20260511A05AIB00',
+    img:'https://img.ithome.com/newsuploadfiles/2026/5/234828d5-9a1e-439e-bb50-d74472c42329.jpg', scene:true },
+  { date:'2026-05-09', brand:'飞傲', type:'new', cat:'hifi',
+    title:'飞傲雪漫天 Echo Nano 超紧凑播放器 5.9 发售',
+    desc:'仅 33.5g 全铝合金机身，0.91寸OLED彩屏，旗舰CS解码芯片，192kHz/24bit，信噪比127dB，支持USB DAC模式，5色可选。',
+    link:'https://www.fiio.com/newsinfo/1129743.html',
+    img:'https://img.ithome.com/newsuploadfiles/2026/5/dd9b724f-c584-4c15-a05c-d7f22f189556.jpg', scene:true },
+  { date:'2026-04-28', brand:'索尼', type:'new', cat:'vinyl',
+    title:'索尼时隔七年再发黑胶唱机 PS-LX3BT / PS-LX5BT',
+    desc:'两款新品均支持蓝牙无线连接，兼容 aptX Adaptive，获 Hi-Res Wireless 认证，可直接连接蓝牙音箱或耳机。',
+    link:'https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260428-02.html',
+    img:'https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260428-02/_jcr_content/detail/image_1333633397.img.png/1778126022426.png', scene:true },
+  { date:'2026-04-21', brand:'行业', type:'feature', cat:'hifi',
+    title:'CD 机与经典 DAC 井喷，2026 音频复古年',
+    desc:'便携 CD 机市场迎来井喷，飞傲、iBasso、YBA、EvoAria 等密集发布新品；黑胶唱机与经典 DAC 芯片播放器同步爆发。',
+    link:'https://post.smzdm.com/p/arz46xq7/',
+    img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g8/M00/05/0F/ChMkLWoBPD-IRfwrAB2HB43npMoAAIXrAAea_YAHYcf557.jpg', scene:true },
+  { date:'2026-03-19', brand:'Denon', type:'new', cat:'vinyl',
+    title:'Denon 推出 DP-500BT 黑胶唱机',
+    desc:'精准锚定模拟音质与现代无线聆听的平衡点，支持蓝牙连接与多房间音频系统适配。',
+    link:'https://www.denon.com/zh-cn/product/turntables/dp-500bt/DP-500BT.html',
+    img:'https://cdn.mos.cms.futurecdn.net/fgHVvHNEBXdQbSDk29LnY9.jpg', scene:true },
+];
+
+/* ===== 完整动态列表 ===== */
+const NEWS = [
+  { date:'2026-05-26', brand:'森海塞尔', type:'new', text:'Momentum 5 Wireless 正式发布：$399.99，42mm动圈+aptX Lossless+Dolby Atmos+57h续航+可换电池', link:'https://newsroom.sennheiser.com/introducing-momentum-5-wireless-your-sound-revelation-starts-here-1bf69i' },
+  { date:'2026-05-22', brand:'安克', type:'new', text:'Liberty 5 Pro Max 发布：Thus A1 AI芯片+吉尼斯通话认证+AMOLED触控盒，1799元', link:'https://finance.sina.com.cn/tech/roll/2026-05-22/doc-inhyurwk6046509.shtml' },
+  { date:'2026-05-21', brand:'杰士', type:'new', text:'Klipsch The Sevens II / The Nines II 有源音箱发布：80周年纪念款，安桥功放+Dirac Live+Dolby Atmos', link:'https://finance.sina.com.cn/tech/mobile/n/n/2026-05-21/doc-inhyrmms9204098.shtml' },
+  { date:'2026-05-23', brand:'森海塞尔', type:'new', text:'Momentum 5 Wireless 官宣预告，47mm动圈+物理按键增多，Momentum 4时隔四年换代', link:'https://wanyr.com/2026/05/sennheiser%E9%A2%84%E5%91%8A%E6%96%B0%E6%AC%BEmomentum-5-wireless%E6%97%A0%E7%BA%BF%E5%A4%B4%E6%88%B4%E8%80%B3%E6%9C%BA-%E8%B0%8D%E7%85%A7%E6%9B%9D%E5%85%89.html' },
+  { date:'2026-05-20', brand:'B&O', type:'collab', text:'x Fragment Design 联名系列发售，H100耳机€1,950/A1音箱€399/Shape€6,000/Beosystem 9000c€60,000（日本限定）', link:'https://www.bang-olufsen.com/zh-cn/mo/story/fragment-collaboration' },
+  { date:'2026-05-20', brand:'哈曼卡顿', type:'new', text:'Aura Studio 5 黑金典藏版开售，琉璃五代年度限定配色', link:'https://item.jd.com/100354057198.html' },
+  { date:'2026-05-12', brand:'JBL', type:'new', text:'PartyBox 330（280W/$629.95）/ 130（200W/$449.95）全新发布，AI音效增强+蓝牙6.0', link:'https://news.harman.com/releases/jbl-partybox-330-and-partybox-130-deliver-punchy-sound-next-level-light-shows-and-bolder-designs' },
+  { date:'2026-05-21', brand:'MORROR ART', type:'new', text:'首款显示蓝牙耳机发布，双壳态系统（原声壳/灵动屏），40mm大动圈+尊宝调校', link:'https://www.pingwest.com/a/313896' },
+  { date:'2026-05-21', brand:'小米', type:'new', text:'首款耳夹式耳机正式发布，单耳 5.5g、首销 799 元、LHDC 5.0 + Hi-Res 金标', link:'https://finance.sina.com.cn/stock/t/2026-05-21/doc-inhyshrk5780388.shtml' },
+  { date:'2026-05-21', brand:'行业', type:'event', text:'第六届北京国际音响展 5.21-24 开幕，B&W 鹦鹉螺出声展示，Focal/Avantgarde 等国际品牌参展', link:'https://www.51audio.com/news/NewsDetail/2831' },
+  { date:'2026-05-21', brand:'倍思', type:'feature', text:'OWS 耳夹耳机 Q1 全球出货量第二（Omdia 数据），非手机厂商第一', link:'https://www.sohu.com/a/1025575253_190834' },
+  { date:'2026-05-21', brand:'索尼', type:'new', text:'WH-1000X ColleXion 十周年典藏版正式发售，国行 4,799 元（首发 4,399 元），30mm碳纤维振膜+V3处理器', link:'https://www.ithome.com/0/952/775.htm' },
+  { date:'2026-05-18', brand:'行业', type:'feature', text:'蓝牙核心规范 6.3 正式发布，提升测距精度/扩展接口容量/射频效率', link:'https://finance.sina.com.cn/tech/digi/2026-05-18/doc-inhyhpys0813454.shtml' },
+  { date:'2026-05-18', brand:'韶音', type:'new', text:'Shokz Day 深圳发布三款 OWS 新品：OpenDots 2 / OpenSwim Pro 2 / OpenDots Air', link:'https://finance.sina.com.cn/roll/2026-05-18/doc-inhyhpyt2928786.shtml' },
+  { date:'2026-05-11', brand:'山灵', type:'new', text:'EC Play 便携 CD 播放器开售，CS43198 旗舰 DAC、998 元', link:'https://new.qq.com/rain/a/20260511A05AIB00' },
+  { date:'2025-09-18', brand:'Nothing', type:'new', text:'Ear (3) 全新旗舰 TWS 耳机发布，Super Mic + 50dB 降噪', link:'https://nothing.tech/products/ear-3' },
+  { date:'2025-06-19', brand:'Teenage Engineering', type:'feature', text:'TX-6 / TP-7 固件 1.3.0 重大更新：新增蓝牙 MIDI 功能', link:'https://teenage.engineering/' },
+  { date:'2026-05-16', brand:'宝华韦健', type:'new', text:'805 D5 旗舰书架箱发布，Continuum 锥盆 + 钛膜高音', link:'https://www.bowerswilkins.com/' },
+  { date:'2026-05-16', brand:'山灵', type:'new', text:'深圳耳机展首发 Majestic 马年限定 / Q2 便携播放器 / UA6 II 解码耳放', link:'https://www.sohu.com/a/1023878846_121631906' },
+  { date:'2026-05-16', brand:'行业', type:'event', text:'第三届深圳国际耳机展开幕，228品牌300+品牌参展，三大静电耳机同台', link:'http://www.fi-play.com/?p=103756' },
+  { date:'2026-05-14', brand:'森海塞尔', type:'new', text:'Momentum True Wireless 5 发布，动铁+动圈混合单元 + aptX Lossless', link:'https://search.jd.com/Search?keyword=森海塞尔+Momentum+True+Wireless+5' },
+  { date:'2026-05-13', brand:'丹拿', type:'new', text:'Evoke 20 书架音箱荣获 What Hi-Fi? 五星评价', link:'https://www.dynaudio.com/' },
+  { date:'2026-05-13', brand:'Marshall', type:'collab', text:'x Hendrix 六十周年限定系列发布，焕新设计 Acton III 联名限量版', link:'https://hypebeast.cn/2026/5/marshall-x-hendrix-sixty-anniversary-collab-release' },
+  { date:'2026-05-09', brand:'飞傲', type:'new', text:'雪漫天 Echo Nano 超紧凑播放器发售，33.5g 旗舰CS解码+USB DAC', link:'https://www.fiio.com/newsinfo/1129743.html' },
+  { date:'2026-05-05', brand:'Bose', type:'new', text:'Lifestyle Ultra 系列发布：Soundbar + 无线扬声器 + 低音炮，支持 Dolby Atmos', link:'https://www.bose.com/pressroom/bose-lifestyle-collection' },
+  { date:'2026-05-19', brand:'索尼', type:'new', text:'WH-1000X ColleXion 十周年典藏版官宣，5.21 全球发售预告', link:'https://www.ithome.com/0/949/610.htm' },
+  { date:'2026-05-17', brand:'飞利浦', type:'new', text:'携全线新品亮相 TAS 2026 上海展，V9000F 斩获推荐奖', link:'https://hea.china.com/articles/20260518/202605181871433.html' },
+  { date:'2026-05-15', brand:'BEAMS', type:'collab', text:'Records 复古便携 CD 机柑橘色登场，透明机身', link:'https://hypebeast.cn/2026/5/beams-records-portable-cd-player-orange-release-date-information' },
+  { date:'2026-05-11', brand:'Bose', type:'new', text:'SoundLink Plus 正式发售，限量沁柠黄配色同步上线', link:'https://www.bose.cn/zh_cn/pressroom/featured/bose-soundlink-plus-and-soundlink-micro-2nd-gen.html' },
+  { date:'2026-05-09', brand:'行业', type:'feature', text:'OWS 开放式耳机出货量预计破 4000 万台，成为第二增长曲线', link:'https://www.sohu.com/a/1020177659_121118996' },
+  { date:'2026-04-30', brand:'B&O', type:'collab', text:'Beosound Haven 米兰设计周首发，联手 Antolini 探索声音建筑语言', link:'https://www.dezeen.com/2026/04/30/beosound-haven-dezeen-showroom/' },
+  { date:'2026-04-28', brand:'索尼', type:'new', text:'时隔七年再发黑胶唱机 PS-LX3BT / PS-LX5BT，支持 aptX Adaptive', link:'https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260428-02.html' },
+  { date:'2026-04-21', brand:'行业', type:'feature', text:'CD 机与经典 DAC 井喷，2026 音频复古年', link:'https://post.smzdm.com/p/arz46xq7/' },
+  { date:'2026-04-17', brand:'Bose', type:'color', text:'推出"落日暖桃"新色系，覆盖 SoundLink Micro II / Flex II / Plus', link:'https://finance.sina.com.cn/tech/mobile/n/n/2026-04-17/doc-inhuuptk3346740.shtml' },
+  { date:'2026-03-31', brand:'JBL', type:'new', text:'Xtreme 5 / Go 5 全新发布，IP67 防护', link:'https://www.jbl.com/XTREME-5.html' },
+  { date:'2026-05-15', brand:'漫步者', type:'new', text:'花再 Auro Ace 头戴耳机上市，侧面点阵屏显示歌词/自定义主题，32mm动圈 62h续航 ¥279', link:'https://www.ithome.com/0/950/910.htm' },
+  { date:'2026-03-30', brand:'漫步者', type:'new', text:'4 月多款桌面音频新品全面上市', link:'https://post.smzdm.com/p/az8lzn5r/' },
+  { date:'2026-03-28', brand:'OPPO', type:'new', text:'Enco Clip2 开放式耳夹耳机发布', link:'https://www.oppo.com/en/newsroom/press/oppo-launches-enco-clip2/' },
+  { date:'2026-03-19', brand:'Denon', type:'new', text:'DP-500BT 黑胶唱机发布，支持蓝牙多房间', link:'https://www.denon.com/zh-cn/product/turntables/dp-500bt/DP-500BT.html' },
+  { date:'2026-03-08', brand:'Marshall', type:'feature', text:'Emberton III 固件升级：新增低延迟游戏模式', link:'https://www.marshall.cn' },
+  { date:'2026-01-25', brand:'惠威', type:'color', text:'M200MKIII+ 星空蓝限定版春节礼盒', link:'https://www.hivi.com.cn' },
+  { date:'2026-01-13', brand:'Marshall', type:'collab', text:'Emberton III 2026 马年新春限定款，携手艺术家 FCCK', link:'https://www.marshall.cn/product/MD00234_4' },
+];
+
+const FESTIVALS = [
+  { label:'春节', month:1 }, { label:'38女王节', month:3 }, { label:'618大促', month:6 },
+  { label:'818', month:8 }, { label:'双11', month:11 }, { label:'双12', month:12 },
+];
+const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+/* ===== 价格趋势数据（多年） ===== */
+const TREND_DATA = {
+  'Marshall Emberton III':  { brand:'Marshall', orig:1499, years:{
+    2024:[1499,1499,1449,1499,1349,1199,1349,1199,1349,1399,1199,1199],
+    2025:[1199,1199,1149,1199,1099,999,1099,999,1099,1149,999,999],
+    2026:[1499,1499,1399,1449,1299,1099,1299,1099,1299,1399,1099,1099]
+  }},
+  'Marshall Acton III':     { brand:'Marshall', orig:3499, years:{
+    2024:[3499,3499,3399,3499,3199,2999,3199,2999,3199,3299,2999,2999],
+    2025:[2999,2999,2899,2949,2799,2599,2799,2599,2799,2899,2599,2599],
+    2026:[3499,3499,3299,3399,2999,2799,2999,2799,2999,3199,2799,2799]
+  }},
+  'Marshall Stanmore III':  { brand:'Marshall', orig:4499, years:{
+    2024:[4499,4499,4399,4499,4099,3899,4099,3899,4099,4199,3899,3899],
+    2025:[3899,3899,3799,3849,3599,3399,3599,3399,3599,3699,3399,3399],
+    2026:[4499,4499,4299,4399,3799,3599,3799,3599,3799,3999,3599,3599]
+  }},
+  'JBL Charge 6':           { brand:'JBL', orig:1299, years:{
+    2025:[1299,1299,1249,1299,1149,999,1099,999,1099,1149,999,999],
+    2026:[1299,1299,1199,1249,1099,899,999,899,999,1099,899,899]
+  }},
+  'JBL Xtreme 4':          { brand:'JBL', orig:2299, years:{
+    2024:[2299,2299,2249,2299,2099,1899,2099,1899,2099,2149,1899,1899],
+    2025:[1899,1899,1849,1899,1749,1599,1749,1599,1749,1849,1599,1599],
+    2026:[2299,2299,2199,2249,1999,1799,1999,1799,1999,2099,1799,1799]
+  }},
+  'Bose SoundLink Flex 2': { brand:'Bose', orig:1699, years:{
+    2025:[1699,1699,1649,1699,1549,1349,1549,1349,1549,1599,1349,1349],
+    2026:[1699,1699,1599,1649,1499,1299,1499,1299,1499,1599,1299,1299]
+  }},
+  'Bose SoundLink Max 2':  { brand:'Bose', orig:2999, years:{
+    2025:[2999,2999,2949,2999,2799,2599,2799,2599,2799,2849,2599,2599],
+    2026:[2999,2999,2899,2949,2699,2499,2699,2499,2699,2799,2499,2499]
+  }},
+  'B&O Beosound A1 3rd':   { brand:'B&O', orig:2690, years:{
+    2024:[2690,2690,2640,2690,2540,2390,2540,2390,2540,2590,2390,2390],
+    2025:[2390,2390,2340,2390,2290,2190,2290,2190,2290,2340,2190,2190],
+    2026:[2690,2690,2590,2650,2490,2290,2490,2290,2490,2590,2290,2290]
+  }},
+  'B&O Beosound A5':       { brand:'B&O', orig:6990, years:{
+    2026:[6990,6990,6790,6890,6490,6190,6490,6190,6490,6690,6190,6190]
+  }},
+  '哈曼卡顿 Onyx Studio 9':{ brand:'哈曼卡顿', orig:2999, years:{
+    2024:[2999,2999,2899,2999,2699,2299,2499,2299,2499,2599,2299,2299],
+    2025:[2299,2299,2199,2249,2099,1899,1999,1899,1999,2149,1899,1899],
+    2026:[2999,2999,2799,2899,2499,2099,2299,2099,2299,2499,2099,2099]
+  }},
+  '哈曼卡顿 Aura Studio 4':{ brand:'哈曼卡顿', orig:4299, years:{
+    2024:[4299,4299,4199,4299,3899,3599,3899,3599,3899,3999,3599,3599],
+    2025:[3599,3599,3499,3549,3299,3099,3299,3099,3299,3399,3099,3099],
+    2026:[4299,4299,4099,4199,3799,3499,3799,3499,3799,3999,3499,3499]
+  }},
+  '索尼 SRS-XG500':        { brand:'索尼', orig:3299, years:{
+    2024:[3299,3299,3249,3299,3099,2899,3099,2899,3099,3149,2899,2899],
+    2025:[2899,2899,2849,2899,2699,2499,2699,2499,2699,2799,2499,2499],
+    2026:[3299,3299,3199,3249,2999,2699,2999,2699,2999,3099,2699,2699]
+  }},
+  '索尼 SRS-XB100':        { brand:'索尼', orig:449, years:{
+    2024:[449,449,439,449,419,379,419,379,419,429,379,379],
+    2025:[379,379,369,379,359,329,359,329,359,369,329,329],
+    2026:[449,449,429,439,399,349,399,349,399,419,349,349]
+  }},
+};
+
+/* 对比图颜色 */
+const BRAND_COLORS = {
+  'Marshall':  '#4DFF00',
+  'JBL':       '#00B4FF',
+  'Bose':      '#FF6EB4',
+  'B&O':       '#FFD700',
+  '哈曼卡顿':   '#FFA500',
+  '索尼':      '#B088FF',
+  '丹拿':      '#00CED1',
+  '宝华韦健':   '#C0C0C0',
+  '森海塞尔':   '#8B4513',
+  '舒尔':      '#4169E1',
+  '铁三角':    '#DC143C',
+  'AKG':       '#9932CC',
+  'Nothing':   '#E0E0E0',
+  'Teenage Engineering':'#FFD700',
+};
+const MODEL_COLORS = [
+  '#4DFF00','#00B4FF','#FFA500','#FF4D4D','#FFD700',
+  '#00FFC8','#FF6EB4','#B088FF','#00D4AA','#FF8C00',
+  '#4ECDC4','#FF6347','#7B68EE',
+];
+
+let currentFilter='all', currentCategory='all', currentNewsType='all', currentPushCat='all';
+let trendChartInst=null, compareChartInst=null;
+let compareYear='2026', compareBrands=null;
+
+/* ===== 新品推送 ===== */
+const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑胶/CD', portable:'便携' };
+const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable' };
+const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
+const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF' };
+
+function buildPushGrid(cat) {
+  const grid = document.getElementById('pushGrid');
+  grid.innerHTML = '';
+  const items = cat === 'all' ? PUSH_NEWS : PUSH_NEWS.filter(n => n.cat === cat);
+  items.slice(0, 8).forEach(n => {
+    const card = document.createElement('a');
+    card.className = 'push-card';
+    card.href = n.link; card.target = '_blank';
+    const bgCol = brandColors[n.brand]||'#1A1A1A';
+    const txtCol = brandTextColors[n.brand]||'#FFFFFF';
+    const imgCls = n.scene ? ' class="scene"' : '';
+    const imgBg  = n.scene ? bgCol : (n.bg || '#FFFFFF');
+    const imgHtml = n.img
+      ? `<div class="push-card-img" style="background:${imgBg}"><img src="${n.img}"${imgCls} alt="${n.brand}" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<div class=\\'img-fallback\\' style=\\'background:${bgCol};color:${txtCol}\\'>${brandInitials[n.brand]||n.brand[0]}</div>'"></div>`
+      : `<div class="push-card-img" style="background:${bgCol}"><div class="img-fallback" style="background:${bgCol};color:${txtCol}">${brandInitials[n.brand]||n.brand[0]}</div></div>`;
+    card.innerHTML = `
+      ${imgHtml}
+      <div class="push-card-body">
+        <div class="push-card-top">
+          <span class="push-brand ${catClassDict[n.cat]||'cat-speaker'}">${n.brand}</span>
+          <span class="push-type ${typeClassDict[n.type]||'type-new'}">${typeLabelDict[n.type]||'资讯'}</span>
+          <span class="push-date">${n.date}</span>
+        </div>
+        <div class="push-card-title">${n.title}</div>
+        <div class="push-card-desc">${n.desc}</div>
+        <span class="push-card-arrow">查看详情 →</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  document.getElementById('pushCount').textContent = items.length;
+}
+function filterPush(cat, btn) {
+  currentPushCat = cat;
+  sessionStorage.setItem('pushCat', cat);
+  document.querySelectorAll('.push-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildPushGrid(cat);
+}
+
+/* ===== 品牌地图 ===== */
+function buildBrandMap() {
+  const NS = 'http://www.w3.org/2000/svg';
+  const card = document.getElementById('brandMapCard');
+  // Coordinate helpers
+  function svgX(lng) { return (lng + 180) / 360 * 1000; }
+  function svgY(lat) { return (90 - lat) / 180 * 500; }
+  function pctX(lng) { return (lng + 180) / 360 * 100; }
+  function pctY(lat) { return (90 - lat) / 180 * 100; }
+
+  // Landmass outlines
+  const landPaths = [
+    'M130 60L140 55 160 50 180 48 200 55 220 65 240 70 250 80 260 90 265 100 262 110 255 120 260 130 270 135 275 145 268 155 260 160 255 170 248 175 240 180 235 190 240 200 248 210 250 215 245 225 235 228 225 230 218 225 215 220 210 218 205 215 210 200 215 195 225 185 235 180 240 175 248 170 250 165 255 158 258 150 255 140 248 135 240 128 235 120 228 115 220 108 215 100 210 95 205 88 198 82 190 78 180 75 170 72 160 68 150 65 140 62 130 60Z',
+    'M280 30L310 25 340 28 355 40 350 55 335 60 310 58 290 50 280 40Z',
+    'M250 215L260 218 275 225 285 235 290 250 292 265 288 280 282 295 275 310 268 325 260 340 250 350 240 358 230 365 222 370 215 365 210 355 208 340 210 325 215 310 218 295 220 280 225 268 240 255 248 245 250 235 250 225Z',
+    'M470 68L480 65 495 62 510 60 520 62 530 65 540 60 548 62 555 68 558 75 555 82 548 85 540 82 530 85 520 88 515 95 510 100 505 105 500 108 495 105 490 100 485 95 478 90 475 85 472 78Z',
+    'M470 108L480 105 495 108 510 110 525 112 540 115 550 120 558 128 565 138 570 148 572 160 570 175 565 190 558 205 548 218 535 230 520 240 505 248 490 252 478 250 468 242 460 230 455 218 452 205 450 190 448 175 450 160 455 145 460 132 465 120Z',
+    'M555 68L570 62 590 58 610 55 630 50 655 48 680 45 700 48 720 52 740 55 760 52 780 50 800 55 820 58 840 62 855 68 865 75 870 85 868 95 860 100 850 105 840 108 830 110 820 115 815 120 825 125 835 128 842 132 845 140 840 148 832 155 825 160 818 168 810 175 800 180 790 185 778 190 770 195 762 200 755 208 748 218 742 228 738 238 735 245 730 238 722 230 715 222 710 215 705 208 698 200 690 195 682 190 675 188 668 190 660 195 652 200 645 205 638 210 630 208 622 200 615 195 608 190 600 185 592 180 585 175 578 170 572 165 568 158 565 150 562 142 558 135 555 125 552 115 548 108 545 100 548 92 550 85 552 78Z',
+    'M870 110L878 105 885 108 890 115 888 125 882 130 875 128 870 122Z',
+    'M780 200L790 195 800 198 810 202 820 200 830 205 838 210 842 215 838 220 830 218 820 215 810 218 800 222 790 220 782 215 778 208Z',
+    'M800 280L820 275 840 272 860 275 875 282 882 295 878 308 870 318 858 325 845 328 830 325 818 320 808 312 802 300 800 290Z',
+    'M900 320L905 315 910 318 912 325 908 332 903 330 900 325Z',
+  ];
+
+  const COLORS = {
+    europe:   { fill:'rgba(0,200,255,0.12)', stroke:'#00C8FF' },
+    namerica: { fill:'rgba(255,165,0,0.12)', stroke:'#FFA500' },
+    asia:     { fill:'rgba(77,255,0,0.12)',   stroke:'#4DFF00' },
+  };
+  const labels = { jd:'京东', tmall:'天猫', official:'官网', amazon:'亚马逊' };
+
+  // Brand bubble data: lng/lat = geographic anchor; dL/dT = display position (% of map)
+  // Bubbles follow continent contours — clustered in arcs, not rigid columns
+  const bubbles = [
+    // === Europe cluster (central area, C-shaped arc NW→SE) ===
+    // UK group (left side of Europe arc)
+    { name:'宝华韦健',    flag:'\u{1F1EC}\u{1F1E7}', country:'英国', lng:-1.9,  lat:52.5, r:32, cont:'europe',  bi:11, dL:36, dT:8  },
+    { name:'Marshall',   flag:'\u{1F1EC}\u{1F1E7}', country:'英国', lng:-0.1,  lat:51.5, r:36, cont:'europe',  bi:0, dL:40, dT:18 },
+    { name:'Nothing',    flag:'\u{1F1EC}\u{1F1E7}', country:'英国', lng:-0.1,  lat:51.5, r:24, cont:'europe',  bi:16, dL:38, dT:28 },
+    // Nordic group (upper center)
+    { name:'Teenage Eng',flag:'\u{1F1F8}\u{1F1EA}', country:'瑞典', lng:18.1,  lat:59.3, r:22, cont:'europe',  bi:17, dL:56, dT:5  },
+    { name:'B&O',        flag:'\u{1F1E9}\u{1F1F0}', country:'丹麦', lng:9.5,   lat:55.7, r:32, cont:'europe',  bi:1, dL:50, dT:8  },
+    { name:'丹拿',       flag:'\u{1F1E9}\u{1F1F0}', country:'丹麦', lng:9.9,   lat:56.2, r:28, cont:'europe',  bi:10, dL:54, dT:18 },
+    // Central Europe (Germany→Austria, curved rightward)
+    { name:'森海塞尔',   flag:'\u{1F1E9}\u{1F1EA}', country:'德国', lng:8.7,   lat:50.1, r:30, cont:'europe',  bi:12, dL:46, dT:30 },
+    { name:'AKG',        flag:'\u{1F1EE}\u{1F1E6}', country:'奥地利', lng:16.4, lat:48.2, r:24, cont:'europe',  bi:15, dL:52, dT:38 },
+    // === North America cluster (left side, grouped by region) ===
+    // Northeast US
+    { name:'Bose',       flag:'\u{1F1FA}\u{1F1F8}', country:'美国', lng:-71.4, lat:44.5, r:46, cont:'namerica', bi:3, dL:16, dT:10 },
+    { name:'JBL',        flag:'\u{1F1FA}\u{1F1F8}', country:'美国', lng:-74,   lat:38.5, r:40, cont:'namerica', bi:2, dL:22, dT:24 },
+    // Great Lakes / Midwest
+    { name:'哈曼卡顿',    flag:'\u{1F1FA}\u{1F1F8}', country:'美国', lng:-87.6, lat:41.9, r:32, cont:'namerica', bi:4, dL:16, dT:38 },
+    { name:'舒尔',       flag:'\u{1F1FA}\u{1F1F8}', country:'美国', lng:-87.6, lat:41.9, r:26, cont:'namerica', bi:13, dL:24, dT:45 },
+    // === Asia cluster (right side) ===
+    // Japan — far right (Pacific)
+    { name:'索尼',       flag:'\u{1F1EF}\u{1F1F5}', country:'日本', lng:139.7, lat:35.7, r:46, cont:'asia',    bi:5, dL:92, dT:8  },
+    { name:'铁三角',     flag:'\u{1F1EF}\u{1F1F5}', country:'日本', lng:139.7, lat:35.7, r:28, cont:'asia',    bi:14, dL:89, dT:22 },
+    // China — upper-right quadrant, slight inward curve
+    { name:'漫步者',     flag:'\u{1F1E8}\u{1F1F3}', country:'中国', lng:117.2, lat:39.5, r:30, cont:'asia',    bi:7, dL:80, dT:14 },
+    { name:'惠威',       flag:'\u{1F1E8}\u{1F1F3}', country:'中国', lng:110.0, lat:28.5, r:26, cont:'asia',    bi:8, dL:77, dT:32 },
+    { name:'猫王',       flag:'\u{1F1E8}\u{1F1F3}', country:'中国', lng:113.3, lat:22.5, r:22, cont:'asia',    bi:6, dL:81, dT:48 },
+    { name:'MORROR ART', flag:'\u{1F1E8}\u{1F1F3}', country:'中国', lng:121.5, lat:29.0, r:20, cont:'asia',    bi:9, dL:85, dT:58 },
+  ];
+
+  // === Build DOM structure ===
+  // Zoom area (clips overflow)
+  const zoomArea = document.createElement('div');
+  zoomArea.className = 'map-zoom-area';
+
+  // Zoom content (gets transformed)
+  const zoomContent = document.createElement('div');
+  zoomContent.className = 'map-zoom-content';
+
+  // --- Map SVG (landmass + graticule) ---
+  const mapSvg = document.createElementNS(NS, 'svg');
+  mapSvg.setAttribute('viewBox', '0 0 1000 500');
+  mapSvg.setAttribute('xmlns', NS);
+  mapSvg.style.background = 'transparent';
+
+  const gratGroup = document.createElementNS(NS, 'g');
+  gratGroup.setAttribute('class', 'graticule');
+  [-60,-30,0,30,60].forEach(lat => {
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1','0'); line.setAttribute('y1', svgY(lat));
+    line.setAttribute('x2','1000'); line.setAttribute('y2', svgY(lat));
+    gratGroup.appendChild(line);
+  });
+  [-120,-60,0,60,120].forEach(lng => {
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1', svgX(lng)); line.setAttribute('y1','0');
+    line.setAttribute('x2', svgX(lng)); line.setAttribute('y2','500');
+    gratGroup.appendChild(line);
+  });
+  mapSvg.appendChild(gratGroup);
+
+  const landGroup = document.createElementNS(NS, 'g');
+  landGroup.setAttribute('class', 'land');
+  landPaths.forEach(d => {
+    const path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', d);
+    landGroup.appendChild(path);
+  });
+  mapSvg.appendChild(landGroup);
+  zoomContent.appendChild(mapSvg);
+
+  // --- Leader lines + anchor dots SVG ---
+  const linesSvg = document.createElementNS(NS, 'svg');
+  linesSvg.setAttribute('viewBox', '0 0 1000 500');
+  linesSvg.setAttribute('xmlns', NS);
+  linesSvg.classList.add('map-lines-svg');
+
+  // Leader lines: polyline with elbow bend (horizontal → diagonal to anchor)
+  // All bubbles are offset to ocean areas, so all need lines + dots
+  bubbles.forEach(b => {
+    const c = COLORS[b.cont];
+    const ax = svgX(b.lng), ay = svgY(b.lat);       // geographic anchor
+    const dx = b.dL / 100 * 1000, dy = b.dT / 100 * 500; // bubble center
+
+    // Elbow point: horizontal from bubble, then bend toward anchor
+    const midX = dx > ax ? ax + (dx - ax) * 0.35 : ax - (ax - dx) * 0.35;
+    const midY = dy;
+
+    // Polyline: bubble center → elbow → anchor
+    const points = `${dx},${dy} ${midX},${midY} ${ax},${ay}`;
+    const poly = document.createElementNS(NS, 'polyline');
+    poly.setAttribute('points', points);
+    poly.setAttribute('stroke', c.stroke);
+    poly.classList.add('leader-line');
+    linesSvg.appendChild(poly);
+    b._poly = poly;
+    // Anchor dot at geographic location
+    const dot = document.createElementNS(NS, 'circle');
+    dot.setAttribute('cx', ax); dot.setAttribute('cy', ay);
+    dot.setAttribute('r', 4);
+    dot.setAttribute('fill', c.stroke);
+    dot.classList.add('anchor-dot');
+    linesSvg.appendChild(dot);
+  });
+
+  zoomContent.appendChild(linesSvg);
+
+  // --- HTML bubbles ---
+  const layer = document.createElement('div');
+  layer.className = 'map-bubbles-layer';
+  const bubbleEls = [];
+
+  bubbles.forEach((b, i) => {
+    const brand = BRANDS[b.bi];
+    const c = COLORS[b.cont];
+    const d = b.r * 2;
+
+    const bub = document.createElement('div');
+    bub.className = 'map-bubble-html';
+    bub.style.cssText = `left:${b.dL}%;top:${b.dT}%;width:${d}px;height:${d}px;--r:${b.r}px;z-index:${10+i};background:${c.fill};border-color:${c.stroke};`;
+    if (brand.isOwn) {
+      bub.style.borderColor = 'var(--green)';
+      bub.style.boxShadow = '0 0 16px rgba(77,255,0,0.3), 0 2px 12px rgba(0,0,0,0.3)';
+    }
+
+    const flagEl = document.createElement('div');
+    flagEl.className = 'bub-flag';
+    flagEl.textContent = b.flag;
+    flagEl.style.fontSize = (b.r < 28 ? '10px' : b.r < 36 ? '12px' : '15px');
+    bub.appendChild(flagEl);
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'bub-name';
+    nameEl.textContent = b.name;
+    nameEl.style.fontSize = (b.r < 28 ? '8px' : b.r < 36 ? '9px' : '11px');
+    bub.appendChild(nameEl);
+
+    if (b.r >= 28) {
+      const countryEl = document.createElement('div');
+      countryEl.className = 'bub-country';
+      countryEl.textContent = b.country;
+      bub.appendChild(countryEl);
+    }
+
+    // Tooltip
+    const isRightEdge = b.dL > 75;
+    const tip = document.createElement('div');
+    tip.className = 'map-tooltip ' + (isRightEdge ? 'left' : 'right');
+    const ownBadge = brand.isOwn ? '<span class="own-badge">我方品牌</span>' : '';
+    const linksHtml = Object.entries(brand.links).map(([k,v]) =>
+      `<a href="${v}" target="_blank" rel="noopener noreferrer">${labels[k]||k} \u2197</a>`
+    ).join('');
+    tip.innerHTML = `
+      <div class="tip-name">${b.name} ${ownBadge}<span class="brand-tag tag-${brand.tag}" style="font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600;">${b.country}</span></div>
+      <div class="tip-latest">${brand.latest||'\u2014'}</div>
+      <div class="tip-links">${linksHtml}</div>
+    `;
+    bub.appendChild(tip);
+    layer.appendChild(bub);
+    bubbleEls.push(bub);
+  });
+
+  zoomContent.appendChild(layer);
+  zoomArea.appendChild(zoomContent);
+  card.appendChild(zoomArea);
+
+  // === Zoom controls ===
+  const ctrlWrap = document.createElement('div');
+  ctrlWrap.className = 'map-controls';
+  ['+','−'].forEach(label => {
+    const btn = document.createElement('button');
+    btn.className = 'map-ctrl-btn';
+    btn.textContent = label;
+    btn.onclick = () => {
+      const factor = label === '+' ? 1.25 : 0.8;
+      zoomMap(factor);
+    };
+    ctrlWrap.appendChild(btn);
+  });
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'map-ctrl-btn reset';
+  resetBtn.textContent = '重置';
+  resetBtn.onclick = () => { mapScale=1; mapPanX=0; mapPanY=0; updateMapZoom(); };
+  ctrlWrap.appendChild(resetBtn);
+  card.appendChild(ctrlWrap);
+
+  // === Footer: legend + hint ===
+  const footer = document.createElement('div');
+  footer.className = 'map-footer';
+  footer.innerHTML = `
+    <div class="map-legend">
+      <span><i style="background:#00C8FF"></i>欧洲</span>
+      <span><i style="background:#FFA500"></i>北美</span>
+      <span><i style="background:#4DFF00"></i>亚洲</span>
+    </div>
+    <span class="map-zoom-hint">滚轮缩放 \u00B7 拖拽平移 \u00B7 气泡可拖动</span>
+  `;
+  card.appendChild(footer);
+
+  // === Zoom & Pan interaction ===
+  let mapScale = 1, mapPanX = 0, mapPanY = 0;
+  let isPanning = false, lastPX, lastPY;
+
+  function updateMapZoom() {
+    zoomContent.style.transform = `translate(${mapPanX}px,${mapPanY}px) scale(${mapScale})`;
+  }
+
+  function zoomMap(factor) {
+    const rect = zoomArea.getBoundingClientRect();
+    const cx = rect.width / 2, cy = rect.height / 2;
+    const oldScale = mapScale;
+    mapScale = Math.min(4, Math.max(1, mapScale * factor));
+    mapPanX = cx - (cx - mapPanX) * (mapScale / oldScale);
+    mapPanY = cy - (cy - mapPanY) * (mapScale / oldScale);
+    updateMapZoom();
+  }
+
+  zoomArea.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = zoomArea.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const oldScale = mapScale;
+    const factor = e.deltaY > 0 ? 0.9 : 1.1;
+    mapScale = Math.min(4, Math.max(1, mapScale * factor));
+    mapPanX = mx - (mx - mapPanX) * (mapScale / oldScale);
+    mapPanY = my - (my - mapPanY) * (mapScale / oldScale);
+    updateMapZoom();
+  }, { passive: false });
+
+  zoomArea.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.map-bubble-html')) return;
+    isPanning = true; lastPX = e.clientX; lastPY = e.clientY;
+    zoomArea.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!isPanning) return;
+    mapPanX += e.clientX - lastPX; mapPanY += e.clientY - lastPY;
+    lastPX = e.clientX; lastPY = e.clientY;
+    updateMapZoom();
+  });
+  window.addEventListener('mouseup', () => {
+    if (isPanning) { isPanning = false; zoomArea.style.cursor = 'grab'; }
+  });
+
+  // Touch support
+  let lastTouchDist = 0, lastTouchCX = 0, lastTouchCY = 0;
+  zoomArea.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      lastTouchDist = Math.sqrt(dx*dx + dy*dy);
+      lastTouchCX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+      lastTouchCY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    } else if (e.touches.length === 1 && !e.target.closest('.map-bubble-html')) {
+      isPanning = true; lastPX = e.touches[0].clientX; lastPY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+  zoomArea.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (lastTouchDist > 0) {
+        const rect = zoomArea.getBoundingClientRect();
+        const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+        const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+        const oldScale = mapScale;
+        mapScale = Math.min(4, Math.max(1, mapScale * (dist / lastTouchDist)));
+        mapPanX = cx - (cx - mapPanX) * (mapScale / oldScale);
+        mapPanY = cy - (cy - mapPanY) * (mapScale / oldScale);
+        updateMapZoom();
+      }
+      lastTouchDist = dist;
+    } else if (e.touches.length === 1 && isPanning) {
+      mapPanX += e.touches[0].clientX - lastPX; mapPanY += e.touches[0].clientY - lastPY;
+      lastPX = e.touches[0].clientX; lastPY = e.touches[0].clientY;
+      updateMapZoom();
+    }
+  }, { passive: false });
+  zoomArea.addEventListener('touchend', () => { isPanning = false; lastTouchDist = 0; });
+
+  // === Bubble drag support ===
+  let dragIdx = -1, dragOffSvgX = 0, dragOffSvgY = 0;
+
+  function clientToSvg(cx, cy) {
+    const r = zoomArea.getBoundingClientRect();
+    return {
+      x: ((cx - r.left - mapPanX) / mapScale) / r.width * 1000,
+      y: ((cy - r.top - mapPanY) / mapScale) / r.height * 500
+    };
+  }
+
+  function updateBubbleVisuals(i) {
+    const b = bubbles[i];
+    const el = bubbleEls[i];
+    const ax = svgX(b.lng), ay = svgY(b.lat);
+    const dx = b.dL / 100 * 1000, dy = b.dT / 100 * 500;
+    // Update leader line
+    const midX = dx > ax ? ax + (dx - ax) * 0.35 : ax - (ax - dx) * 0.35;
+    b._poly.setAttribute('points', `${dx},${dy} ${midX},${dy} ${ax},${ay}`);
+    // Update tooltip alignment
+    const tip = el.querySelector('.map-tooltip');
+    if (tip) tip.className = 'map-tooltip ' + (b.dL > 75 ? 'left' : 'right');
+  }
+
+  function startBubbleDrag(i, clientX, clientY) {
+    dragIdx = i;
+    const b = bubbles[i];
+    const { x, y } = clientToSvg(clientX, clientY);
+    dragOffSvgX = x - b.dL / 100 * 1000;
+    dragOffSvgY = y - b.dT / 100 * 500;
+    bubbleEls[i].classList.add('dragging');
+    // Hide tooltip during drag
+    const tip = bubbleEls[i].querySelector('.map-tooltip');
+    if (tip) tip.style.opacity = '0';
+  }
+
+  function moveBubbleDrag(clientX, clientY) {
+    if (dragIdx < 0) return;
+    const b = bubbles[dragIdx];
+    const { x, y } = clientToSvg(clientX, clientY);
+    let newSvgX = x - dragOffSvgX;
+    let newSvgY = y - dragOffSvgY;
+    // Clamp to map bounds
+    newSvgX = Math.max(0, Math.min(1000, newSvgX));
+    newSvgY = Math.max(0, Math.min(500, newSvgY));
+    b.dL = newSvgX / 1000 * 100;
+    b.dT = newSvgY / 500 * 100;
+    const el = bubbleEls[dragIdx];
+    el.style.left = b.dL + '%';
+    el.style.top = b.dT + '%';
+    updateBubbleVisuals(dragIdx);
+  }
+
+  function endBubbleDrag() {
+    if (dragIdx < 0) return;
+    const el = bubbleEls[dragIdx];
+    el.classList.remove('dragging');
+    const tip = el.querySelector('.map-tooltip');
+    if (tip) tip.style.opacity = '';
+    dragIdx = -1;
+  }
+
+  // Mouse drag on bubbles
+  bubbleEls.forEach((el, i) => {
+    el.addEventListener('mousedown', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      startBubbleDrag(i, e.clientX, e.clientY);
+    });
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (dragIdx >= 0) { e.preventDefault(); moveBubbleDrag(e.clientX, e.clientY); }
+  });
+  window.addEventListener('mouseup', endBubbleDrag);
+
+  // Touch drag on bubbles
+  bubbleEls.forEach((el, i) => {
+    el.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      e.stopPropagation();
+      startBubbleDrag(i, e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+  });
+  // Extend existing touchmove to handle bubble drag
+  zoomArea.addEventListener('touchmove', (e) => {
+    if (dragIdx >= 0 && e.touches.length === 1) {
+      e.preventDefault();
+      moveBubbleDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: false });
+  zoomArea.addEventListener('touchend', () => { if (dragIdx >= 0) endBubbleDrag(); });
+}
+
+/* ===== 价格看板 ===== */
+function buildFilterButtons() {
+  const row = document.getElementById('filterRow');
+  [...new Set(PRICES.map(p=>p.brand))].forEach(b => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn'; btn.textContent = b;
+    btn.onclick = function(){ filterBrand(b, this); };
+    row.appendChild(btn);
+  });
+}
+function buildPriceTable() {
+  const tbody = document.getElementById('priceBody'); tbody.innerHTML = '';
+  let items = PRICES;
+  if (currentCategory !== 'all') items = items.filter(p => p.category === currentCategory);
+  if (currentFilter !== 'all') items = items.filter(p => p.brand === currentFilter);
+  document.querySelector('#price-section .count').textContent = items.length + ' 款';
+  items.forEach(p => {
+    const drop = Math.round((1-p.promo/p.orig)*100);
+    const productLink = p.link || PRICE_SEARCH[p.brand] || '#';
+    const initials = p.brand.split(' ').map(w=>w[0]).join('').substring(0,2);
+    const pBg = brandColors[p.brand]||'#1A1A1A';
+    const pTxt = brandTextColors[p.brand]||'#FFFFFF';
+    const imgHtml = p.img
+      ? `<a href="${productLink}" target="_blank" rel="noopener noreferrer" title="点击购买 ${p.brand} ${p.model}"><img class="product-img" src="${p.img}" alt="${p.brand} ${p.model}" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=\\'product-img-error\\' style=\\'background:${pBg};color:${pTxt}\\'>${initials}</div>'"></a>`
+      : `<a href="${productLink}" target="_blank" rel="noopener noreferrer" title="点击购买 ${p.brand} ${p.model}"><div class="product-img-error" style="background:${pBg};color:${pTxt}">${initials}</div></a>`;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="product-img-cell">${imgHtml}</td><td><strong>${p.brand}</strong></td><td><a href="${productLink}" target="_blank" rel="noopener noreferrer" style="color:var(--text-bright);text-decoration:none;font-weight:600;border-bottom:1px dashed var(--border-light);transition:border-color .15s" onmouseover="this.style.borderBottomColor='var(--green)';this.style.color='var(--green)'" onmouseout="this.style.borderBottomColor='var(--border-light)';this.style.color='var(--text-bright)'">${p.model}</a></td><td style="color:var(--text-dim)">¥${p.orig}</td><td><span class="price-now">¥${p.promo}</span></td><td>${drop>0?`<span class="price-drop">−${drop}%</span>`:'—'}</td><td class="platform-links"><a href="${productLink}" target="_blank">${p.platform.split('/')[0]} ↗</a></td>`;
+    tbody.appendChild(tr);
+  });
+}
+function filterBrand(brand,btn){
+  currentFilter=brand;
+  document.querySelectorAll('#filterRow .filter-btn, #catFilterRow .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); 
+  // keep category active button highlighted
+  const catBtn = document.querySelector(`#catFilterRow .filter-btn[onclick*="'${currentCategory}'"]`);
+  if (catBtn) catBtn.classList.add('active');
+  buildPriceTable();
+}
+function filterCategory(cat,btn){
+  currentCategory=cat; currentFilter='all';
+  document.querySelectorAll('#filterRow .filter-btn, #catFilterRow .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelector('#filterRow .filter-btn:first-child').classList.add('active');
+  buildPriceTable();
+}
+
+/* ===== 趋势图 ===== */
+function buildTrendSelect(){
+  const sel = document.getElementById('trendSelect');
+  Object.keys(TREND_DATA).forEach(k => {
+    const o = document.createElement('option');
+    o.value = k; o.textContent = k;
+    sel.appendChild(o);
+  });
+  sel.onchange = renderTrendChart;
+  // 年份选择器
+  const yearSel = document.getElementById('trendYearSelect');
+  const availYears = new Set();
+  Object.values(TREND_DATA).forEach(d => Object.keys(d.years).forEach(y => availYears.add(y)));
+  [...availYears].sort().reverse().forEach(y => {
+    const o = document.createElement('option');
+    o.value = y; o.textContent = y + '年';
+    yearSel.appendChild(o);
+  });
+}
+function renderTrendChart(){
+  const key = document.getElementById('trendSelect').value;
+  const year = document.getElementById('trendYearSelect').value;
+  const d = TREND_DATA[key];
+  if(!d) return;
+  const prices = d.years[year] || d.years[Object.keys(d.years).pop()];
+  if(!prices) return;
+  const festivalLines = FESTIVALS.map(f => ({
+    type:'line', borderColor:'rgba(255,165,0,0.4)', borderWidth:1, borderDash:[4,3],
+    scaleID:'x', value:f.month-1,
+    label:{ content:f.label, enabled:true, position:'start', font:{size:10}, color:'#FFA500', backgroundColor:'rgba(255,165,0,0.08)' }
+  }));
+  document.getElementById('trendLegend').innerHTML =
+    `<span style="display:flex;align-items:center;gap:4px"><span class="legend-dot" style="background:#4DFF00"></span>${key} ${year}年价格走势</span>` +
+    `<span style="display:flex;align-items:center;gap:4px"><span class="legend-dot" style="background:#FFA500;border-radius:0;height:2px;width:14px;margin-top:4px"></span>节日活动</span>`;
+  document.getElementById('festivalTags').innerHTML = FESTIVALS.map(f=>`<span class="ftag">${f.label}</span>`).join('');
+  if(trendChartInst) trendChartInst.destroy();
+  const ctx = document.getElementById('trendChart').getContext('2d');
+  const avg = Array(12).fill(Math.round(prices.reduce((a,b)=>a+b,0)/12));
+  trendChartInst = new Chart(ctx, {
+    type:'line',
+    data:{
+      labels:MONTHS,
+      datasets:[
+        { label:'参考价格', data:prices, borderColor:'#4DFF00', backgroundColor:'rgba(77,255,0,0.06)',
+          borderWidth:2, pointRadius:4, pointBackgroundColor:prices.map((v,i)=>FESTIVALS.findIndex(f=>f.month-1===i)>=0?'#FFA500':'#4DFF00'),
+          tension:0.3, fill:true },
+        { label:'年均价', data:avg, borderColor:'#555', borderWidth:1, borderDash:[5,5], pointRadius:0, fill:false }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          backgroundColor:'rgba(20,20,20,0.92)', titleColor:'#4DFF00', bodyColor:'#E0E0E0',
+          borderColor:'rgba(255,255,255,0.08)', borderWidth:1,
+          callbacks:{ label:c=>`¥${c.parsed.y}`, afterLabel:c=>{ const fi=FESTIVALS.findIndex(f=>f.month-1===c.dataIndex); return fi>=0?`节日：${FESTIVALS[fi].label}`:''; } }
+        },
+        annotation:{ annotations:festivalLines }
+      },
+      scales:{
+        x:{ grid:{ color:'rgba(255,255,255,0.04)' }, ticks:{ color:'#666', autoSkip:false, maxRotation:0 } },
+        y:{ grid:{ color:'rgba(255,255,255,0.04)' }, ticks:{ color:'#666', callback:v=>'¥'+v },
+             suggestedMin:Math.min(...prices)-200, suggestedMax:d.orig+200 }
+      }
+    }
+  });
+}
+
+/* ===== 对比图（年份/月份/品牌筛选） ===== */
+function initCompareControls() {
+  // 月份选择器
+  const ms = document.getElementById('monthStart');
+  const me = document.getElementById('monthEnd');
+  for(let i=1;i<=12;i++){
+    const op1 = document.createElement('option'); op1.value=i; op1.textContent=i+'月'; ms.appendChild(op1);
+    const op2 = document.createElement('option'); op2.value=i; op2.textContent=i+'月'; me.appendChild(op2);
+  }
+  me.value = 12;
+  // 品牌筛选按钮
+  const brands = [...new Set(Object.values(TREND_DATA).map(d=>d.brand))];
+  compareBrands = new Set(brands);
+  const container = document.getElementById('brandToggles');
+  brands.forEach(b => {
+    const btn = document.createElement('button');
+    btn.className = 'brand-toggle active';
+    btn.textContent = b;
+    btn.onclick = function(){
+      if(compareBrands.has(b)){ compareBrands.delete(b); this.classList.remove('active'); }
+      else { compareBrands.add(b); this.classList.add('active'); }
+      renderCompareChart();
+    };
+    container.appendChild(btn);
+  });
+}
+
+function setCompareYear(year, btn) {
+  compareYear = year;
+  document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCompareChart();
+}
+
+function renderCompareChart(){
+  const mStart = parseInt(document.getElementById('monthStart').value);
+  const mEnd = parseInt(document.getElementById('monthEnd').value);
+  const startIdx = Math.min(mStart,mEnd)-1;
+  const endIdx = Math.max(mStart,mEnd);
+  const labels = MONTHS.slice(startIdx, endIdx);
+
+  const keys = Object.keys(TREND_DATA);
+  const filtered = keys.filter(k => compareBrands.has(TREND_DATA[k].brand));
+
+  let datasets = [];
+  let colorIdx = 0;
+
+  if(compareYear === 'multi') {
+    // 多年叠加模式
+    const availYears = new Set();
+    filtered.forEach(k => Object.keys(TREND_DATA[k].years).forEach(y => availYears.add(y)));
+    const years = [...availYears].sort().reverse();
+    const dashPatterns = { 2026:[], 2025:[6,3], 2024:[2,3] };
+    years.forEach(year => {
+      filtered.forEach(k => {
+        const prices = TREND_DATA[k].years[year];
+        if(!prices) return;
+        const sliced = prices.slice(startIdx, endIdx);
+        const baseColor = BRAND_COLORS[TREND_DATA[k].brand] || MODEL_COLORS[colorIdx % MODEL_COLORS.length];
+        datasets.push({
+          label: `${k} (${year})`,
+          data: sliced,
+          borderColor: baseColor,
+          backgroundColor: 'transparent',
+          borderWidth: year==='2026' ? 2 : 1.5,
+          borderDash: dashPatterns[year] || [4,4],
+          pointRadius: year==='2026' ? 3 : 1,
+          tension: 0.3
+        });
+        colorIdx++;
+      });
+    });
+  } else {
+    // 单年模式
+    filtered.forEach((k,i) => {
+      const prices = TREND_DATA[k].years[compareYear];
+      if(!prices) return;
+      const sliced = prices.slice(startIdx, endIdx);
+      const color = BRAND_COLORS[TREND_DATA[k].brand] || MODEL_COLORS[i % MODEL_COLORS.length];
+      datasets.push({
+        label: k,
+        data: sliced,
+        borderColor: color,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        pointRadius: 3,
+        tension: 0.3
+      });
+    });
+  }
+
+  // 图例
+  document.getElementById('compareChartLegend').innerHTML =
+    datasets.map(ds => {
+      const style = ds.borderDash && ds.borderDash.length ? `border-top:2px dashed ${ds.borderColor}` : `background:${ds.borderColor}`;
+      return `<span style="display:flex;align-items:center;gap:4px"><span class="legend-dot" style="${style}"></span><span style="font-size:11px">${ds.label}</span></span>`;
+    }).join('');
+
+  if(compareChartInst) compareChartInst.destroy();
+  const ctx = document.getElementById('compareChart').getContext('2d');
+  compareChartInst = new Chart(ctx, {
+    type:'line',
+    data:{ labels, datasets },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          backgroundColor:'rgba(20,20,20,0.92)', titleColor:'#E0E0E0', bodyColor:'#E0E0E0',
+          borderColor:'rgba(255,255,255,0.08)', borderWidth:1,
+          callbacks:{ label:c=>`${c.dataset.label}：¥${c.parsed.y}` }
+        }
+      },
+      scales:{
+        x:{ grid:{ color:'rgba(255,255,255,0.04)' }, ticks:{ color:'#666', autoSkip:false, maxRotation:0 } },
+        y:{ grid:{ color:'rgba(255,255,255,0.04)' }, ticks:{ color:'#666', callback:v=>'¥'+v } }
+      }
+    }
+  });
+}
+
+/* ===== 动态列表 ===== */
+function buildNewsList(type){
+  const list = document.getElementById('newsList'); list.innerHTML = '';
+  const filtered = type==='all' ? NEWS : NEWS.filter(n=>n.type===type);
+  const sorted = [...filtered].sort((a,b) => b.date.localeCompare(a.date));
+  document.getElementById('newsTotal').textContent = sorted.length + ' 条';
+  sorted.forEach(n => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="news-date">${n.date}</span><span class="news-brand-tag">${n.brand}</span><span class="push-type ${typeClassDict[n.type]||'type-new'}">${typeLabelDict[n.type]||'资讯'}</span><span class="news-text" style="margin-left:4px">${n.text}</span><a class="news-link" href="${n.link}" target="_blank">查看 ↗</a>`;
+    list.appendChild(li);
+  });
+}
+function switchTab(type,tab){
+  currentNewsType = type;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  buildNewsList(type);
+}
+
+/* ===== 初始化 ===== */
+(function(){
+  const saved = sessionStorage.getItem('pushCat') || 'all';
+  const btn = document.querySelector(`.push-filter-btn[onclick*="' + saved + '"]`);
+  if (btn) { document.querySelectorAll('.push-filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+  buildPushGrid(saved);
+  currentPushCat = saved;
+})();
+document.getElementById('pushTotal').textContent = PUSH_NEWS.length + ' 条';
+document.getElementById('newsTotal').textContent = NEWS.length + ' 条';
+buildBrandMap();
+buildFilterButtons();
+buildPriceTable();
+buildTrendSelect();
+renderTrendChart();
+initCompareControls();
+renderCompareChart();
+buildNewsList('all');
+</script>
+</body>
+</html>
