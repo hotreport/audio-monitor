@@ -806,7 +806,8 @@ const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'M
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
   grid.innerHTML = '';
-  const items = cat === 'all' ? PUSH_NEWS : PUSH_NEWS.filter(n => n.cat === cat);
+  let items = cat === 'all' ? PUSH_NEWS : PUSH_NEWS.filter(n => n.cat === cat);
+  items = [...items].sort((a, b) => b.date.localeCompare(a.date));
   items.slice(0, 8).forEach(n => {
     const card = document.createElement('a');
     card.className = 'push-card';
