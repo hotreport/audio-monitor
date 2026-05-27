@@ -1345,7 +1345,15 @@ function buildPriceTable() {
   const tbody = document.getElementById('priceBody'); tbody.innerHTML = '';
   let items = PRICES;
   if (currentCategory !== 'all') items = items.filter(p => p.category === currentCategory);
-  if (currentFilter !== 'all') items = items.filter(p => p.brand === currentFilter);
+
+  if (currentFilter !== 'all') {
+    // 单个品牌：取该分类下销量前三
+    items = items.filter(p => p.brand === currentFilter).slice(0, 3);
+  } else {
+    // 全部品牌：该分类下取前20
+    items = items.slice(0, 20);
+  }
+
   document.querySelector('#price-section .count').textContent = items.length + ' 款';
   items.forEach(p => {
     const drop = Math.round((1-p.promo/p.orig)*100);
