@@ -243,6 +243,9 @@
     .push-card { flex-direction:column; }
     .push-card-img { width:100%; min-height:80px; max-height:120px; }
   }
+  @keyframes live-pulse { 0%,100%{opacity:1;box-shadow:0 0 6px var(--green)} 50%{opacity:.35;box-shadow:0 0 2px var(--green)} }
+  #online-badge { position:fixed;bottom:16px;right:16px;background:rgba(0,0,0,0.82);color:var(--green);padding:7px 16px;border-radius:20px;font-size:13px;z-index:9999;display:flex;align-items:center;gap:7px;border:1px solid rgba(77,255,0,0.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:opacity .3s }
+  #online-badge .dot { width:8px;height:8px;border-radius:50%;background:var(--green);animation:live-pulse 2s infinite }
 </style>
 </head>
 <body>
@@ -1724,6 +1727,36 @@ renderTrendChart();
 initCompareControls();
 renderCompareChart();
 buildNewsList('all');
+
+// ── 在线人数追踪 ──
+(function(){
+  const BLOB='019e68ab-2367-7aa9-b7cf-11fdca032d92';
+  const API='https://jsonblob.com/api/jsonBlob/'+BLOB;
+  const TTL=25000, INT=8000;
+  const VID=sessionStorage.getItem('_vid')||(function(){
+    var id=Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+    sessionStorage.setItem('_vid',id);return id;
+  })();
+  var el=document.getElementById('online-num'),n=1;
+  async function beat(){
+    try{
+      var r=await fetch(API),d=await r.json(),v=d.visitors||{},now=Date.now();
+      for(var k in v){if(now-v[k]>TTL)delete v[k]}
+      v[VID]=now;
+      fetch(API,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitors:v})});
+      n=Object.keys(v).length;
+      el.textContent=n||1;
+    }catch(e){el.textContent=n||'-'}
+  }
+  el.textContent='1';beat();setInterval(beat,INT);
+  window.addEventListener('beforeunload',function(){
+    fetch(API).then(function(r){return r.json()}).then(function(d){
+      var v=d.visitors||{};delete v[VID];
+      fetch(API,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitors:v})});
+    }).catch(function(){});
+  });
+})();
 </script>
+<div id="online-badge"><span class="dot"></span><span id="online-num">-</span> 人在线</div>
 </body>
 </html>
