@@ -430,9 +430,53 @@ const PRICES = [
   { brand:'铁三角', model:'ATH-M50x', orig:1099, promo:899, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/41UBMEo1VpL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=铁三角+ATH-M50x' },
   { brand:'AKG', model:'K702', orig:1299, promo:999, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/51EvWI6BG8L._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=AKG+K702' },
   { brand:'Nothing', model:'Ear (a)', orig:699, promo:599, category:'headphone', platform:'京东/官网', img:'https://m.media-amazon.com/images/I/41QxdAF8WgL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=Nothing+Ear+a' },
+  { brand:'Nothing', model:'Ear (3)', orig:1399, promo:1099, category:'headphone', platform:'京东/官网/抖音', img:'https://m.media-amazon.com/images/I/71CDAgkJWIL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=Nothing+Ear+3' },
+  { brand:'Nothing', model:'Headphone (1)', orig:2299, promo:2299, category:'headphone', platform:'京东/官网', img:'https://m.media-amazon.com/images/I/51lEvBqF31L._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=Nothing+Headphone+1' },
   { brand:'漫步者', model:'花再 Auro Ace', orig:339, promo:279, category:'headphone', platform:'京东/天猫', img:'https://cn-oss.edifier.com/Uploads/images/2026/05/15/2026051518473317788420535310.png', link:'https://www.edifier.com/cn/product/product-909.html' },
   { brand:'Teenage Engineering', model:'OP-1 Field', orig:4499, promo:4299, category:'other', platform:'官网', img:'https://assets.teenage.engineering/_img/6509496bb045b1bd68c0375b_1024.webp', link:'https://teenage.engineering/products/op-1-field' },
   { brand:'MORROR ART', model:'R1 唱片歌词音箱', orig:4299, promo:3799, category:'speaker', platform:'京东/天猫/官网', img:'https://2d.zol-img.com.cn/product/229_698x437/147/cez3rDVlzjaig.jpg', link:'https://item.jd.com/100233406494.html' },
+  // === Marshall 耳机线 ===
+  { brand:'Marshall', model:'Major V', orig:1299, promo:1103, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/81D5DvVfSRL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10112632975168.html' },
+  { brand:'Marshall', model:'Minor IV', orig:879, promo:839, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/51I80en3n0L._AC_SX500_SY500_.jpg', link:'https://www.marshall.cn/product/MD00223' },
+  { brand:'Marshall', model:'Monitor III ANC', orig:2799, promo:2789, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/81M31hLf2NL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10214555414320.html' },
+  // === B&O 耳机线 ===
+  { brand:'B&O', model:'Beoplay HX', orig:3898, promo:3597, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/61BHHFxZN7L._AC_SX500_SY500_.jpg', link:'https://www.bang-olufsen.com/zh-cn/int/toudaishierji/beoplay-hx' },
+  { brand:'B&O', model:'Beoplay Eleven', orig:3898, promo:3508, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/610kkwGodtL._AC_SX500_SY500_.jpg', link:'https://www.bang-olufsen.com/zh-cn/cn/ersaishierji/beoplay-eleven' },
+  { brand:'B&O', model:'Beosound Level', orig:12480, promo:11980, category:'speaker', platform:'官网/天猫', img:'https://m.media-amazon.com/images/I/71kw8QDATGL._AC_SX500_SY500_.jpg', link:'https://www.bang-olufsen.com/zh/cn/speakers/beosound-level' },
+  // === JBL 耳机线 ===
+  { brand:'JBL', model:'Tour One M3', orig:3099, promo:2799, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/61SOpCLMjeL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10158640015848.html' },
+  { brand:'JBL', model:'Tour Pro 3', orig:2299, promo:2098, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/613+i9dtAML._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100160756140.html' },
+  { brand:'JBL', model:'Flip 7', orig:1099, promo:899, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/8179N0kJ2QL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=JBL+Flip+7' },
+  // === Bose 耳机线 ===
+  { brand:'Bose', model:'QC Ultra Headphones', orig:3599, promo:2047, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/61QGxNo09wL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10096187222428.html' },
+  { brand:'Bose', model:'QC Ultra Earbuds II', orig:2299, promo:2070, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/51eWZfGKfZL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100183101315.html' },
+  { brand:'Bose', model:'Ultra Open Earbuds', orig:2299, promo:1999, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/51NtLMcOvjL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100147884878.html' },
+  // === 索尼 耳机线 ===
+  { brand:'索尼', model:'WH-1000XM6', orig:3499, promo:2299, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/51AgLErjgCL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100222127764.html' },
+  { brand:'索尼', model:'WF-1000XM6', orig:2399, promo:1728, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/61L4wA7YCaL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10216718667367.html' },
+  // === 哈曼卡顿 耳机线 ===
+  { brand:'哈曼卡顿', model:'FLY TWS', orig:999, promo:699, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/612t6jpxMBS._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=哈曼卡顿+FLY+TWS' },
+  { brand:'哈曼卡顿', model:'GO+Play 3', orig:2999, promo:2499, category:'speaker', platform:'京东/天猫', img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g7/M00/01/0F/ChMkK2f0-kSIXNzeAANm6TbSVsQAAq87wNxm58AA2cB427.jpg', link:'https://search.jd.com/Search?keyword=哈曼卡顿+GO+Play+3' },
+  // === 森海塞尔 扩展 ===
+  { brand:'森海塞尔', model:'Accentum Plus', orig:1699, promo:1055, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/61JCweOF9mL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=森海塞尔+Accentum+Plus' },
+  // === 漫步者 耳机线扩展 ===
+  { brand:'漫步者', model:'W830NB', orig:399, promo:329, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/61bWBiusILL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100119511307.html' },
+  // === 丹拿 音箱扩展 ===
+  { brand:'丹拿', model:'Music 7', orig:6980, promo:5980, category:'speaker', platform:'京东/官网', img:'https://dynaudio.com/hubfs/01.%20Dynaudio/Home%20Audio/Evoke/Packshots/main-module-images/Dynaudio-Evoke-20_black_front.png', link:'https://search.jd.com/Search?keyword=丹拿+Music+7' },
+  // === 宝华韦健 耳机线 ===
+  { brand:'宝华韦健', model:'Px8', orig:4280, promo:3280, category:'headphone', platform:'京东/官网', img:'https://m.media-amazon.com/images/I/51ZmgKTM-fL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=宝华韦健+Px8' },
+  // === 舒尔 扩展 ===
+  { brand:'舒尔', model:'AONIC 50 Gen2', orig:2699, promo:2199, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/91BySZtc2PL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=舒尔+AONIC+50+Gen2' },
+  // === AKG 扩展 ===
+  { brand:'AKG', model:'N9 Hybrid', orig:1499, promo:1199, category:'headphone', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/715E82f5+ML._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=AKG+N9+Hybrid' },
+  // === 梵尼诗 ===
+  { brand:'梵尼诗', model:'Donut i5', orig:12999, promo:11699, category:'speaker', platform:'京东/天猫/官网', img:'https://doc-fd.zol-img.com.cn/t_s640x2000/g7/M00/09/0C/ChMkLGPL0mmIHdGgAAHrOB6HtX4AAUqfwL__wcAAetQ598.jpg', link:'https://fennessy.jd.com/' },
+  { brand:'梵尼诗', model:'J-TML01 立式黑胶', orig:2999, promo:2399, category:'speaker', platform:'京东/官网', img:'https://doc-fd.zol-img.com.cn/t_s640x2000/g7/M00/09/0C/ChMkLGPL0mmIHdGgAAHrOB6HtX4AAUqfwL__wcAAetQ598.jpg', link:'https://search.jd.com/Search?keyword=梵尼诗+J-TML01' },
+  // === 三星 ===
+  { brand:'三星', model:'HW-Q990F 回音壁', orig:9899, promo:6793, category:'speaker', platform:'京东/天猫/官网', img:'https://images.samsung.com/is/image/samsung/p6pim/cn/hw-q990f-xz/gallery/cn-q-series-soundbar-hw-q990f-xz-543637796', link:'https://search.jd.com/Search?keyword=三星+HW-Q990F' },
+  { brand:'三星', model:'Music Frame HW-LS60D', orig:3490, promo:2999, category:'speaker', platform:'京东/天猫/官网', img:'https://images.samsung.com/is/image/samsung/p6pim/cn/hw-ls60d-xz/gallery/cn-music-frame-hw-ls60d-xz-542570690', link:'https://item.jd.com/10100232654366.html' },
+  { brand:'三星', model:'Galaxy Buds3 Pro', orig:1599, promo:999, category:'headphone', platform:'京东/天猫/官网', img:'https://images.samsung.com/is/image/samsung/p6pim/cn/sm-r630nzaachc/gallery/cn-galaxy-buds3-pro-r630-sm-r630nzaachc-543586710', link:'https://item.jd.com/100130841425.html' },
+  { brand:'三星', model:'Galaxy Buds3', orig:1099, promo:999, category:'headphone', platform:'京东/天猫/官网', img:'https://images.samsung.com/is/image/samsung/p6pim/cn/sm-r530nzaachc/gallery/cn-galaxy-buds3-r530-sm-r530nzaachc-543586709', link:'https://item.jd.com/100130840209.html' },
 
 ];
 
@@ -455,6 +499,8 @@ const PRICE_SEARCH = {
   'AKG':'https://search.jd.com/Search?keyword=AKG+耳机',
   'Nothing':'https://search.jd.com/Search?keyword=Nothing+耳机',
   'Teenage Engineering':'https://search.jd.com/Search?keyword=Teenage+Engineering',
+  '梵尼诗':'https://search.jd.com/Search?keyword=梵尼诗+黑胶唱片机',
+  '三星':'https://search.jd.com/Search?keyword=三星+音箱',
 
 };
 
@@ -532,6 +578,16 @@ const PUSH_NEWS = [
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
   // —— 耳机（5.26 新增2条 + 历史整理）——
+  { date:'2025-09-18', brand:'Nothing', type:'new', cat:'headphone',
+    title:'Nothing Ear (3) 旗舰 TWS 发布，Super Mic 重新定义通话',
+    desc:'12mm动态单元+45dB Smart Hybrid ANC、全金属充电盒内置Super Mic独立麦克风系统、铝合金框架+自研异形天线、Hi-Res Audio认证，国行首销1099元。',
+    link:'https://nothing.tech/products/ear-3',
+    img:'https://m.media-amazon.com/images/I/71CDAgkJWIL._AC_SX500_SY500_.jpg', scene:false },
+  { date:'2025-07-21', brand:'Nothing', type:'new', cat:'headphone',
+    title:'Nothing Headphone (1) 首款头戴式耳机国行上市，¥2299',
+    desc:'40mm定制单元+KEF调音、Hybrid ANC主动降噪、铝制CNC透明复古设计、实体滚轮+物理按键、80小时超长续航、Hi-Res Audio，2299元。',
+    link:'https://nothing.tech/products/headphone-1',
+    img:'https://m.media-amazon.com/images/I/51lEvBqF31L._AC_SX500_SY500_.jpg', scene:false },
   { date:'2026-05-26', brand:'森海塞尔', type:'new', cat:'headphone',
     title:'森海塞尔 Momentum 5 Wireless 正式发布，$399.99',
     desc:'42mm动圈（HD600血统）、Snapdragon Sound+aptX Lossless、Dolby Atmos空间音频、8麦克风ANC（人声降噪3倍提升）、57小时续航、用户可更换电池、蓝牙5.4（可升6.0）、三色可选（黑/白/牛仔蓝），6.16美国开售。',
@@ -746,6 +802,7 @@ const NEWS = [
   { date:'2026-05-18', brand:'韶音', type:'new', text:'Shokz Day 深圳发布三款 OWS 新品：OpenDots 2 / OpenSwim Pro 2 / OpenDots Air', link:'https://finance.sina.com.cn/roll/2026-05-18/doc-inhyhpyt2928786.shtml' },
   { date:'2026-05-11', brand:'山灵', type:'new', text:'EC Play 便携 CD 播放器开售，CS43198 旗舰 DAC、998 元', link:'https://new.qq.com/rain/a/20260511A05AIB00' },
   { date:'2025-09-18', brand:'Nothing', type:'new', text:'Ear (3) 全新旗舰 TWS 耳机发布，Super Mic + 50dB 降噪', link:'https://nothing.tech/products/ear-3' },
+  { date:'2025-07-21', brand:'Nothing', type:'new', text:'Headphone (1) 首款头戴式耳机国行上市，KEF调音+80h续航，¥2299', link:'https://nothing.tech/products/headphone-1' },
   { date:'2025-06-19', brand:'Teenage Engineering', type:'feature', text:'TX-6 / TP-7 固件 1.3.0 重大更新：新增蓝牙 MIDI 功能', link:'https://teenage.engineering/' },
   { date:'2026-05-16', brand:'宝华韦健', type:'new', text:'805 D5 旗舰书架箱发布，Continuum 锥盆 + 钛膜高音', link:'https://www.bowerswilkins.com/' },
   { date:'2026-05-16', brand:'山灵', type:'new', text:'深圳耳机展首发 Majestic 马年限定 / Q2 便携播放器 / UA6 II 解码耳放', link:'https://www.sohu.com/a/1023878846_121631906' },
@@ -876,9 +933,9 @@ const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑
 const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
@@ -1379,10 +1436,13 @@ function filterBrand(brand,btn){
   buildPriceTable();
 }
 function filterCategory(cat,btn){
-  currentCategory=cat; currentFilter='all';
+  currentCategory=cat;
   document.querySelectorAll('#filterRow .filter-btn, #catFilterRow .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelector('#filterRow .filter-btn:first-child').classList.add('active');
+  // 保留当前品牌选择（不再强制重置为 all）
+  const brandBtn = document.querySelector(`#filterRow .filter-btn[onclick*="'${currentFilter}'"]`);
+  if (brandBtn) brandBtn.classList.add('active');
+  else document.querySelector('#filterRow .filter-btn:first-child').classList.add('active');
   buildPriceTable();
 }
 
