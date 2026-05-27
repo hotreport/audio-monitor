@@ -627,11 +627,6 @@ const PUSH_NEWS = [
     desc:'Thus A1 存算一体AI芯片（5GFLOPS/150倍提升）、吉尼斯「全球最清晰通话」认证、1.78寸AMOLED触控充电盒、12h/50h续航、100种语言AI翻译、1799元。',
     link:'https://finance.sina.com.cn/tech/roll/2026-05-22/doc-inhyurwk6046509.shtml',
     img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0522%2Fb00f3d7fj00tffh5q0013d000ky00i6g.jpg&thumbnail=660x2147483647&quality=80&type=jpg', scene:true },
-  { date:'2026-05-22', brand:'悠律', type:'new', cat:'headphone',
-    title:'悠律 UXP 旗舰头戴降噪耳机发布，799元',
-    desc:'高通QCC3095+40mm自研N48振膜、LDAC+aptX HD全协议解码、36dB混合ANC四档可调、40h降噪续航（50h关）、265g轻量、多点触控+光感佩戴检测，千元内性能标杆。',
-    link:'https://www.sohu.com/a/1026225660_121797751',
-    img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g8/M00/05/08/ChMkLWn9RoOIPvRTAAIFGX_G3JMAAIVygFrjDoAAgUx589.jpg', scene:false, bg:'#FFFFFF' },
   { date:'2026-05-22', brand:'飞利浦', type:'new', cat:'headphone',
     title:'飞利浦 H6000 头戴降噪 + T2200 真无线 ANC 耳机发布',
     desc:'H6000: ANC Pro自适应降噪+LDAC+双金标+80h续航+5麦ENC+3.5mm/USB-DAC双有线；T2200: 百元级ANC+10mm单元+36h续航+IPX4+四色潮搭+挂绳孔设计',
@@ -819,7 +814,6 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
-  { date:'2026-05-22', brand:'悠律', type:'new', text:'UXP 旗舰头戴降噪耳机发布：QCC3095+LDAC+36dB ANC+40h续航+265g，799元', link:'https://www.sohu.com/a/1026225660_121797751' },
   { date:'2026-05-22', brand:'飞利浦', type:'new', text:'H6000（ANC Pro+LDAC+80h续航）+ T2200（百元ANC+36h+IPX4）两款降噪耳机发布', link:'https://www.163.com/dy/article/KTHRT2C905315OTM.html' },
   { date:'2026-05-26', brand:'森海塞尔', type:'new', text:'Momentum 5 Wireless 正式发布：$399.99，42mm动圈+aptX Lossless+Dolby Atmos+57h续航+可换电池', link:'https://newsroom.sennheiser.com/introducing-momentum-5-wireless-your-sound-revelation-starts-here-1bf69i' },
   { date:'2026-05-25', brand:'荣耀', type:'new', text:'Earbuds 耳夹式耳机 Pro 发布：自适应左右耳+Hi-Res+LHDC 5.0+47h续航，首发599元', link:'https://www.honor.com/cn/shop/product/10086979472862.html' },
@@ -969,9 +963,9 @@ const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑
 const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', '悠律':'UMDY', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', '悠律':'#1A6B8A', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', '悠律':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
