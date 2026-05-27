@@ -246,6 +246,15 @@
   #online-badge { position:fixed;bottom:16px;right:16px;background:rgba(0,0,0,0.82);color:var(--green);padding:7px 16px;border-radius:20px;font-size:13px;z-index:9999;display:flex;align-items:center;gap:7px;border:1px solid rgba(77,255,0,0.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:opacity .3s }
   #online-badge .dot { width:8px;height:8px;border-radius:50%;background:var(--green);animation:live-pulse 2s infinite }
 </style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0eee3a9192b8fea248ebb800a94692cb";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 <div class="page">
@@ -500,6 +509,12 @@ const PRICES = [
   { brand:'三星', model:'Music Frame HW-LS60D', orig:3490, promo:2999, category:'speaker', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/71fqZ5HjsqL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10100232654366.html' },
   { brand:'三星', model:'Galaxy Buds3 Pro', orig:1599, promo:999, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/51VePfKo37L._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100130841425.html' },
   { brand:'三星', model:'Galaxy Buds3', orig:1099, promo:999, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/51VePfKo37L._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100130840209.html' },
+  // === 各品牌热销补充 ===
+  { brand:'Marshall', model:'Woburn III', orig:5296, promo:3844, category:'speaker', platform:'京东/天猫/官网', img:'https://ec-res.marshall.cn/WoburnIII_Black_1800x1800.png', link:'https://item.jd.com/10222927987147.html' },
+  { brand:'Marshall', model:'Willen II', orig:999, promo:849, category:'speaker', platform:'京东/天猫/官网', img:'https://ec-res.marshall.cn/WillenII_Black_1800x1800.png', link:'https://item.jd.com/100325508700.html' },
+  { brand:'JBL', model:'Go 4', orig:459, promo:349, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/71gc1K1ViLL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100089796935.html' },
+  { brand:'哈曼卡顿', model:'SoundSticks 4 水晶4', orig:2799, promo:2399, category:'speaker', platform:'京东/天猫', img:'https://doc-fd.zol-img.com.cn/t_s800x800/g5/M00/09/0F/ChMkJle3VziIQUBbAADsHZCZyecAAU0GQO8G6AAAOw0071.jpg', link:'https://item.jd.com/10219534753754.html' },
+  { brand:'索尼', model:'SRS-XE300', orig:1499, promo:1199, category:'speaker', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/51rNsL6QZHL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100051523184.html' },
 
 ];
 
@@ -927,6 +942,72 @@ const TREND_DATA = {
     2024:[449,449,439,449,419,379,419,379,419,429,379,379],
     2025:[379,379,369,379,359,329,359,329,359,369,329,329],
     2026:[449,449,429,439,399,349,399,349,399,419,349,349]
+  }},
+  // ===== 热销补充 2026-05-27 =====
+  'Marshall Woburn III':   { brand:'Marshall', orig:5296, years:{
+    2025:[5296,5296,5196,5296,5096,4896,5096,4896,5096,5196,4896,4896],
+    2026:[5296,5296,5196,5246,5096,4896,5096,4896,5096,5146,4896,4896]
+  }},
+  'Marshall Willen II':    { brand:'Marshall', orig:999, years:{
+    2025:[999,999,949,999,849,699,849,699,849,899,699,699],
+    2026:[999,999,899,949,849,699,849,699,849,899,699,699]
+  }},
+  'JBL Flip 7':            { brand:'JBL', orig:1099, years:{
+    2025:[1099,1099,1049,1099,949,799,949,799,949,999,799,799],
+    2026:[1099,1099,999,1049,899,699,899,699,899,949,699,699]
+  }},
+  'JBL Go 4':              { brand:'JBL', orig:459, years:{
+    2025:[459,459,449,459,429,399,429,399,429,439,399,399],
+    2026:[459,459,439,449,429,399,429,399,429,434,399,399]
+  }},
+  'Bose QC Ultra Headphones': { brand:'Bose', orig:3599, years:{
+    2025:[3599,3599,3549,3599,3399,3199,3399,3199,3399,3499,3199,3199],
+    2026:[3599,3599,3499,3549,3399,3199,3399,3199,3399,3449,3199,3199]
+  }},
+  'Bose QC Ultra Earbuds II': { brand:'Bose', orig:2299, years:{
+    2025:[2299,2299,2249,2299,2099,1899,2099,1899,2099,2199,1899,1899],
+    2026:[2299,2299,2199,2249,2099,1899,2099,1899,2099,2149,1899,1899]
+  }},
+  'Bose Ultra Open Earbuds': { brand:'Bose', orig:2299, years:{
+    2025:[2299,2299,2249,2299,2099,1899,2099,1899,2099,2199,1899,1899],
+    2026:[2299,2299,2199,2249,2099,1899,2099,1899,2099,2149,1899,1899]
+  }},
+  'B&O Beoplay HX':        { brand:'B&O', orig:3898, years:{
+    2025:[3898,3898,3848,3898,3698,3498,3698,3498,3698,3798,3498,3498],
+    2026:[3898,3898,3798,3848,3698,3498,3698,3498,3698,3748,3498,3498]
+  }},
+  'B&O Beoplay Eleven':    { brand:'B&O', orig:3898, years:{
+    2025:[3898,3898,3848,3898,3698,3498,3698,3498,3698,3798,3498,3498],
+    2026:[3898,3898,3798,3848,3698,3498,3698,3498,3698,3748,3498,3498]
+  }},
+  'B&O Beosound Level':    { brand:'B&O', orig:12480, years:{
+    2025:[12480,12480,12430,12480,12280,12080,12280,12080,12280,12330,12080,12080],
+    2026:[12480,12480,12380,12430,12280,12080,12280,12080,12280,12330,12080,12080]
+  }},
+  '哈曼卡顿 GO+Play 3':    { brand:'哈曼卡顿', orig:2999, years:{
+    2025:[2999,2999,2949,2999,2799,2599,2799,2599,2799,2899,2599,2599],
+    2026:[2999,2999,2899,2949,2799,2599,2799,2599,2799,2849,2599,2599]
+  }},
+  '哈曼卡顿 SoundSticks 4 水晶4': { brand:'哈曼卡顿', orig:2799, years:{
+    2024:[2799,2799,2749,2799,2599,2399,2599,2399,2599,2699,2399,2399],
+    2025:[2399,2399,2349,2399,2199,1999,2199,1999,2199,2299,1999,1999],
+    2026:[2799,2799,2699,2749,2599,2399,2599,2399,2599,2649,2399,2399]
+  }},
+  '哈曼卡顿 FLY TWS':      { brand:'哈曼卡顿', orig:999, years:{
+    2025:[999,999,949,999,849,699,849,699,849,899,699,699],
+    2026:[999,999,899,949,849,699,849,699,849,899,699,699]
+  }},
+  '索尼 WH-1000XM6':       { brand:'索尼', orig:3499, years:{
+    2025:[3499,3499,3449,3499,3299,3099,3299,3099,3299,3399,3099,3099],
+    2026:[3499,3499,3399,3449,3299,3099,3299,3099,3299,3349,3099,3099]
+  }},
+  '索尼 WF-1000XM6':       { brand:'索尼', orig:2399, years:{
+    2025:[2399,2399,2349,2399,2199,1999,2199,1999,2199,2299,1999,1999],
+    2026:[2399,2399,2299,2349,2199,1999,2199,1999,2299,2249,1999,1999]
+  }},
+  '索尼 SRS-XE300':        { brand:'索尼', orig:1499, years:{
+    2025:[1499,1499,1449,1499,1349,1199,1349,1199,1349,1399,1199,1199],
+    2026:[1499,1499,1399,1449,1299,1099,1299,1099,1299,1399,1099,1099]
   }},
 };
 
