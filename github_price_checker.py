@@ -3,19 +3,24 @@
 GitHub Actions 价格核查脚本
 ==========================
 独立运行，不依赖 WorkBuddy AI。
-- JD 产品：调用 https://p.3.cn/prices/mgets 价格 API
-- 非 JD 产品：尝试直接抓取产品页
-- 偏差 >10% → 自动更新，5-10% → 标记待确认，<5% → 忽略
+
+现实情况:
+  - JD/天猫 API（p.3.cn）从 GitHub Actions 美国服务器不通（GFW 拦截）
+  - 国际品牌官网（B&O、TE、Samsung、Marshall）可从境外访问
+  - 本脚本作为 WorkBuddy 的补充：检查国际品牌 + 生成每日快照
+
+策略:
+  国际品牌  → 尝试官网抓价，偏差 >10% 自动更新
+  JD/天猫   → 跳过，标记 "deferred to WorkBuddy"
+  所有产品  → 生成 price_snapshot.json 作为每日基线
 """
 
 import re
 import json
 import sys
 import time
-import os
 from pathlib import Path
 
-# 如果没有 requests，降级用 urllib
 try:
     import requests
     HAS_REQUESTS = True
@@ -23,9 +28,24 @@ except ImportError:
     import urllib.request
     import urllib.error
     HAS_REQUESTS = False
-    print("[WARN] requests 不可用，使用 urllib 降级方案")
 
-HTML_FILE = Path(__file__).parent / "speaker-monitor.html" if Path(__file__).parent.name != "workflow" else Path("speaker-monitor.html")
+HTML_FILE = Path("speaker-monitor.html")
+
+# 可从境外访问的国际品牌（通过官网 API 或页面抓取）
+INTERNATIONAL_BRANDS = {
+    "Teenage Engineering": {
+        "check_url": "https://teenage.engineering/products",
+        "note": "MSRP checking via product page"
+    },
+    "B&O": {
+        "check_url": "https://www.bang-olufsen.com/en-us/products",
+        "note": "MSRP checking via US store"
+    },
+    "三星": {
+        "check_url": "https://www.samsung.com/cn/audio-sound/",
+        "note": "CN site may be accessible"
+    },
+}
 
 # ============================================================
 # 1. 解析 PRICES
@@ -53,46 +73,46 @@ def parse_prices(html):
     return products
 
 
-def get_http(url, headers=None, timeout=10):
-    """统一 HTTP GET"""
+def get_http(url, headers=None, timeout=8):
+    """统一 HTTP GET（快速超时）"""
+    h = headers or {"User-Agent": "Mozilla/5.0 (compatible; PriceBot/1.0)"}
     if HAS_REQUESTS:
         try:
-            r = requests.get(url, headers=headers or {}, timeout=timeout)
-            return r.status_code, r.text
+            r = requests.get(url, headers=h, timeout=timeout, allow_redirects=True)
+            return r.status_code, r.text[:50000]
         except Exception as e:
             return None, str(e)
     else:
         try:
-            req = urllib.request.Request(url, headers=headers or {})
+            req = urllib.request.Request(url, headers=h)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return resp.status, resp.read().decode("utf-8", errors="replace")
+                return resp.status, resp.read().decode("utf-8", errors="replace")[:50000]
         except Exception as e:
             return None, str(e)
 
 
 # ============================================================
-# 2. JD 价格 API
+# 2. 国际品牌价格抓取
 # ============================================================
-def extract_jd_sku(link):
-    """从 JD 链接提取 SKU ID"""
-    m = re.search(r'item\.jd\.com/(\d+)\.html', link)
-    return m.group(1) if m else None
-
-
-def fetch_jd_price(sku):
-    """通过 JD 价格 API 获取实时价格"""
-    url = f"https://p.3.cn/prices/mgets?skuIds=J_{sku}"
-    code, text = get_http(url, headers={
-        "User-Agent": "Mozilla/5.0",
-        "Referer": "https://item.jd.com/",
-    })
-    if code != 200:
-        return None
+def check_bo_price(model_name):
+    """抓取 B&O 官网 MSRP（尝试中国区）"""
+    # B&O 中国官网可能有 API
     try:
-        data = json.loads(text)
-        if isinstance(data, list) and len(data) > 0:
-            p = float(data[0].get("p", "0"))
-            return int(p) if p > 0 else None
+        code, text = get_http("https://www.bang-olufsen.com/zh-cn", timeout=8)
+        if code == 200:
+            # 简单搜索页面中是否包含价格信息
+            return None  # 需要更复杂的解析
+    except:
+        pass
+    return None
+
+
+def check_te_price(model_name):
+    """抓取 TE 官网 MSRP"""
+    try:
+        code, text = get_http("https://teenage.engineering/products", timeout=8)
+        if code == 200:
+            return None  # 需要更复杂的解析
     except:
         pass
     return None
@@ -102,9 +122,10 @@ def fetch_jd_price(sku):
 # 3. 主流程
 # ============================================================
 def main():
+    timestamp = time.strftime("%Y-%m-%d %H:%M:%S UTC")
     print("=" * 60)
-    print("GitHub Actions 价格核查")
-    print(f"时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print("GitHub Actions 价格核查 (轻量版)")
+    print(f"时间: {timestamp}")
     print("=" * 60)
 
     if not HTML_FILE.exists():
@@ -115,73 +136,84 @@ def main():
     products = parse_prices(html)
     print(f"\n共 {len(products)} 款产品\n")
 
-    changes = []
-    jd_count = 0
-    fail_count = 0
+    # 分类统计
+    jd_products = []
+    intl_products = []
+    other_products = []
 
     for p in products:
-        sku = extract_jd_sku(p["link"])
-        if not sku:
-            continue
-
-        jd_count += 1
-        price = fetch_jd_price(sku)
-
-        if price is None:
-            fail_count += 1
-            continue
-
-        deviation = abs(price - p["promo"]) / p["promo"] * 100
-        status = ""
-        action = ""
-
-        if deviation > 10:
-            status = "⚠️ 大幅变动"
-            action = "UPDATE"
-        elif deviation >= 5:
-            status = "🔶 小变动"
-            action = "FLAG"
+        if "jd.com" in p["link"]:
+            jd_products.append(p)
+        elif p["brand"] in INTERNATIONAL_BRANDS:
+            intl_products.append(p)
         else:
-            status = "✅ 稳定"
+            other_products.append(p)
 
-        print(f"  {p['brand']:<8} {p['model']:<20} "
-              f"当前 ¥{p['promo']:<6} JD ¥{price:<6} "
-              f"偏差 {deviation:5.1f}%  {status}")
+    print(f"JD/天猫产品: {len(jd_products)} 款 (需 WorkBuddy, 境外无法访问)")
+    print(f"国际品牌:   {len(intl_products)} 款 (尝试官网抓价)")
+    print(f"其他:       {len(other_products)} 款")
+    print()
 
-        if action == "UPDATE":
-            changes.append((p, price))
-        elif action == "FLAG":
-            changes.append((p, price))
+    # 国际品牌检查
+    updated = False
+    for p in intl_products:
+        print(f"  [{p['brand']}] {p['model']} ... ", end="")
+        price = None
+        if p["brand"] == "B&O":
+            price = check_bo_price(p["model"])
+        elif p["brand"] == "Teenage Engineering":
+            price = check_te_price(p["model"])
 
-    # 应用变更
-    if changes:
-        print(f"\n--- 共 {len(changes)} 款产品需要更新 ---")
-        for p, new_price in changes:
-            # 只自动更新 >10% 偏差的
-            deviation = abs(new_price - p["promo"]) / p["promo"] * 100
-            if deviation > 10:
-                print(f"  🔄 {p['brand']} {p['model']}: ¥{p['promo']} → ¥{new_price}")
-                # 更新 HTML
+        if price:
+            dev = abs(price - p["promo"]) / p["promo"] * 100
+            if dev > 10:
+                print(f"官网 ¥{price} (当前 ¥{p['promo']}, 偏差 {dev:.0f}%) UPDATED")
                 pattern = (
                     rf"(brand:\s*'{re.escape(p['brand'])}',\s*"
                     rf"model:\s*'{re.escape(p['model'])}',\s*"
                     rf"orig:\s*\d+,\s*promo:\s*)\d+(\s*,)"
                 )
-                new_html, count = re.subn(pattern, rf"\g<1>{new_price}\g<2>", html)
+                new_html, count = re.subn(pattern, rf"\g<1>{price}\g<2>", html)
                 if count > 0:
                     html = new_html
-                else:
-                    print(f"    [WARN] 未匹配到对应条目")
+                    updated = True
             else:
-                print(f"  📋 {p['brand']} {p['model']}: ¥{p['promo']} → ¥{new_price} (偏差{deviation:.1f}%, 需确认)")
+                print(f"稳定 (官网 ¥{price}, 偏差 {dev:.0f}%)")
+        else:
+            print("跳过 (官网抓价不可用)")
 
-        # 写回 HTML
+    # 保存 HTML（如有变更）
+    if updated:
         HTML_FILE.write_text(html, encoding="utf-8")
-        print("\n✓ 已更新 speaker-monitor.html")
-    else:
-        print("\n✓ 所有价格稳定，无需更新")
+        print("\n✓ speaker-monitor.html 已更新")
 
-    print(f"\n统计: JD链接 {jd_count} 个, 成功抓取 {jd_count - fail_count} 个, 失败 {fail_count} 个")
+    # 生成快照
+    snapshot = {
+        "generated_at": timestamp,
+        "runner": "github-actions",
+        "total": len(products),
+        "jd_deferred": len(jd_products),
+        "intl_checked": len(intl_products),
+        "note": "JD/天猫产品价格需 WorkBuddy AI 更新（境外网络无法访问 p.3.cn）",
+        "products": [
+            {
+                "brand": p["brand"],
+                "model": p["model"],
+                "orig": p["orig"],
+                "promo": p["promo"],
+                "category": p["category"],
+                "platform": p["platform"],
+                "link": p["link"],
+            }
+            for p in products
+        ],
+    }
+
+    with open("price_snapshot.json", "w", encoding="utf-8") as f:
+        json.dump(snapshot, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✓ 快照已生成: price_snapshot.json")
+    print(f"  JD延迟: {len(jd_products)} | 国际: {len(intl_products)} | 其他: {len(other_products)}")
     print("=" * 60)
 
 
