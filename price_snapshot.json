@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-05-28 09:17:29",
+  "generated_at": "2026-05-29 09:37:00",
   "total": 79,
   "products": [
     {
       "brand": "Marshall",
       "model": "Emberton III",
       "orig": 1499,
-      "promo": 1199,
+      "promo": 1394,
       "category": "speaker",
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/100137193368.html",
@@ -25,8 +25,8 @@
     {
       "brand": "Marshall",
       "model": "Stanmore III",
-      "orig": 4499,
-      "promo": 2789,
+      "orig": 3499,
+      "promo": 2540,
       "category": "speaker",
       "platform": "京东/天猫",
       "link": "https://item.jd.com/100024554085.html",
@@ -636,7 +636,7 @@
       "brand": "漫步者",
       "model": "W830NB",
       "orig": 399,
-      "promo": 329,
+      "promo": 399,
       "category": "headphone",
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/100119511307.html",
