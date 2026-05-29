@@ -421,13 +421,13 @@ const BRANDS = [
 const PRICES = [
   { brand:'Marshall', model:'Emberton III', orig:1499, promo:1394, category:'speaker', platform:'京东/天猫/官网', img:'https://ec-res.marshall.cn/2/2025/7/30/1753869587437687_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100137193368.html' },
   { brand:'Marshall', model:'Acton III BT', orig:3499, promo:1738, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/10/14/17604101329699684_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100035465065.html' },
-  { brand:'Marshall', model:'Stanmore III', orig:3499, promo:2540, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/7/30/1753870430157424_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100024554085.html' },
-  { brand:'B&O', model:'Beosound A1 3rd', orig:2690, promo:2318, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/71gT0XSdL3L._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10150658657456.html' },
+  { brand:'Marshall', model:'Stanmore III', orig:3499, promo:2871, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/7/30/1753870430157424_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100024554085.html' },
+  { brand:'B&O', model:'Beosound A1 3rd', orig:2690, promo:2378, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/71gT0XSdL3L._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10150658657456.html' },
   { brand:'B&O', model:'Beosound A5', orig:6990, promo:6490, category:'speaker', platform:'官网/天猫', img:'https://m.media-amazon.com/images/I/71kw8QDATGL._AC_SX500_SY500_.jpg', link:'https://www.bang-olufsen.com/zh/cn/speakers/beosound-a5' },
   { brand:'JBL', model:'Charge 6', orig:1299, promo:999, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/8179N0kJ2QL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100216609711.html' },
   { brand:'JBL', model:'Xtreme 4', orig:2299, promo:1799, category:'speaker', platform:'京东/天猫', img:'https://m.media-amazon.com/images/I/419cpmyt-uL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100096212800.html' },
   { brand:'Bose', model:'SoundLink Flex 2', orig:1699, promo:1164, category:'speaker', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/415WfdWr7BL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10163275486014.html' },
-  { brand:'Bose', model:'SoundLink Max 2', orig:2999, promo:2639, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/81e+naGCcmL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100112376940.html' },
+  { brand:'Bose', model:'SoundLink Max 2', orig:2999, promo:2200, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/81e+naGCcmL._AC_SX500_SY500_.jpg', link:'https://item.jd.com/100112376940.html' },
   { brand:'哈曼卡顿', model:'Onyx Studio 9', orig:2999, promo:1899, category:'speaker', platform:'京东/天猫', img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g7/M00/01/0F/ChMkK2f0-kSIXNzeAANm6TbSVsQAAq87wNxm58AA2cB427.jpg', link:'https://search.jd.com/Search?keyword=哈曼卡顿+Onyx+Studio+9' },
   { brand:'哈曼卡顿', model:'Aura Studio 4', orig:4299, promo:3499, category:'speaker', platform:'京东/天猫', img:'https://img10.360buyimg.com/n1/s720x720_jfs/t1/441555/40/2941/165210/6a15633cFd068465c/0083320320946757.png', link:'https://search.jd.com/Search?keyword=哈曼卡顿+Aura+Studio+4' },
   { brand:'索尼', model:'SRS-XB100', orig:449, promo:281, category:'speaker', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/716FMuWpp4L._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=索尼+SRS-XB100' },
@@ -697,6 +697,16 @@ const PUSH_NEWS = [
     link:'https://www.oppo.com/en/newsroom/press/oppo-launches-enco-clip2/',
     img:'https://img1.mydrivers.com/img/20260428/12ace1e14dcd4e2a8cbae6fcb3783611.png', scene:true },
   // —— Hi-Fi / 黑胶 / 展会 ——
+  { date:'2026-05-28', brand:'HIFIMAN', type:'new', cat:'hifi',
+    title:'HIFIMAN 2026 夏季发布会：HM2000 HiFi平板+自研HIFISTYLE无损协议',
+    desc:'三箭齐发：HM2000安卓HiFi平板（HYMALAYA PRO DAC/DSD512/26.6h续航，单机¥11,800/含底座¥15,800）+ SVANAR WIRELESS 2无线天鹅2代（蓝牙6.0+L2HC+LDAC/¥1,999）+ HE6 REMASTERED限量复刻（平板振膜/全球99副/¥12,800）+ Deva Pro Lite无线耳机（¥799），首发自研HIFISTYLE点对点无损传输协议。',
+    link:'https://news.qq.com/rain/a/20260529A0305F00',
+    img:'https://inews.gtimg.com/om_bt/Oz3JqZmU9V2YcrBu5gm2f7IOiXsYcAVMnru8mtMP5dZVwAA/641', scene:true },
+  { date:'2026-05-22', brand:'Grell', type:'new', cat:'hifi',
+    title:'德国 Grell OAE2 开放式动圈头戴耳机发布，¥4,380',
+    desc:'前森海塞尔声学教父Axel Grell创立品牌第二作：40mm生物纤维振膜+FSFM前置声场调制技术（30°角放置模拟音箱逻辑）、378g钢壳+天鹅绒耳罩、标配3.5mm/4.4mm双线材、可换组件可持续设计，被誉为"头戴音箱"。',
+    link:'https://www.163.com/dy/article/KTJUFK7B0511DIIA.html',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0523%2F927df583j00tfgx4904m1d002xu0193m.jpg', scene:true },
   { date:'2026-05-21', brand:'行业', type:'event', cat:'hifi',
     title:'第六届北京国际音响展 5.21-24 隆重举行',
     desc:'14000㎡展区，B&W 鹦鹉螺出声展示、Focal Utopia Cinema 亮相、Avantgarde 喇叭花号角旗舰，含大师课堂+HiFi音乐节。',
@@ -828,6 +838,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-05-28', brand:'HIFIMAN', type:'new', text:'2026夏季发布会：HM2000 HiFi平板（¥11,800起）+SVANAR WIRELESS 2（¥1,999）+HE6 REMASTERED（¥12,800）+Deva Pro Lite（¥799）', link:'https://news.qq.com/rain/a/20260529A0305F00' },
+  { date:'2026-05-22', brand:'Grell', type:'new', text:'OAE2开放式动圈大耳发布：FSFM前置声场技术+40mm生物纤维振膜，¥4,380', link:'https://www.163.com/dy/article/KTJUFK7B0511DIIA.html' },
   { date:'2026-05-22', brand:'飞利浦', type:'new', text:'H6000（ANC Pro+LDAC+80h续航）+ T2200（百元ANC+36h+IPX4）两款降噪耳机发布', link:'https://www.163.com/dy/article/KTHRT2C905315OTM.html' },
   { date:'2026-05-26', brand:'森海塞尔', type:'new', text:'Momentum 5 Wireless 正式发布：$399.99，42mm动圈+aptX Lossless+Dolby Atmos+57h续航+可换电池', link:'https://newsroom.sennheiser.com/introducing-momentum-5-wireless-your-sound-revelation-starts-here-1bf69i' },
   { date:'2026-05-25', brand:'荣耀', type:'new', text:'Earbuds 耳夹式耳机 Pro 发布：自适应左右耳+Hi-Res+LHDC 5.0+47h续航，首发599元', link:'https://www.honor.com/cn/shop/product/10086979472862.html' },
@@ -1252,9 +1264,9 @@ const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑
 const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
