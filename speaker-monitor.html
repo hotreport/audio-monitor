@@ -626,7 +626,12 @@ const PUSH_NEWS = [
     desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
-  // —— 耳机（5.26 新增2条 + 历史整理）——
+  // —— 耳机（6.5 新增1条 + 历史整理）——
+  { date:'2026-06-04', brand:'Noble', type:'new', cat:'headphone',
+    title:'Noble Audio Osprey 真无线耳机发布，$199 入门享旗舰调音',
+    desc:'Noble首款200美元以下TWS：混合双单元（10mm动圈+定制动铁）、蓝牙5.4/Airoha 1571芯片、LDAC+ANC+环境音透传、7h(ANC关)/5h(ANC开)续航、大理石纹面板+铝合金充电盒、Qi无线充电，6月底发货，维也纳High End展亮相。',
+    link:'https://www.ecoustics.com/products/noble-osprey-wireless-earbuds/',
+    img:'https://www.ecoustics.com/wp-content/uploads/noble-osprey-wireless-earbuds-in-hand.jpg', scene:true },
   { date:'2025-09-18', brand:'Nothing', type:'new', cat:'headphone',
     title:'Nothing Ear (3) 旗舰 TWS 发布，Super Mic 重新定义通话',
     desc:'12mm动态单元+45dB Smart Hybrid ANC、全金属充电盒内置Super Mic独立麦克风系统、铝合金框架+自研异形天线、Hi-Res Audio认证，国行首销1099元。',
@@ -712,7 +717,12 @@ const PUSH_NEWS = [
     desc:'对标华为 FreeClip 2，全能均衡型开放式耳夹耳机，上代首发定价 799 元，新品预计同价位段。',
     link:'https://www.oppo.com/en/newsroom/press/oppo-launches-enco-clip2/',
     img:'https://img1.mydrivers.com/img/20260428/12ace1e14dcd4e2a8cbae6fcb3783611.png', scene:true },
-  // —— Hi-Fi / 黑胶 / 展会（6.5 新增3条 Vienna展）——
+  // —— Hi-Fi / 黑胶 / 展会（6.5 新增5条 Vienna展）——
+  { date:'2026-06-03', brand:'Audeze', type:'new', cat:'hifi',
+    title:'Audeze MM-520 录音室监听平板耳机发布，$1,699',
+    desc:'格莱美混音师Manny Marroquin签名系列第二弹：90mm平面磁驱动单元+Ultra-Thin Uniforce超薄振膜+Fazor相位管理+SLAM对称线性声学调制技术，高灵敏度低阻抗直推设计（无需独立耳放），磁吸可换耳垫（长混音场景），6月3日发布维也纳High End展首秀，面向专业混音/母带。',
+    link:'https://headphone.guru/audeze-releases-mm-520-manny-marroquin-signature-series-headphone-featuring-slam-technology/',
+    img:'https://www.ecoustics.com/wp-content/uploads/audeze-mm-520-studio-headphones-angle.jpg', scene:true },
   { date:'2026-06-04', brand:'宝华韦健', type:'new', cat:'hifi',
     title:'B&W 800 D5 钻石系列全系发布，60周年旗舰之作',
     desc:'宝华韦健60周年献礼，800 D5钻石系列全面换代：全新高强度铝合金空间框架支撑结构（Space Frame）+优化箱体架构+Signature技术下放；801 D5旗舰落地箱£43,000起，全系6-40万元；含801/802/803/804 D5落地箱、HTM81/HTM82 D5中置，维也纳High End展首发。',
@@ -869,6 +879,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-06-04', brand:'Noble', type:'new', text:'Osprey真无线耳机发布：首款$199入门TWS，混合双单元+LDAC+ANC+大理石纹面板，6月底发货', link:'https://www.ecoustics.com/products/noble-osprey-wireless-earbuds/' },
+  { date:'2026-06-03', brand:'Audeze', type:'new', text:'MM-520录音室监听平板耳机发布：Manny Marroquin签名系列，90mm平板单元+SLAM技术，$1,699', link:'https://headphone.guru/audeze-releases-mm-520-manny-marroquin-signature-series-headphone-featuring-slam-technology/' },
   { date:'2026-06-04', brand:'宝华韦健', type:'new', text:'800 D5钻石系列全系发布：60周年旗舰，801 D5 £43,000起，全系6-40万元，维也纳High End展首发', link:'https://www.ithome.com/0/960/093.htm' },
   { date:'2026-06-04', brand:'Meze', type:'new', text:'ARTA旗舰平板耳机发布：Rinaro MZ5 HΩ平面磁单元/225Ω/3Hz-115kHz/失真<0.05%，£6,000', link:'https://www.ecoustics.com/products/meze-audio-arta-headphones/' },
   { date:'2026-06-04', brand:'飞傲', type:'new', text:'维也纳展三连发：JT9开放式平板耳机+Level 1立体声功放（$139）+纯甲类耳机放大器', link:'https://www.hifipig.com/fiio-at-high-end-vienna-2026/' },
@@ -1301,9 +1313,9 @@ const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑
 const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'vivo':'V', 'TCL':'TCL', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL', 'Meze':'MEZE', '雅马哈':'YAMAHA' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'vivo':'#415FFF', 'TCL':'#004B8D', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A', 'Meze':'#D4AF37', '雅马哈':'#D82C20' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'vivo':'#FFFFFF', 'TCL':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF', 'Meze':'#1A1A1A', '雅马哈':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'vivo':'V', 'TCL':'TCL', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL', 'Meze':'MEZE', '雅马哈':'YAMAHA', 'Noble':'NOBLE', 'Audeze':'AUDEZE' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'vivo':'#415FFF', 'TCL':'#004B8D', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A', 'Meze':'#D4AF37', '雅马哈':'#D82C20', 'Noble':'#1A1A1A', 'Audeze':'#1A1A1A' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'vivo':'#FFFFFF', 'TCL':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF', 'Meze':'#1A1A1A', '雅马哈':'#FFFFFF', 'Noble':'#FFFFFF', 'Audeze':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
