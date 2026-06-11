@@ -401,7 +401,7 @@ document.getElementById('lastUpdate').textContent = new Date().toLocaleDateStrin
 
 /* ===== 品牌数据 ===== */
 const BRANDS = [
-  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'x Hendrix 60周年限定 + Bromley 450' },
+  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'Stockwell III 7年换代 6.10发布 ¥1,699' },
   { name:'B&O', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=B%26O+音箱', tmall:'https://search.tmall.com/search.aspx?q=B%26O+音箱', amazon:'https://www.amazon.cn/s?k=Bang+Olufsen+speaker', official:'https://www.bang-olufsen.com/zh/cn' }, latest:'x Fragment Design 联名 5.20发售 + Beosound Haven' },
   { name:'JBL', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=JBL+音箱', tmall:'https://search.tmall.com/search.aspx?q=JBL+音箱', amazon:'https://www.amazon.cn/s?k=JBL+speaker', official:'https://cn.jbl.com' }, latest:'PartyBox 330/130 发布 + Xtreme 5/Go 5' },
   { name:'Bose', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=Bose+音箱', tmall:'https://search.tmall.com/search.aspx?q=Bose+音箱', amazon:'https://www.amazon.cn/s?k=Bose+speaker', official:'https://www.bose.cn' }, latest:'Lifestyle Ultra系列 5.15发售 + SoundLink Plus' },
@@ -563,7 +563,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-06-10', brand:'Marshall', type:'new', cat:'speaker',
+    title:'Marshall Stockwell III 便携音箱发布，7年换代续航翻倍',
+    desc:'距上代7年全面进化：1×65W+2×31W D类功放、3寸低音+2×1.75寸宽频驱动、True Stereophonic 360°环绕声+动态响度、40+h续航（翻倍）、IP55防尘防水、模块化可维修设计（电池/网罩/硅胶套/提手均可独立更换）、约27%再生材料、新增M键预设切换、吉他风格PU皮革提手+天鹅绒内衬，黑金/油彩白双色，¥1,699。',
+    link:'https://www.marshall.com/us/en/product/stockwell-iii',
+    img:'https://www.gizmochina.com/wp-content/uploads/2026/06/Marshall-Stockwell-III-launch-specs-price.jpg?x10805', scene:true },
   { date:'2026-06-04', brand:'雅马哈', type:'new', cat:'speaker',
     title:'Yamaha NX-70A 无线音箱发布，十年首款回归之作',
     desc:'雅马哈十年来首款无线立体声音箱：ZYLON+云杉木复合单元（源自NS-2000A旗舰）、YPAO房间声学校准、MusicCast多房间流媒体、HDMI eARC+AirPlay 2+Spotify Connect+Roon、Synergistic Drive失真抑制技术，定价£2,587（约¥23,800），7月上市，对标KEF LS50 Wireless II。',
@@ -903,6 +908,7 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-06-10', brand:'Marshall', type:'new', text:'Stockwell III便携音箱发布：7年换代，40+h续航翻倍+模块化可维修设计+360°环绕声+IP55，¥1,699', link:'https://www.marshall.com/us/en/product/stockwell-iii' },
   { date:'2026-06-05', brand:'iFi', type:'new', text:'iDSD GR 2便携解码耳放发布：xDSD Gryphon继任者，$85（约¥612），维也纳High End展亮相', link:'https://ifi-audio.com/products/idsd-gr-2' },
   { date:'2026-06-05', brand:'AMR', type:'new', text:'Luna Ingenii DAC限量旗舰发布：128级离散DSD引擎+ZeroBit谐波加权，全球176台，价格面议', link:'https://www.techradar.com/tech/two-dacs-for-wildly-different-budgets-unveiled-at-high-end-from-ifis-pocketable-pal-to-amrs-price-on-request-hunk-of-hi-res-conversion' },
   { date:'2026-06-05', brand:'Ortofon', type:'new', text:'MC Vertex旗舰动圈唱头发布：Vertex Diamond针型+实心钻石针杆+SLM钛合金，$16,999', link:'https://www.ecoustics.com/products/ortofon-mc-vertex/' },
