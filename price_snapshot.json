@@ -1,16 +1,19 @@
 {
-  "generated_at": "2026-06-25 09:19:57",
+  "generated_at": "2026-06-25 04:55:52 UTC",
+  "runner": "github-actions",
   "total": 79,
+  "jd_deferred": 69,
+  "intl_checked": 7,
+  "note": "JD/天猫产品价格需 WorkBuddy AI 更新（境外网络无法访问 p.3.cn）",
   "products": [
     {
       "brand": "Marshall",
       "model": "Emberton III",
-      "orig": 1341,
-      "promo": 1089,
+      "orig": 1449,
+      "promo": 1159,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100137193368.html",
-      "search_query": "Marshall Emberton III 京东 价格 2026"
+      "link": "https://item.jd.com/100137193368.html"
     },
     {
       "brand": "Marshall",
@@ -19,8 +22,7 @@
       "promo": 1738,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100035465065.html",
-      "search_query": "Marshall Acton III BT 京东 价格 2026"
+      "link": "https://item.jd.com/100035465065.html"
     },
     {
       "brand": "Marshall",
@@ -29,8 +31,7 @@
       "promo": 2573,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100024554085.html",
-      "search_query": "Marshall Stanmore III 京东 价格 2026"
+      "link": "https://item.jd.com/100024554085.html"
     },
     {
       "brand": "B&O",
@@ -39,8 +40,7 @@
       "promo": 2378,
       "category": "speaker",
       "platform": "天猫官旗",
-      "link": "https://item.jd.com/10150658657456.html",
-      "search_query": "B&O Beosound A1 3rd 京东 价格 2026"
+      "link": "https://item.jd.com/10150658657456.html"
     },
     {
       "brand": "B&O",
@@ -49,8 +49,7 @@
       "promo": 6490,
       "category": "speaker",
       "platform": "官网/天猫",
-      "link": "https://www.bang-olufsen.com/zh/cn/speakers/beosound-a5",
-      "search_query": "B&O Beosound A5 京东 价格 2026"
+      "link": "https://www.bang-olufsen.com/zh/cn/speakers/beosound-a5"
     },
     {
       "brand": "JBL",
@@ -59,8 +58,7 @@
       "promo": 1274,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100216609711.html",
-      "search_query": "JBL Charge 6 京东 价格 2026"
+      "link": "https://item.jd.com/100216609711.html"
     },
     {
       "brand": "JBL",
@@ -69,8 +67,7 @@
       "promo": 1799,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100096212800.html",
-      "search_query": "JBL Xtreme 4 京东 价格 2026"
+      "link": "https://item.jd.com/100096212800.html"
     },
     {
       "brand": "Bose",
@@ -79,8 +76,7 @@
       "promo": 1164,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10163275486014.html",
-      "search_query": "Bose SoundLink Flex 2 京东 价格 2026"
+      "link": "https://item.jd.com/10163275486014.html"
     },
     {
       "brand": "Bose",
@@ -89,8 +85,7 @@
       "promo": 2200,
       "category": "speaker",
       "platform": "天猫官旗",
-      "link": "https://item.jd.com/100112376940.html",
-      "search_query": "Bose SoundLink Max 2 京东 价格 2026"
+      "link": "https://item.jd.com/100112376940.html"
     },
     {
       "brand": "哈曼卡顿",
@@ -99,8 +94,7 @@
       "promo": 1899,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+Onyx+Studio+9",
-      "search_query": "哈曼卡顿 Onyx Studio 9 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+Onyx+Studio+9"
     },
     {
       "brand": "哈曼卡顿",
@@ -109,8 +103,7 @@
       "promo": 3499,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+Aura+Studio+4",
-      "search_query": "哈曼卡顿 Aura Studio 4 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+Aura+Studio+4"
     },
     {
       "brand": "索尼",
@@ -119,8 +112,7 @@
       "promo": 281,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=索尼+SRS-XB100",
-      "search_query": "索尼 SRS-XB100 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=索尼+SRS-XB100"
     },
     {
       "brand": "索尼",
@@ -129,8 +121,7 @@
       "promo": 2699,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=索尼+SRS-XG500",
-      "search_query": "索尼 SRS-XG500 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=索尼+SRS-XG500"
     },
     {
       "brand": "猫王",
@@ -139,8 +130,7 @@
       "promo": 1299,
       "category": "speaker",
       "platform": "天猫官旗",
-      "link": "https://search.tmall.com/search.aspx?q=猫王+M11+音箱",
-      "search_query": "猫王 M11 联名款 京东 价格 2026"
+      "link": "https://search.tmall.com/search.aspx?q=猫王+M11+音箱"
     },
     {
       "brand": "猫王",
@@ -149,8 +139,7 @@
       "promo": 999,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=猫王+Mate3",
-      "search_query": "猫王 Mate3 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=猫王+Mate3"
     },
     {
       "brand": "猫王",
@@ -159,8 +148,7 @@
       "promo": 1499,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=猫王+Mate4",
-      "search_query": "猫王 Mate4 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=猫王+Mate4"
     },
     {
       "brand": "猫王",
@@ -169,8 +157,7 @@
       "promo": 358,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=猫王+小王子OTR",
-      "search_query": "猫王 小王子OTR 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=猫王+小王子OTR"
     },
     {
       "brand": "漫步者",
@@ -179,8 +166,7 @@
       "promo": 549,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=漫步者+D32+Plus",
-      "search_query": "漫步者 D32 Plus 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=漫步者+D32+Plus"
     },
     {
       "brand": "漫步者",
@@ -189,8 +175,7 @@
       "promo": 1557,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100003704123.html",
-      "search_query": "漫步者 S2000MKIII 京东 价格 2026"
+      "link": "https://item.jd.com/100003704123.html"
     },
     {
       "brand": "漫步者",
@@ -199,8 +184,7 @@
       "promo": 399,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100073091624.html",
-      "search_query": "漫步者 花再 Halo PixelBar 京东 价格 2026"
+      "link": "https://item.jd.com/100073091624.html"
     },
     {
       "brand": "漫步者",
@@ -209,8 +193,7 @@
       "promo": 949,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100072516969.html",
-      "search_query": "漫步者 花再 NEW-X PRO 京东 价格 2026"
+      "link": "https://item.jd.com/100072516969.html"
     },
     {
       "brand": "漫步者",
@@ -219,8 +202,7 @@
       "promo": 1281,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100264079728.html",
-      "search_query": "漫步者 花再 NEW CYBER 京东 价格 2026"
+      "link": "https://item.jd.com/100264079728.html"
     },
     {
       "brand": "漫步者",
@@ -229,8 +211,7 @@
       "promo": 1199,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100069542032.html",
-      "search_query": "漫步者 花再 Evo Soul 京东 价格 2026"
+      "link": "https://item.jd.com/100069542032.html"
     },
     {
       "brand": "惠威",
@@ -239,8 +220,7 @@
       "promo": 1470,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=惠威+M200MKIII",
-      "search_query": "惠威 M200MKIII+ 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=惠威+M200MKIII"
     },
     {
       "brand": "惠威",
@@ -249,8 +229,7 @@
       "promo": 688,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=惠威+D1100",
-      "search_query": "惠威 D1100 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=惠威+D1100"
     },
     {
       "brand": "惠威",
@@ -259,8 +238,7 @@
       "promo": 799,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=惠威+D100",
-      "search_query": "惠威 D100 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=惠威+D100"
     },
     {
       "brand": "丹拿",
@@ -269,8 +247,7 @@
       "promo": 16800,
       "category": "speaker",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=丹拿+Evoke+20",
-      "search_query": "丹拿 Evoke 20 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=丹拿+Evoke+20"
     },
     {
       "brand": "宝华韦健",
@@ -279,8 +256,7 @@
       "promo": 13800,
       "category": "speaker",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=宝华韦健+707+S3",
-      "search_query": "宝华韦健 707 S3 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=宝华韦健+707+S3"
     },
     {
       "brand": "森海塞尔",
@@ -289,8 +265,7 @@
       "promo": 1689,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=森海塞尔+Momentum+4",
-      "search_query": "森海塞尔 Momentum 4 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=森海塞尔+Momentum+4"
     },
     {
       "brand": "舒尔",
@@ -299,8 +274,7 @@
       "promo": 3499,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=舒尔+SE846",
-      "search_query": "舒尔 SE846 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=舒尔+SE846"
     },
     {
       "brand": "铁三角",
@@ -309,8 +283,7 @@
       "promo": 899,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=铁三角+ATH-M50x",
-      "search_query": "铁三角 ATH-M50x 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=铁三角+ATH-M50x"
     },
     {
       "brand": "AKG",
@@ -319,8 +292,7 @@
       "promo": 999,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=AKG+K702",
-      "search_query": "AKG K702 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=AKG+K702"
     },
     {
       "brand": "Nothing",
@@ -329,8 +301,7 @@
       "promo": 599,
       "category": "headphone",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=Nothing+Ear+a",
-      "search_query": "Nothing Ear (a) 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=Nothing+Ear+a"
     },
     {
       "brand": "Nothing",
@@ -339,8 +310,7 @@
       "promo": 1099,
       "category": "headphone",
       "platform": "京东/官网/抖音",
-      "link": "https://search.jd.com/Search?keyword=Nothing+Ear+3",
-      "search_query": "Nothing Ear (3) 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=Nothing+Ear+3"
     },
     {
       "brand": "Nothing",
@@ -349,8 +319,7 @@
       "promo": 1718,
       "category": "headphone",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=Nothing+Headphone+1",
-      "search_query": "Nothing Headphone (1) 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=Nothing+Headphone+1"
     },
     {
       "brand": "漫步者",
@@ -359,8 +328,7 @@
       "promo": 279,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://www.edifier.com/cn/product/product-909.html",
-      "search_query": "漫步者 花再 Auro Ace 京东 价格 2026"
+      "link": "https://www.edifier.com/cn/product/product-909.html"
     },
     {
       "brand": "Teenage Engineering",
@@ -369,8 +337,7 @@
       "promo": 4299,
       "category": "other",
       "platform": "官网",
-      "link": "https://teenage.engineering/products/op-1-field",
-      "search_query": "Teenage Engineering OP-1 Field 京东 价格 2026"
+      "link": "https://teenage.engineering/products/op-1-field"
     },
     {
       "brand": "Teenage Engineering",
@@ -379,8 +346,7 @@
       "promo": 7999,
       "category": "other",
       "platform": "官网",
-      "link": "https://teenage.engineering/products/tx-6",
-      "search_query": "Teenage Engineering TX-6 便携混音器 京东 价格 2026"
+      "link": "https://teenage.engineering/products/tx-6"
     },
     {
       "brand": "Teenage Engineering",
@@ -389,8 +355,7 @@
       "promo": 9999,
       "category": "other",
       "platform": "京东/官网",
-      "link": "https://item.jd.com/100236883516.html",
-      "search_query": "Teenage Engineering OP-XY 合成器 京东 价格 2026"
+      "link": "https://item.jd.com/100236883516.html"
     },
     {
       "brand": "Teenage Engineering",
@@ -399,8 +364,7 @@
       "promo": 1599,
       "category": "speaker",
       "platform": "官网",
-      "link": "https://teenage.engineering/products/ob-4",
-      "search_query": "Teenage Engineering OB-4 蓝牙音箱 京东 价格 2026"
+      "link": "https://teenage.engineering/products/ob-4"
     },
     {
       "brand": "MORROR ART",
@@ -409,8 +373,7 @@
       "promo": 6831,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100233406494.html",
-      "search_query": "MORROR ART R1 唱片歌词音箱 京东 价格 2026"
+      "link": "https://item.jd.com/100233406494.html"
     },
     {
       "brand": "MORROR ART",
@@ -419,8 +382,7 @@
       "promo": 2294,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10030773005368.html",
-      "search_query": "MORROR ART M2 桌面歌词音箱 京东 价格 2026"
+      "link": "https://item.jd.com/10030773005368.html"
     },
     {
       "brand": "MORROR ART",
@@ -429,8 +391,7 @@
       "promo": 4699,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10052623282330.html",
-      "search_query": "MORROR ART T2 壁画歌词音箱 京东 价格 2026"
+      "link": "https://item.jd.com/10052623282330.html"
     },
     {
       "brand": "MORROR ART",
@@ -439,8 +400,7 @@
       "promo": 2399,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=MORROR+ART+S1",
-      "search_query": "MORROR ART S1 边柜舒眠音箱 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=MORROR+ART+S1"
     },
     {
       "brand": "MORROR ART",
@@ -449,8 +409,7 @@
       "promo": 2580,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10141808779659.html",
-      "search_query": "MORROR ART VWS X1 京东 价格 2026"
+      "link": "https://item.jd.com/10141808779659.html"
     },
     {
       "brand": "MORROR ART",
@@ -459,8 +418,7 @@
       "promo": 1388,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=MORROR+ART+2026+%E6%98%BE%E7%A4%BA%E8%80%B3%E6%9C%BA",
-      "search_query": "MORROR ART VWS X2 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=MORROR+ART+2026+%E6%98%BE%E7%A4%BA%E8%80%B3%E6%9C%BA"
     },
     {
       "brand": "Marshall",
@@ -469,8 +427,7 @@
       "promo": 1103,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/10112632975168.html",
-      "search_query": "Marshall Major V 京东 价格 2026"
+      "link": "https://item.jd.com/10112632975168.html"
     },
     {
       "brand": "Marshall",
@@ -479,8 +436,7 @@
       "promo": 839,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://www.marshall.cn/product/MD00223",
-      "search_query": "Marshall Minor IV 京东 价格 2026"
+      "link": "https://www.marshall.cn/product/MD00223"
     },
     {
       "brand": "Marshall",
@@ -489,8 +445,7 @@
       "promo": 2789,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/10214555414320.html",
-      "search_query": "Marshall Monitor III ANC 京东 价格 2026"
+      "link": "https://item.jd.com/10214555414320.html"
     },
     {
       "brand": "B&O",
@@ -499,8 +454,7 @@
       "promo": 3597,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://www.bang-olufsen.com/zh-cn/int/toudaishierji/beoplay-hx",
-      "search_query": "B&O Beoplay HX 京东 价格 2026"
+      "link": "https://www.bang-olufsen.com/zh-cn/int/toudaishierji/beoplay-hx"
     },
     {
       "brand": "B&O",
@@ -509,8 +463,7 @@
       "promo": 3508,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://www.bang-olufsen.com/zh-cn/cn/ersaishierji/beoplay-eleven",
-      "search_query": "B&O Beoplay Eleven 京东 价格 2026"
+      "link": "https://www.bang-olufsen.com/zh-cn/cn/ersaishierji/beoplay-eleven"
     },
     {
       "brand": "B&O",
@@ -519,8 +472,7 @@
       "promo": 11980,
       "category": "speaker",
       "platform": "官网/天猫",
-      "link": "https://www.bang-olufsen.com/zh/cn/speakers/beosound-level",
-      "search_query": "B&O Beosound Level 京东 价格 2026"
+      "link": "https://www.bang-olufsen.com/zh/cn/speakers/beosound-level"
     },
     {
       "brand": "JBL",
@@ -529,8 +481,7 @@
       "promo": 2799,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/10158640015848.html",
-      "search_query": "JBL Tour One M3 京东 价格 2026"
+      "link": "https://item.jd.com/10158640015848.html"
     },
     {
       "brand": "JBL",
@@ -539,8 +490,7 @@
       "promo": 2098,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100160756140.html",
-      "search_query": "JBL Tour Pro 3 京东 价格 2026"
+      "link": "https://item.jd.com/100160756140.html"
     },
     {
       "brand": "JBL",
@@ -549,8 +499,7 @@
       "promo": 899,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=JBL+Flip+7",
-      "search_query": "JBL Flip 7 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=JBL+Flip+7"
     },
     {
       "brand": "Bose",
@@ -559,8 +508,7 @@
       "promo": 2047,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/10096187222428.html",
-      "search_query": "Bose QC Ultra Headphones 京东 价格 2026"
+      "link": "https://item.jd.com/10096187222428.html"
     },
     {
       "brand": "Bose",
@@ -569,8 +517,7 @@
       "promo": 2070,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100183101315.html",
-      "search_query": "Bose QC Ultra Earbuds II 京东 价格 2026"
+      "link": "https://item.jd.com/100183101315.html"
     },
     {
       "brand": "Bose",
@@ -579,8 +526,7 @@
       "promo": 1999,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100147884878.html",
-      "search_query": "Bose Ultra Open Earbuds 京东 价格 2026"
+      "link": "https://item.jd.com/100147884878.html"
     },
     {
       "brand": "索尼",
@@ -589,8 +535,7 @@
       "promo": 1788,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100222127764.html",
-      "search_query": "索尼 WH-1000XM6 京东 价格 2026"
+      "link": "https://item.jd.com/100222127764.html"
     },
     {
       "brand": "索尼",
@@ -599,8 +544,7 @@
       "promo": 1728,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10216718667367.html",
-      "search_query": "索尼 WF-1000XM6 京东 价格 2026"
+      "link": "https://item.jd.com/10216718667367.html"
     },
     {
       "brand": "哈曼卡顿",
@@ -609,8 +553,7 @@
       "promo": 699,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+FLY+TWS",
-      "search_query": "哈曼卡顿 FLY TWS 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+FLY+TWS"
     },
     {
       "brand": "哈曼卡顿",
@@ -619,8 +562,7 @@
       "promo": 2499,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+GO+Play+3",
-      "search_query": "哈曼卡顿 GO+Play 3 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=哈曼卡顿+GO+Play+3"
     },
     {
       "brand": "森海塞尔",
@@ -629,8 +571,7 @@
       "promo": 1055,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=森海塞尔+Accentum+Plus",
-      "search_query": "森海塞尔 Accentum Plus 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=森海塞尔+Accentum+Plus"
     },
     {
       "brand": "漫步者",
@@ -639,8 +580,7 @@
       "promo": 399,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100119511307.html",
-      "search_query": "漫步者 W830NB 京东 价格 2026"
+      "link": "https://item.jd.com/100119511307.html"
     },
     {
       "brand": "丹拿",
@@ -649,8 +589,7 @@
       "promo": 5980,
       "category": "speaker",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=丹拿+Music+7",
-      "search_query": "丹拿 Music 7 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=丹拿+Music+7"
     },
     {
       "brand": "宝华韦健",
@@ -659,8 +598,7 @@
       "promo": 3280,
       "category": "headphone",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=宝华韦健+Px8",
-      "search_query": "宝华韦健 Px8 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=宝华韦健+Px8"
     },
     {
       "brand": "舒尔",
@@ -669,8 +607,7 @@
       "promo": 2199,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=舒尔+AONIC+50+Gen2",
-      "search_query": "舒尔 AONIC 50 Gen2 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=舒尔+AONIC+50+Gen2"
     },
     {
       "brand": "AKG",
@@ -679,8 +616,7 @@
       "promo": 1199,
       "category": "headphone",
       "platform": "京东/天猫",
-      "link": "https://search.jd.com/Search?keyword=AKG+N9+Hybrid",
-      "search_query": "AKG N9 Hybrid 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=AKG+N9+Hybrid"
     },
     {
       "brand": "梵尼诗",
@@ -689,8 +625,7 @@
       "promo": 11699,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://fennessy.jd.com/",
-      "search_query": "梵尼诗 Donut i5 京东 价格 2026"
+      "link": "https://fennessy.jd.com/"
     },
     {
       "brand": "梵尼诗",
@@ -699,8 +634,7 @@
       "promo": 2399,
       "category": "speaker",
       "platform": "京东/官网",
-      "link": "https://search.jd.com/Search?keyword=梵尼诗+J-TML01",
-      "search_query": "梵尼诗 J-TML01 立式黑胶 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=梵尼诗+J-TML01"
     },
     {
       "brand": "三星",
@@ -709,8 +643,7 @@
       "promo": 6793,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://search.jd.com/Search?keyword=三星+HW-Q990F",
-      "search_query": "三星 HW-Q990F 回音壁 京东 价格 2026"
+      "link": "https://search.jd.com/Search?keyword=三星+HW-Q990F"
     },
     {
       "brand": "三星",
@@ -719,8 +652,7 @@
       "promo": 2999,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10100232654366.html",
-      "search_query": "三星 Music Frame HW-LS60D 京东 价格 2026"
+      "link": "https://item.jd.com/10100232654366.html"
     },
     {
       "brand": "三星",
@@ -729,8 +661,7 @@
       "promo": 999,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100130841425.html",
-      "search_query": "三星 Galaxy Buds3 Pro 京东 价格 2026"
+      "link": "https://item.jd.com/100130841425.html"
     },
     {
       "brand": "三星",
@@ -739,8 +670,7 @@
       "promo": 999,
       "category": "headphone",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100130840209.html",
-      "search_query": "三星 Galaxy Buds3 京东 价格 2026"
+      "link": "https://item.jd.com/100130840209.html"
     },
     {
       "brand": "Marshall",
@@ -749,8 +679,7 @@
       "promo": 4344,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/10222927987147.html",
-      "search_query": "Marshall Woburn III 京东 价格 2026"
+      "link": "https://item.jd.com/10222927987147.html"
     },
     {
       "brand": "Marshall",
@@ -759,8 +688,7 @@
       "promo": 849,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100325508700.html",
-      "search_query": "Marshall Willen II 京东 价格 2026"
+      "link": "https://item.jd.com/100325508700.html"
     },
     {
       "brand": "JBL",
@@ -769,8 +697,7 @@
       "promo": 349,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/100089796935.html",
-      "search_query": "JBL Go 4 京东 价格 2026"
+      "link": "https://item.jd.com/100089796935.html"
     },
     {
       "brand": "哈曼卡顿",
@@ -779,8 +706,7 @@
       "promo": 2399,
       "category": "speaker",
       "platform": "京东/天猫",
-      "link": "https://item.jd.com/10219534753754.html",
-      "search_query": "哈曼卡顿 SoundSticks 4 水晶4 京东 价格 2026"
+      "link": "https://item.jd.com/10219534753754.html"
     },
     {
       "brand": "索尼",
@@ -789,8 +715,7 @@
       "promo": 1199,
       "category": "speaker",
       "platform": "京东/天猫/官网",
-      "link": "https://item.jd.com/100051523184.html",
-      "search_query": "索尼 SRS-XE300 京东 价格 2026"
+      "link": "https://item.jd.com/100051523184.html"
     }
   ]
 }
