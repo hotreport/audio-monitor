@@ -401,12 +401,12 @@ document.getElementById('lastUpdate').textContent = new Date().toLocaleDateStrin
 
 /* ===== 品牌数据 ===== */
 const BRANDS = [
-  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'Stockwell III 7年换代 6.10发布 ¥1,699 + Summit Everest/K2 80周年旗舰 维也纳首发' },
+  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'Acton IV / Stanmore IV 四代 7.8发布 ¥2,499/¥3,499 即日开售 + Stockwell III 6.10发布 ¥1,699' },
   { name:'B&O', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=B%26O+音箱', tmall:'https://search.tmall.com/search.aspx?q=B%26O+音箱', amazon:'https://www.amazon.cn/s?k=Bang+Olufsen+speaker', official:'https://www.bang-olufsen.com/zh/cn' }, latest:'x Fragment Design 联名 5.20发售 + Beosound Haven' },
   { name:'JBL', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=JBL+音箱', tmall:'https://search.tmall.com/search.aspx?q=JBL+音箱', amazon:'https://www.amazon.cn/s?k=JBL+speaker', official:'https://cn.jbl.com' }, latest:'PartyBox 330/130 发布 + Xtreme 5/Go 5' },
   { name:'Bose', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=Bose+音箱', tmall:'https://search.tmall.com/search.aspx?q=Bose+音箱', amazon:'https://www.amazon.cn/s?k=Bose+speaker', official:'https://www.bose.cn' }, latest:'Lifestyle Ultra系列 5.15发售 + SoundLink Plus' },
   { name:'哈曼卡顿', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=哈曼卡顿+音箱', tmall:'https://search.tmall.com/search.aspx?q=哈曼卡顿+音箱', amazon:'https://www.amazon.cn/s?k=Harman+Kardon+speaker', official:'https://www.harmankardon.cn' }, latest:'Aura Studio 5 黑金典藏版 + Onyx Studio 9' },
-  { name:'索尼', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=索尼+音箱', tmall:'https://search.tmall.com/search.aspx?q=索尼+音箱', amazon:'https://www.amazon.cn/s?k=Sony+speaker', official:'https://www.sony.com.cn/category/speakers' }, latest:'WH-1000X ColleXion 5.20发售 4799元 + 砂岩色XM6' },
+  { name:'索尼', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=索尼+音箱', tmall:'https://search.tmall.com/search.aspx?q=索尼+音箱', amazon:'https://www.amazon.cn/s?k=Sony+speaker', official:'https://www.sony.com.cn/category/speakers' }, latest:'IER-M500 舞台监听IEM 7.9发布 ¥1,099 + WH-1000X ColleXion 5.20发售 4799元 + 砂岩色XM6' },
   { name:'猫王', tag:'cn', country:'中国', links:{ jd:'https://mall.jd.com/index-1000005719.html', tmall:'https://search.tmall.com/search.aspx?q=猫王+音箱', official:'https://www.radio1964.com/' }, latest:'小王子 26年新蓝牙款' },
   { name:'漫步者', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=漫步者+音箱', tmall:'https://search.tmall.com/search.aspx?q=漫步者+音箱', official:'https://www.edifier.com.cn' }, latest:'CES 2026 多款旗舰首发' },
   { name:'惠威', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=惠威+音箱', tmall:'https://search.tmall.com/search.aspx?q=惠威+音箱', official:'https://www.hivi.com.cn' }, latest:'M200MKIII+' },
@@ -417,8 +417,8 @@ const BRANDS = [
   { name:'舒尔', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=舒尔+耳机', tmall:'https://search.tmall.com/search.aspx?q=舒尔+耳机', amazon:'https://www.amazon.cn/s?k=Shure+headphone', official:'https://www.shure.com/' }, latest:'AONIC 5 / SE846' },
   { name:'铁三角', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=铁三角+耳机', tmall:'https://search.tmall.com/search.aspx?q=铁三角+耳机', amazon:'https://www.amazon.cn/s?k=Audio-Technica+headphone', official:'https://www.audio-technica.com.cn/' }, latest:'ATH-M50x 经典监听' },
   { name:'AKG', tag:'intl', country:'奥地利', links:{ jd:'https://search.jd.com/Search?keyword=AKG+耳机', tmall:'https://search.tmall.com/search.aspx?q=AKG+耳机', amazon:'https://www.amazon.cn/s?k=AKG+headphone', official:'https://www.akaipro.com/' }, latest:'K702 / Y700NC' },
-  { name:'Nothing', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Nothing+耳机', tmall:'https://search.tmall.com/search.aspx?q=Nothing+耳机', amazon:'https://www.amazon.cn/s?k=Nothing+earbuds', official:'https://nothing.tech/' }, latest:'Ear (3) 旗舰 TWS' },
-  { name:'vivo', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=vivo+耳机', tmall:'https://search.tmall.com/search.aspx?q=vivo+耳机', official:'https://www.vivo.com.cn/vivo/vivoheadphones/' }, latest:'TWS 5 Pro 6.16官宣6.26发布 + 首款头戴降噪耳机 499元' },
+  { name:'Nothing', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Nothing+耳机', tmall:'https://search.tmall.com/search.aspx?q=Nothing+耳机', amazon:'https://www.amazon.cn/s?k=Nothing+earbuds', official:'https://nothing.tech/' }, latest:'Ear (3a) 正式发布，12mm动圈+LDAC，€99（约¥768）' },
+  { name:'vivo', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=vivo+耳机', tmall:'https://search.tmall.com/search.aspx?q=vivo+耳机', official:'https://www.vivo.com.cn/vivo/vivoheadphones/' }, latest:'TWS 5 Pro 7.1已开售 独立Hi-Fi DAC+Wi-Fi音频 ¥999（首销减50）+ 首款头戴降噪 499元' },
   { name:'Teenage Engineering', tag:'intl', country:'瑞典', links:{ jd:'https://search.jd.com/Search?keyword=Teenage+Engineering', official:'https://teenage.engineering/', amazon:'https://www.amazon.cn/s?k=Teenage+Engineering' }, latest:'OP-1 Field / TX-6' },
 ];
 
@@ -563,7 +563,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-07-08', brand:'Marshall', type:'new', cat:'speaker',
+    title:'Marshall Acton IV / Stanmore IV 第四代家用音箱发布，即日开售',
+    desc:'时隔四年换代：优化高音+波导管声场更广、全新空气动力学低音导音管、动态响度算法、新增M键自定义、Auracast™多音箱联动、RCA唱机直连、LDAC/LC3高清编码、100% FSC认证木材箱体、可更换零部件、黑/奶白双色。Acton IV ¥2,499（4寸低音/95dB），Stanmore IV ¥3,499（5寸低音/97dB）。',
+    link:'https://finance.sina.com.cn/tech/elec/xpfb/2026-07-08/doc-inihaiee8077604.shtml',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0708%2F12c241adj00thuphc000id000hs00ddg.jpg&thumbnail=660x2147483647&quality=80&type=jpg', scene:true },
   { date:'2026-06-10', brand:'Marshall', type:'new', cat:'speaker',
     title:'Marshall Stockwell III 便携音箱发布，7年换代续航翻倍',
     desc:'距上代7年全面进化：1×65W+2×31W D类功放、3寸低音+2×1.75寸宽频驱动、True Stereophonic 360°环绕声+动态响度、40+h续航（翻倍）、IP55防尘防水、模块化可维修设计（电池/网罩/硅胶套/提手均可独立更换）、约27%再生材料、新增M键预设切换、吉他风格PU皮革提手+天鹅绒内衬，黑金/油彩白双色，¥1,699。',
@@ -635,7 +640,22 @@ const PUSH_NEWS = [
     desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
-  // —— 耳机（6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  // —— 耳机（7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  { date:'2026-07-09', brand:'索尼', type:'new', cat:'headphone',
+    title:'索尼 IER-M500 入耳式舞台监听耳机发布，¥1,099',
+    desc:'索尼七十余年音频世家首款专业舞台IEM：自研耳撑稳固佩戴结构+定制高解析微型动圈（40kHz频响）+全封闭高隔音腔体+防汗结构+MMCX可换线+挂耳式线材+可旋转线夹+5尺寸耳撑+4尺寸聚氨酯隔音耳塞+半透明外观3色（白/黑/红蓝经典组合），¥1,099近期发售。',
+    link:'https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260709-01.html',
+    img:'https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260709-01/_jcr_content/detail/image.img.png/1783563973284.png', scene:true },
+  { date:'2026-07-07', brand:'vivo', type:'new', cat:'headphone',
+    title:'vivo TWS 5 Pro 正式开售，独立Hi-Fi DAC+Wi-Fi音频+上音联合调校，¥999（首销减50）',
+    desc:'7月1日已正式开售：双芯架构+独立Hi-Fi DAC芯片（113dB动态范围/THD+N<0.0013%）+Wi-Fi协议点对点直连至高4.6Mbps无损音频/96kHz-24bit+16Hz-60kHz超宽频响+圈铁纯净合音架构（同轴共面+楼氏动铁+自研双折环动圈）+四麦深海智慧降噪2.0（60dB深度/5500Hz宽度）+VPU骨传导通话降噪+上音联合"清澈人声"调校+QQ/网易云双平台认证+空间音频+10频段EQ+跨生态无缝三连接+无线充电+11h/50h续航+IP54，原声白/静界黑双色，¥999（首销减50到手¥949）。',
+    link:'https://news.qq.com/rain/a/20260701A07XTX00',
+    img:'https://2f.zol-img.com.cn/product/273/547/cexuBT5ehJPs.jpg', scene:true },
+  { date:'2026-07-07', brand:'Nothing', type:'new', cat:'headphone',
+    title:'Nothing Ear (3a) 正式发布，12mm动圈+LDAC，€99四色可选',
+    desc:'Nothing 新款入门真无线耳机 7月7日正式发布：12mm 动圈单元（升级自 Ear (a) 11mm）、LDAC + Hi-Res Audio Wireless 高清传输、ANC 主动降噪、四色可选（黑/白/黄/新增粉色）、充电盒更紧凑圆润、透明半透明家族式设计、触控支持通话录音与 Audio Snapshots 语音快照功能，€99（约¥768），与 Phone (4b) 同场发布。',
+    link:'https://finance.sina.com.cn/tech/digi/2026-07-06/doc-inifwscr8583098.shtml',
+    img:'https://scr.wfcdn.de/31768/Nothing-Ear-3a-1783323911-1-0.jpg', scene:true },
   { date:'2026-06-16', brand:'vivo', type:'new', cat:'headphone',
     title:'vivo TWS 5 Pro 官宣：独立Hi-Fi DAC+圈铁合音，6/26发布',
     desc:'时隔三年回归旗舰TWS：独立Hi-Fi DAC芯片深度解析音频信号+圈铁纯净合音（动圈低频氛围+动铁高频解析）+四麦深海智慧降噪2.0+黑白双色入耳带柄设计，6月26日19:00发布会揭晓完整规格与定价（上代TWS 3 Pro首发999元）。',
@@ -968,6 +988,10 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-07-09', brand:'索尼', type:'new', text:'IER-M500 入耳式舞台监听耳机发布：自研耳撑+定制高解析微型动圈（40kHz）+全封闭高隔音+防汗+MMCX可换线+半透明3色，¥1,099近期发售', link:'https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260709-01.html' },
+  { date:'2026-07-08', brand:'Marshall', type:'new', text:'Acton IV / Stanmore IV 第四代发布：声学全面升级+Auracast+黑胶直连+RCA/唱机输入+动态响度+M键自定义+LDAC，¥2,499/¥3,499 即日开售', link:'https://finance.sina.com.cn/tech/elec/xpfb/2026-07-08/doc-inihaiee8077604.shtml' },
+  { date:'2026-07-07', brand:'Nothing', type:'new', text:'Ear (3a) 正式发布：12mm动圈+LDAC+ANC+四色（新增粉色）+紧凑充电盒+通话录音+Audio Snapshots，€99（约¥768）', link:'https://finance.sina.com.cn/tech/digi/2026-07-06/doc-inifwscr8583098.shtml' },
+  { date:'2026-07-07', brand:'vivo', type:'new', text:'TWS 5 Pro 7.1正式开售：独立Hi-Fi DAC+Wi-Fi 4.6Mbps无损+16Hz-60kHz宽频响+圈铁合音+四麦降噪2.0+上音联合调校+跨生态三连接+11h/50h续航，¥999（首销减50）', link:'https://news.qq.com/rain/a/20260701A07XTX00' },
   { date:'2026-06-25', brand:'vivo', type:'new', text:'TWS 5 Pro官宣：独立Hi-Fi DAC+圈铁合音+四麦深海智慧降噪2.0，6/26 19:00发布会揭晓定价', link:'https://news.qq.com/rain/a/20260616A06UOY00' },
   { date:'2026-06-16', brand:'vivo', type:'new', text:'TWS 5 Pro官宣：独立Hi-Fi DAC芯片+圈铁合音+四麦深海降噪2.0，6月26日19:00发布会', link:'https://news.qq.com/rain/a/20260616A06UOY00' },
   { date:'2026-06-15', brand:'华为', type:'new', text:'FreeClip 2 典藏版开售：周大福联名+AI智能体+星闪2.0+双擎单元+38h续航+IP57，¥1,499', link:'https://www.163.com/dy/article/KV7BSCN60556D62U.html' },
