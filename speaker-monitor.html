@@ -407,7 +407,7 @@ document.getElementById('lastUpdate').textContent = new Date().toLocaleDateStrin
 const BRANDS = [
   { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'Acton IV / Stanmore IV 四代 7.8发布 ¥2,499/¥3,499 即日开售 + Stockwell III 6.10发布 ¥1,699' },
   { name:'B&O', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=B%26O+音箱', tmall:'https://search.tmall.com/search.aspx?q=B%26O+音箱', amazon:'https://www.amazon.cn/s?k=Bang+Olufsen+speaker', official:'https://www.bang-olufsen.com/zh/cn' }, latest:'x Fragment Design 联名 5.20发售 + Beosound Haven' },
-  { name:'JBL', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=JBL+音箱', tmall:'https://search.tmall.com/search.aspx?q=JBL+音箱', amazon:'https://www.amazon.cn/s?k=JBL+speaker', official:'https://cn.jbl.com' }, latest:'PartyBox 330/130 发布 + Xtreme 5/Go 5' },
+  { name:'JBL', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=JBL+音箱', tmall:'https://search.tmall.com/search.aspx?q=JBL+音箱', amazon:'https://www.amazon.cn/s?k=JBL+speaker', official:'https://cn.jbl.com' }, latest:'Vienna 悬浮歌词音箱 7.19发布 ¥8299 + PartyBox 330/130 + Xtreme 5/Go 5' },
   { name:'Bose', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=Bose+音箱', tmall:'https://search.tmall.com/search.aspx?q=Bose+音箱', amazon:'https://www.amazon.cn/s?k=Bose+speaker', official:'https://www.bose.cn' }, latest:'Lifestyle Ultra系列 5.15发售 + SoundLink Plus' },
   { name:'哈曼卡顿', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=哈曼卡顿+音箱', tmall:'https://search.tmall.com/search.aspx?q=哈曼卡顿+音箱', amazon:'https://www.amazon.cn/s?k=Harman+Kardon+speaker', official:'https://www.harmankardon.cn' }, latest:'Aura Studio 5 黑金典藏版 + Onyx Studio 9' },
   { name:'索尼', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=索尼+音箱', tmall:'https://search.tmall.com/search.aspx?q=索尼+音箱', amazon:'https://www.amazon.cn/s?k=Sony+speaker', official:'https://www.sony.com.cn/category/speakers' }, latest:'IER-M500 舞台监听IEM 7.9发布 ¥1,099 + WH-1000X ColleXion 5.20发售 4799元 + 砂岩色XM6' },
@@ -594,7 +594,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-07-19', brand:'JBL', type:'new', cat:'speaker',
+    title:'JBL Vienna 悬浮歌词音箱发布，18.5寸悬浮歌词屏+100W，¥8299',
+    desc:'JBL全新Vienna悬浮歌词音箱7/19发布并上架京东：18.5英寸高清显示屏+超白高透钢化玻璃面板（歌词以动态光影悬浮空中）+9种背景主题/自定义照片背景、2.1声道（双3.23"全频+四组8.5"跑道型低频+双5"被动振膜）100W峰值功率、11种冥想场景（雨声海浪等自然音效+流动画面）+照片影集动态相册、蓝牙5.4/USB-C/AUX+iOS/安卓无线投屏+双时区时钟，¥8299。',
+    link:'https://www.163.com/dy/article/L27BJH340511B8LM.html',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0719%2F06dbec4fj00tiexie0022d000po00ngg.jpg&thumbnail=660x2147483647&quality=80&type=jpg', scene:true },
   { date:'2026-07-08', brand:'Marshall', type:'new', cat:'speaker',
     title:'Marshall Acton IV / Stanmore IV 第四代家用音箱发布，即日开售',
     desc:'时隔四年换代：优化高音+波导管声场更广、全新空气动力学低音导音管、动态响度算法、新增M键自定义、Auracast™多音箱联动、RCA唱机直连、LDAC/LC3高清编码、100% FSC认证木材箱体、可更换零部件、黑/奶白双色。Acton IV ¥2,499（4寸低音/95dB），Stanmore IV ¥3,499（5寸低音/97dB）。',
@@ -1029,6 +1034,7 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-07-19', brand:'JBL', type:'new', text:'Vienna 悬浮歌词音箱发布：18.5寸悬浮歌词屏+2.1声道100W+11种冥想场景+蓝牙5.4/投屏，¥8299上架京东', link:'https://www.163.com/dy/article/L27BJH340511B8LM.html' },
   { date:'2026-07-18', brand:'Audeze', type:'new', text:'Maxwell 2 ANC 全球首款降噪平板耳机发布：90mm平板单元+35dB ANC+SLAM声学+80h续航+LDAC，$429(PS)/$449(Xbox)已开售', link:'https://www.ithome.com/0/960/093.htm' },
   { date:'2026-07-15', brand:'无印良品', type:'new', text:'首款降噪头戴耳机 MJ-MH1 发售：极简无logo设计+ANC降噪+可换耳垫+70h续航+蓝牙/有线双模，6990日元/国行¥258', link:'https://www.163.com/dy/article/L1V6V4II0538V6NF.html' },
   { date:'2026-07-14', brand:'兴戈', type:'new', text:'「圆气」OnClip ONE 耳夹开放式耳机首发：11mm双磁钛化单元+LDAC+G型硅胶舒压环专利+7h/29h续航，¥239', link:'https://weibo.com/5625613103/5320255204496290' },
