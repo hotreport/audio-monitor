@@ -430,6 +430,8 @@ const BRANDS = [
   { name:'Cleer', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=Cleer+耳机', tmall:'https://search.tmall.com/search.aspx?q=Cleer+耳机', amazon:'https://www.amazon.cn/s?k=Cleer+headphone', official:'https://www.cleerbrand.com/' }, latest:'ARC 6 音弧 开放式AI耳机 4.22发布 + Bridge 鹊桥 + Infinity 风尚' },
   { name:'1MORE 万魔', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=万魔+耳机', tmall:'https://search.tmall.com/search.aspx?q=1MORE+耳机', amazon:'https://www.amazon.cn/s?k=1MORE+headphone', official:'https://www.1more.com/' }, latest:'EVO 入耳降噪 / PistonBuds Pro 2' },
   { name:'Meta', tag:'intl', country:'美国', links:{ official:'https://www.meta.com/' }, latest:'Ray-Ban Meta 智能眼镜音频+AI（2026下一代即将发布）' },
+  { name:'水月雨', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=水月雨+音箱', tmall:'https://search.tmall.com/search.aspx?q=水月雨+音箱', official:'https://www.moondroplab.com/' }, latest:'MM3A 5模3英寸HiFi桌面音箱 7.22开售 ¥699.9（首发）' },
+  { name:'ROG', tag:'intl', country:'中国台湾', links:{ jd:'https://search.jd.com/Search?keyword=ROG+耳机', tmall:'https://search.tmall.com/search.aspx?q=ROG+耳机', official:'https://rog.asus.com.cn/' }, latest:'Pelta Core 破风标准版游戏耳机 7.21开售 ¥499' },
 ];
 
 /* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
@@ -594,7 +596,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（7.26 新增1条 + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-07-22', brand:'水月雨', type:'new', cat:'speaker',
+    title:'水月雨 MM3A 五模3英寸HiFi桌面音箱开售，首发到手699.9元',
+    desc:'水月雨MM3A 5模多用途有源3英寸HiFi音箱7/22 10:00京东开售：原创低衍射多曲面无平行面箱体（显著削弱内部驻波）、3英寸铝制中低音+双3英寸无源辐射器+0.65英寸丝膜球顶高音、单通道33W/整机66W+全数字DSP分频+动态增强算法（低频下潜50Hz/小音量饱满）、五模输入（USB/光纤/同轴/3.5mm AUX/蓝牙LDAC）+App/PC端专业PEQ自由调音、东莞Klippel实验室精密调校+高自由场实验室实测。官方定价999.9元/一对，京东首发到手699.9元。',
+    link:'http://2025.gfan.com/info/602134.html',
+    img:'http://gfanatt.gfan.com/image/0/2026/07/21/4be6277bfb47441a8dfdbf93d563420c.png', scene:true },
   { date:'2026-07-19', brand:'JBL', type:'new', cat:'speaker',
     title:'JBL Vienna 悬浮歌词音箱发布，18.5寸悬浮歌词屏+100W，¥8299',
     desc:'JBL全新Vienna悬浮歌词音箱7/19发布并上架京东：18.5英寸高清显示屏+超白高透钢化玻璃面板（歌词以动态光影悬浮空中）+9种背景主题/自定义照片背景、2.1声道（双3.23"全频+四组8.5"跑道型低频+双5"被动振膜）100W峰值功率、11种冥想场景（雨声海浪等自然音效+流动画面）+照片影集动态相册、蓝牙5.4/USB-C/AUX+iOS/安卓无线投屏+双时区时钟，¥8299。',
@@ -676,7 +683,12 @@ const PUSH_NEWS = [
     desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
-  // —— 耳机（7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  // —— 耳机（7.26 新增1条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  { date:'2026-07-21', brand:'ROG', type:'new', cat:'headphone',
+    title:'华硕ROG Pelta Core 破风标准版游戏耳机开售，¥499',
+    desc:'华硕玩家国度ROG破风标准版(Pelta Core)有线游戏耳机7/21 20:00京东正式开售：50mm ROG镀钛振膜单元(20Hz-20kHz/32Ω)+10mm超宽频吊杆麦克风（一键静音）、300g轻量化人体工学+椭圆耳罩+三级可调弹性头带+透气网布耳垫、USB-C有线连接+前环Aura RGB灯效、PEQ高级参数化音频自定义（奥创速连网页版/CS2/三角洲等竞技游戏预设/参考MRG战队Nitr0职业调校）、P01A通话测试4.59 MOS-LQO1（超越微软Teams 3.9均值）。首发价499元，京东自营已上架。',
+    link:'https://finance.sina.cn/tech/2026-07-21/detail-iniiqkny9260119.d.html',
+    img:'http://gfanatt.gfan.com/image/0/2026/07/16/13345445212b4f5da786760e0f3689cb.png', scene:false, bg:'#FFFFFF' },
   { date:'2026-07-18', brand:'Audeze', type:'new', cat:'headphone',
     title:'Audeze Maxwell 2 ANC 全球首款降噪平板耳机发布，$429起',
     desc:'索尼SIE旗下Audeze正式推出全球首款支持ANC主动降噪的平板驱动单元耳机：90mm激光蚀刻平面磁性单元(10Hz-50kHz)、航空级ANC 35dB降噪深度、SLAM声学管理系统、FILTER AI降噪麦克风、80+h续航、蓝牙5.3(Auracast/LE Audio/LDAC/AAC)、24bit/96kHz高清、可拆卸磁吸耳垫+可替换ReSkin面板、支持头部追踪，PS版$429(约¥2911)/Xbox版$449(约¥3046)，已开售。',
@@ -1034,6 +1046,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-07-22', brand:'水月雨', type:'new', text:'MM3A 5模3英寸HiFi桌面音箱开售：原创低衍射多曲面无平行面箱体+3英寸铝盆+双无源辐射器+丝膜高音+单通道33W/整机66W+全数字DSP分频+五模输入（USB/光纤/同轴/AUX/蓝牙LDAC）+App/PC PEQ调音+东莞Klippel实验室调校，京东首发到手¥699.9', link:'http://2025.gfan.com/info/602134.html' },
+  { date:'2026-07-21', brand:'ROG', type:'new', text:'Pelta Core 破风标准版游戏耳机7/21 20:00开售：50mm镀钛振膜+10mm吊杆麦+300g轻量化+USB-C有线+Aura RGB+PEQ高级参数化（CS2预设/参考Nitr0职业调校），首发价¥499', link:'https://finance.sina.cn/tech/2026-07-21/detail-iniiqkny9260119.d.html' },
   { date:'2026-07-19', brand:'JBL', type:'new', text:'Vienna 悬浮歌词音箱发布：18.5寸悬浮歌词屏+2.1声道100W+11种冥想场景+蓝牙5.4/投屏，¥8299上架京东', link:'https://www.163.com/dy/article/L27BJH340511B8LM.html' },
   { date:'2026-07-18', brand:'Audeze', type:'new', text:'Maxwell 2 ANC 全球首款降噪平板耳机发布：90mm平板单元+35dB ANC+SLAM声学+80h续航+LDAC，$429(PS)/$449(Xbox)已开售', link:'https://www.ithome.com/0/960/093.htm' },
   { date:'2026-07-15', brand:'无印良品', type:'new', text:'首款降噪头戴耳机 MJ-MH1 发售：极简无logo设计+ANC降噪+可换耳垫+70h续航+蓝牙/有线双模，6990日元/国行¥258', link:'https://www.163.com/dy/article/L1V6V4II0538V6NF.html' },
@@ -1494,9 +1508,9 @@ const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑
 const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument', soundbar:'cat-soundbar', wearable:'cat-wearable' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'vivo':'V', 'TCL':'TCL', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL', 'Meze':'MEZE', '雅马哈':'YAMAHA', 'Noble':'NOBLE', 'Audeze':'AUDEZE', 'Ortofon':'ORTOFON', 'iFi':'iFi', 'AMR':'AMR', 'Sonos':'SONOS', 'Focal':'FOCAL', 'Cleer':'CLEER', '1MORE 万魔':'1MORE', 'Meta':'META' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'vivo':'#415FFF', 'TCL':'#004B8D', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A', 'Meze':'#D4AF37', '雅马哈':'#D82C20', 'Noble':'#1A1A1A', 'Audeze':'#1A1A1A', 'Ortofon':'#1A1A1A', 'iFi':'#1A1A1A', 'AMR':'#1A1A1A', 'Sonos':'#1A1A1A', 'Focal':'#E8A838', 'Cleer':'#2ECC71', '1MORE 万魔':'#FF4757', 'Meta':'#1877F2' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'vivo':'#FFFFFF', 'TCL':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF', 'Meze':'#1A1A1A', '雅马哈':'#FFFFFF', 'Noble':'#FFFFFF', 'Audeze':'#FFFFFF', 'Ortofon':'#FFFFFF', 'iFi':'#FFFFFF', 'AMR':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'vivo':'V', 'TCL':'TCL', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL', 'Meze':'MEZE', '雅马哈':'YAMAHA', 'Noble':'NOBLE', 'Audeze':'AUDEZE', 'Ortofon':'ORTOFON', 'iFi':'iFi', 'AMR':'AMR', 'Sonos':'SONOS', 'Focal':'FOCAL', 'Cleer':'CLEER', '1MORE 万魔':'1MORE', 'Meta':'META', '水月雨':'MD', 'ROG':'ROG' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'vivo':'#415FFF', 'TCL':'#004B8D', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A', 'Meze':'#D4AF37', '雅马哈':'#D82C20', 'Noble':'#1A1A1A', 'Audeze':'#1A1A1A', 'Ortofon':'#1A1A1A', 'iFi':'#1A1A1A', 'AMR':'#1A1A1A', 'Sonos':'#1A1A1A', 'Focal':'#E8A838', 'Cleer':'#2ECC71', '1MORE 万魔':'#FF4757', 'Meta':'#1877F2', '水月雨':'#4A6FE3', 'ROG':'#FF0033' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'vivo':'#FFFFFF', 'TCL':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF', 'Meze':'#1A1A1A', '雅马哈':'#FFFFFF', 'Noble':'#FFFFFF', 'Audeze':'#FFFFFF', 'Ortofon':'#FFFFFF', 'iFi':'#FFFFFF', 'AMR':'#FFFFFF', '水月雨':'#FFFFFF', 'ROG':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
