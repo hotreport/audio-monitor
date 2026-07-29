@@ -434,6 +434,9 @@ const BRANDS = [
   { name:'ROG', tag:'intl', country:'中国台湾', links:{ jd:'https://search.jd.com/Search?keyword=ROG+耳机', tmall:'https://search.tmall.com/search.aspx?q=ROG+耳机', official:'https://rog.asus.com.cn/' }, latest:'Pelta Core 破风标准版游戏耳机 7.21开售 ¥499' },
   { name:'iQOO', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=iQOO+耳机', tmall:'https://search.tmall.com/search.aspx?q=iQOO+耳机', official:'https://www.iqoo.com/' }, latest:'TWS 5e 7.24开售 智能降噪+50h续航 ¥149（首销¥129）' },
   { name:'Jamo', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=Jamo+音箱', amazon:'https://www.amazon.cn/s?k=Jamo+speaker', official:'https://www.jamo.com/' }, latest:'HYG系列蓝牙音箱 7月全球上市：Flex $279 + Flow $129 + Reflect $149' },
+  // —— 2026-07-29 补录：三星/飞傲（此前仅加入PRICES与配色，未进入BRANDS矩阵）——
+  { name:'三星', tag:'intl', country:'韩国', links:{ jd:'https://search.jd.com/Search?keyword=三星+耳机', tmall:'https://search.tmall.com/search.aspx?q=三星+耳机', official:'https://www.samsung.com.cn/' }, latest:'Galaxy Buds4 Pro 7.22发布 ¥1,899 + Galaxy Buds3 Pro / Music Frame / Q990F回音壁' },
+  { name:'飞傲', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=飞傲+CD播放器', tmall:'https://search.tmall.com/search.aspx?q=飞傲+播放器', official:'https://www.fiio.com/' }, latest:'DM15 便携立体声CD播放器 7.22开售 ¥1,599（双AK4493S）' },
 ];
 
 /* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
@@ -690,7 +693,12 @@ const PUSH_NEWS = [
     desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
-  // —— 耳机（7.26 新增2条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  // —— 耳机（7.29 新增1条三星 + 7.26 新增2条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  { date:'2026-07-22', brand:'三星', type:'new', cat:'headphone',
+    title:'三星 Galaxy Buds4 Pro 正式发布，双路扬声器+增强ANC+AI同传，¥1,899',
+    desc:'三星Galaxy全球新品发布会7/22推出Buds4 Pro真无线耳机：铝制金属饰面+半透明充电盒+映雪白/旷宇黑/绯霞金三色、进阶双路扬声器（低频单元振膜面积较上代大19.8%）+独立双功放+SSC 24-bit/96kHz超高音质、增强型自适应ANC+自适应噪音控制+语音检测+警报检测、6麦克风DNN超清晰通话+超宽带SWB、360音频+头部追踪、蓝牙6.1+LE Audio+Auracast、捏合控制+点头/摇头手势+IP57、Galaxy AI入耳式同传+实时翻译，国行¥1,899。',
+    link:'https://www.samsung.com.cn/audio-sound/galaxy-buds/galaxy-buds4-pro-black-sm-r640nzkachc/',
+    img:'https://images.samsung.com.cn/cn/galaxy-buds4-pro/feature/galaxy-buds4-pro-kv-mo.jpg', scene:true },
   { date:'2026-07-24', brand:'iQOO', type:'new', cat:'headphone',
     title:'iQOO TWS 5e 正式开售，智能降噪+50h续航+42ms低延迟，¥149（首销¥129）',
     desc:'7月24日正式开售：11mm高解析发声单元+智能主动降噪+风噪抑制算法+50h超长总续航（充电10分钟听歌2小时）+42ms全链路游戏低延迟+单边仅3.8g轻盈贴合+Monster Sound电竞声效+DeepX 3.0立体声效+空间音频+AI智能通话降噪+BlueOS生态互联+电光白/锋芒黄双色+圆润流线型充电仓延续iQOO经典速度美学，官方¥149/首销优惠价¥129。',
@@ -831,7 +839,12 @@ const PUSH_NEWS = [
     desc:'对标华为 FreeClip 2，全能均衡型开放式耳夹耳机，上代首发定价 799 元，新品预计同价位段。',
     link:'https://www.oppo.com/en/newsroom/press/oppo-launches-enco-clip2/',
     img:'https://img1.mydrivers.com/img/20260428/12ace1e14dcd4e2a8cbae6fcb3783611.png', scene:true },
-  // —— Hi-Fi / 黑胶 / 展会（6.25 新增9条Vienna展重磅 + 6.8 新增2条iFi/AMR + 6.5 新增2条Ortofon + 6.5 新增5条 Vienna展）——
+  // —— Hi-Fi / 黑胶 / 展会（7.29 新增1条飞傲 + 6.25 新增9条Vienna展重磅 + 6.8 新增2条iFi/AMR + 6.5 新增2条Ortofon + 6.5 新增5条 Vienna展）——
+  { date:'2026-07-22', brand:'飞傲', type:'new', cat:'hifi',
+    title:'飞傲 DM15 便携立体声CD播放器上市，双AK4493S+4.4平衡，¥1,599',
+    desc:'飞傲7/20发布DM15便携立体声CD播放器，7/22银色版开售、7/27黑色版上市：144×137×25.5mm全铝合金机身重471.5g、4700mAh电池续航超6h、可隔离电池作台机使用；双AKM AK4493S DAC+高通QCC3086蓝牙芯片支持aptX Lossless无损蓝牙、HiFi级USB声卡支持384kHz/32bit及DSD256、0.96英寸LCD屏、3.5mm单端+4.4mm平衡输出（台机模式平衡L+R≥1100mW+1100mW@32Ω），定价1599元。',
+    link:'https://www.ithome.com/0/982/084.htm',
+    img:'https://img.ithome.com/newsuploadfiles/2026/7/d4a3e087-091a-4e63-892a-c0c623069c82.jpg', scene:false, bg:'#FFFFFF' },
   { date:'2026-06-04', brand:'JBL', type:'new', cat:'hifi',
     title:'JBL 80周年旗舰 Summit Everest / K2 维也纳全球首发',
     desc:'JBL第五个"Project"称号音箱家族压轴之作：Everest配备3只2英寸双振膜双电机压缩驱动器+专利3合1扩展喉管+双10寸中低音+双15寸Differential Drive低音，参考级声压与极低失真；K2为15寸三路落地箱。Summit系列至此五款齐全，Everest每对约€160,000、K2每对约€85,000，维也纳High End展全球首发。',
@@ -1058,6 +1071,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-07-22', brand:'三星', type:'new', text:'Galaxy Buds4 Pro 正式发布：双路扬声器+独立双功放+SSC 24-bit/96kHz+增强型自适应ANC+AI同传+捏合/头部手势+IP57，国行¥1,899', link:'https://www.samsung.com.cn/audio-sound/galaxy-buds/galaxy-buds4-pro-black-sm-r640nzkachc/' },
+  { date:'2026-07-22', brand:'飞傲', type:'new', text:'DM15 便携立体声CD播放器上市：双AKM AK4493S DAC+aptX Lossless+384kHz/32bit+DSD256+4.4mm平衡输出，¥1,599', link:'https://www.ithome.com/0/982/084.htm' },
   { date:'2026-07-01', brand:'Jamo', type:'new', text:'HYG系列蓝牙音箱全球上市：Flex（$279，双高音+5寸低音56W+Auracast+氛围灯）、Flow（$129，IPX7+27h续航+蓝牙6.0+6色）、Reflect（$149，床头+无线充电+助眠音景），丹麦北欧Hygge设计', link:'https://www.jamo.com/products/hyg-flex' },
   { date:'2026-07-24', brand:'iQOO', type:'new', text:'TWS 5e 正式开售：智能降噪+50h续航+42ms低延迟+11mm单元+Monster Sound+BlueOS生态，¥149（首销¥129）', link:'https://www.163.com/dy/article/L2K2QPK1051191D6.html' },
   { date:'2026-07-22', brand:'水月雨', type:'new', text:'MM3A 5模3英寸HiFi桌面音箱开售：原创低衍射多曲面无平行面箱体+3英寸铝盆+双无源辐射器+丝膜高音+单通道33W/整机66W+全数字DSP分频+五模输入（USB/光纤/同轴/AUX/蓝牙LDAC）+App/PC PEQ调音+东莞Klippel实验室调校，京东首发到手¥699.9', link:'http://2025.gfan.com/info/602134.html' },
