@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-09 10:18:30",
-  "total": 79,
+  "generated_at": "2026-07-29 09:32:39",
+  "total": 89,
   "products": [
     {
       "brand": "Marshall",
@@ -106,7 +106,7 @@
       "brand": "哈曼卡顿",
       "model": "Aura Studio 4",
       "orig": 4299,
-      "promo": 3499,
+      "promo": 1719,
       "category": "speaker",
       "platform": "京东/天猫",
       "link": "https://search.jd.com/Search?keyword=哈曼卡顿+Aura+Studio+4",
@@ -791,6 +791,106 @@
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/100051523184.html",
       "search_query": "索尼 SRS-XE300 京东 价格 2026"
+    },
+    {
+      "brand": "索尼",
+      "model": "HT-A7100 回音壁",
+      "orig": 8999,
+      "promo": 6999,
+      "category": "soundbar",
+      "platform": "京东/天猫/官网",
+      "link": "https://item.jd.com/10219692654605.html",
+      "search_query": "索尼 HT-A7100 回音壁 京东 价格 2026"
+    },
+    {
+      "brand": "索尼",
+      "model": "HT-B500 杜比全景声",
+      "orig": 2999,
+      "promo": 2299,
+      "category": "soundbar",
+      "platform": "京东/天猫/官网",
+      "link": "https://search.jd.com/Search?keyword=索尼+HT-B500",
+      "search_query": "索尼 HT-B500 杜比全景声 京东 价格 2026"
+    },
+    {
+      "brand": "三星",
+      "model": "HW-Q990F 回音壁",
+      "orig": 9899,
+      "promo": 6793,
+      "category": "soundbar",
+      "platform": "京东/天猫/官网",
+      "link": "https://search.jd.com/Search?keyword=三星+HW-Q990F",
+      "search_query": "三星 HW-Q990F 回音壁 京东 价格 2026"
+    },
+    {
+      "brand": "Sonos",
+      "model": "Arc 回音壁",
+      "orig": 9999,
+      "promo": 8499,
+      "category": "soundbar",
+      "platform": "官网/天猫",
+      "link": "https://www.sonos.com/zh-cn/shop/arc",
+      "search_query": "Sonos Arc 回音壁 京东 价格 2026"
+    },
+    {
+      "brand": "Sonos",
+      "model": "Beam Gen 2 回音壁",
+      "orig": 4499,
+      "promo": 3999,
+      "category": "soundbar",
+      "platform": "官网/天猫",
+      "link": "https://www.sonos.com/zh-cn/shop/beam",
+      "search_query": "Sonos Beam Gen 2 回音壁 京东 价格 2026"
+    },
+    {
+      "brand": "Sonos",
+      "model": "Era 300 空间音频",
+      "orig": 3999,
+      "promo": 3499,
+      "category": "speaker",
+      "platform": "官网/天猫",
+      "link": "https://www.sonos.com/zh-cn/shop/era-300",
+      "search_query": "Sonos Era 300 空间音频 京东 价格 2026"
+    },
+    {
+      "brand": "Focal",
+      "model": "Utopia 2022",
+      "orig": 32800,
+      "promo": 28800,
+      "category": "headphone",
+      "platform": "京东/官网",
+      "link": "https://search.jd.com/Search?keyword=Focal+Utopia",
+      "search_query": "Focal Utopia 2022 京东 价格 2026"
+    },
+    {
+      "brand": "Focal",
+      "model": "Bathys 降噪无线",
+      "orig": 4980,
+      "promo": 4280,
+      "category": "headphone",
+      "platform": "京东/官网",
+      "link": "https://search.jd.com/Search?keyword=Focal+Bathys",
+      "search_query": "Focal Bathys 降噪无线 京东 价格 2026"
+    },
+    {
+      "brand": "Cleer",
+      "model": "ARC 6 音弧",
+      "orig": 1399,
+      "promo": 1099,
+      "category": "headphone",
+      "platform": "京东/天猫/官网",
+      "link": "https://search.jd.com/Search?keyword=Cleer+ARC+6",
+      "search_query": "Cleer ARC 6 音弧 京东 价格 2026"
+    },
+    {
+      "brand": "1MORE 万魔",
+      "model": "EVO 入耳降噪",
+      "orig": 999,
+      "promo": 699,
+      "category": "headphone",
+      "platform": "京东/天猫/官网",
+      "link": "https://search.jd.com/Search?keyword=万魔+EVO",
+      "search_query": "1MORE 万魔 EVO 入耳降噪 京东 价格 2026"
     }
   ]
 }
