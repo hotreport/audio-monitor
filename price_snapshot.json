@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-29 09:32:39",
-  "total": 89,
+  "generated_at": "2026-08-04 09:29:35",
+  "total": 90,
   "products": [
     {
       "brand": "Marshall",
@@ -15,7 +15,7 @@
     {
       "brand": "Marshall",
       "model": "Acton III BT",
-      "orig": 2145,
+      "orig": 1499,
       "promo": 1738,
       "category": "speaker",
       "platform": "京东/天猫",
@@ -26,7 +26,7 @@
       "brand": "Marshall",
       "model": "Stanmore III",
       "orig": 3499,
-      "promo": 2573,
+      "promo": 3023,
       "category": "speaker",
       "platform": "京东/天猫",
       "link": "https://item.jd.com/100024554085.html",
@@ -55,7 +55,7 @@
     {
       "brand": "JBL",
       "model": "Charge 6",
-      "orig": 1494,
+      "orig": 1299,
       "promo": 1274,
       "category": "speaker",
       "platform": "京东/天猫",
@@ -65,8 +65,8 @@
     {
       "brand": "JBL",
       "model": "Xtreme 4",
-      "orig": 2299,
-      "promo": 1799,
+      "orig": 2199,
+      "promo": 1940,
       "category": "speaker",
       "platform": "京东/天猫",
       "link": "https://item.jd.com/100096212800.html",
@@ -75,7 +75,7 @@
     {
       "brand": "Bose",
       "model": "SoundLink Flex 2",
-      "orig": 1699,
+      "orig": 1399,
       "promo": 1164,
       "category": "speaker",
       "platform": "京东/天猫/官网",
@@ -286,7 +286,7 @@
       "brand": "森海塞尔",
       "model": "Momentum 4",
       "orig": 2999,
-      "promo": 1689,
+      "promo": 1381,
       "category": "headphone",
       "platform": "京东/天猫/官网",
       "link": "https://search.jd.com/Search?keyword=森海塞尔+Momentum+4",
@@ -401,6 +401,16 @@
       "platform": "官网",
       "link": "https://teenage.engineering/products/ob-4",
       "search_query": "Teenage Engineering OB-4 蓝牙音箱 京东 价格 2026"
+    },
+    {
+      "brand": "MORROR ART",
+      "model": "A2 全透明歌词音响",
+      "orig": 3899,
+      "promo": 3899,
+      "category": "speaker",
+      "platform": "京东/天猫/官网",
+      "link": "https://item.jd.com/100233406494.html",
+      "search_query": "MORROR ART A2 全透明歌词音响 京东 价格 2026"
     },
     {
       "brand": "MORROR ART",
@@ -876,7 +886,7 @@
       "brand": "Cleer",
       "model": "ARC 6 音弧",
       "orig": 1399,
-      "promo": 1099,
+      "promo": 1214,
       "category": "headphone",
       "platform": "京东/天猫/官网",
       "link": "https://search.jd.com/Search?keyword=Cleer+ARC+6",
