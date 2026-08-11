@@ -431,7 +431,7 @@ const BRANDS = [
   { name:'1MORE 万魔', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=万魔+耳机', tmall:'https://search.tmall.com/search.aspx?q=1MORE+耳机', amazon:'https://www.amazon.cn/s?k=1MORE+headphone', official:'https://www.1more.com/' }, latest:'EVO 入耳降噪 / PistonBuds Pro 2' },
   { name:'Meta', tag:'intl', country:'美国', links:{ official:'https://www.meta.com/' }, latest:'Ray-Ban Meta 智能眼镜音频+AI（2026下一代即将发布）' },
   { name:'水月雨', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=水月雨+音箱', tmall:'https://search.tmall.com/search.aspx?q=水月雨+音箱', official:'https://www.moondroplab.com/' }, latest:'MM3A 5模3英寸HiFi桌面音箱 7.22开售 ¥699.9（首发）' },
-  { name:'ROG', tag:'intl', country:'中国台湾', links:{ jd:'https://search.jd.com/Search?keyword=ROG+耳机', tmall:'https://search.tmall.com/search.aspx?q=ROG+耳机', official:'https://rog.asus.com.cn/' }, latest:'Pelta Core 破风标准版游戏耳机 7.21开售 ¥499' },
+  { name:'ROG', tag:'intl', country:'中国台湾', links:{ jd:'https://search.jd.com/Search?keyword=ROG+耳机', tmall:'https://search.tmall.com/search.aspx?q=ROG+耳机', official:'https://rog.asus.com.cn/' }, latest:'Gjallar 加拉尔游戏音箱 8.11首发 ¥3699（2.1.2声道/杜比全景声/全彩LCD控制台/6.5寸无线低音炮）+ Pelta Core 破风标准版游戏耳机 7.21开售 ¥499' },
   { name:'iQOO', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=iQOO+耳机', tmall:'https://search.tmall.com/search.aspx?q=iQOO+耳机', official:'https://www.iqoo.com/' }, latest:'TWS 5e 7.24开售 智能降噪+50h续航 ¥149（首销¥129）' },
   { name:'Jamo', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=Jamo+音箱', amazon:'https://www.amazon.cn/s?k=Jamo+speaker', official:'https://www.jamo.com/' }, latest:'HYG系列蓝牙音箱 7月全球上市：Flex $279 + Flow $129 + Reflect $149' },
   // —— 2026-07-29 补录：三星/飞傲（此前仅加入PRICES与配色，未进入BRANDS矩阵）——
@@ -616,7 +616,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（7.29 新增1条MORROR ART A2 + 7.26 新增1条Jamo + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（8.11 新增1条ROG Gjallar + 7.29 新增1条MORROR ART A2 + 7.26 新增1条Jamo + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-08-11', brand:'ROG', type:'new', cat:'speaker',
+    title:'华硕ROG首款游戏音箱"加拉尔"国行版上市，2.1.2声道杜比全景声+全彩LCD控制台，¥3699',
+    desc:'华硕玩家国度ROG旗下首款游戏音箱"Gjallar（加拉尔）"国行版8/11京东首发上市（首发¥3699/常规¥3999）：2.1.2声道杜比全景声游戏音响系统三大部分——回音壁内置1对高音单元+2组50mm全频单元（一组朝前、一组朝上投射，借助天花板反射实现天空声道）+6.5英寸无线低音炮（5GHz无线连接，65W功率，定额80W/最高160W，可自由摆放）+一体式多功能控制台（双AEC主动降噪麦克风+全彩LCD显示实时音源/EQ/灯效/动效+RGB灯效）；接口全面（蓝牙5.3+Toslink光纤+AUX+USB-C+HDMI IN/HDMI OUT eARC回传+USB-A分线器扩展键鼠耳机）；奥创软件支持深度调校声场参数/灯光逻辑，对PC/PS5/Xbox/Switch多平台游戏玩家桌面沉浸音频方案。',
+    link:'https://dcdv.zol.com.cn/1230/12306648.html',
+    img:'https://doc-fd.zol-img.com.cn/t_s2000x2000/g8/M00/06/04/ChMkLWp6i5yIKvnhAAe6DEwV7p0AAJYbwM3VRMAB7ok340.png', scene:true },
   { date:'2026-07-28', brand:'MORROR ART', type:'new', cat:'speaker',
     title:'MORROR ART 莫纳 A2 全透明歌词音响发布，21.5寸双透明屏+德国肖特玻璃振膜，¥3,899',
     desc:'MORROR ART莫纳（中国原创音乐科技品牌，7/28无锡发布会正式启用中文品牌名"莫纳"）7/28发布全透明歌词音响A2，官方¥3,899全渠道同步开售。七年研发积淀：双重透明设计——高透玻璃箱体+透明喇叭+21.5英寸FHD TFT双透明显示面板（让歌词与画面仿佛悬浮于家居背景之上）；系统级声学——11.5升密闭声学腔体+双4英寸全频单元2.0声道+德国肖特超薄玻璃振膜+凹型振膜+对称悬吊系统+高性能磁路+高刚性架构（人声自然/细节丰富/耐听）；AI内容生态——AI MV可按歌曲类型/节奏/情绪生成动态场景/字体运动+视觉效果（告别模板化），MORROR 电台可介绍歌手背景/创作故事/相关音乐语境（按时间/天气/偏好推荐）；不播放时可切换数字影集/桌面时钟；官方规划SKU由9款扩至20余款、价格带延伸至接近2万元。',
@@ -1111,6 +1116,7 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-08-11', brand:'ROG', type:'new', text:'Gjallar（加拉尔）国行版游戏音箱系统上市：ROG首款游戏音箱，2.1.2声道杜比全景声（回音壁：1对高音+4×2寸全频单元2组朝前/朝上投射）+6.5英寸无线低音炮（5GHz无线+65W，定额80W/峰值160W）+一体控制台（双AEC降噪麦克风+全彩LCD屏+实体旋钮调EQ/灯效/音源/麦克风+RGB），蓝牙5.3+HDMI eARC+光纤/USB-C/AUX+USB-A分线器，奥创软件深度调音，京东首发¥3699（常规¥3999）', link:'https://dcdv.zol.com.cn/1230/12306648.html' },
   { date:'2026-08-09', brand:'韶音', type:'new', text:'OpenFit 2 AI开放式耳机天猫上架：左右分体海豚弧耳挂+AI千问大模型（AI总结/思维导图/多语种转写/会议洞察）+双4GB本地录音+Ultra-Soft Silicone 2.0，¥1698（8/17发售）', link:'https://www.163.com/dy/article/L3T00NF105561FZO.html' },
   { date:'2026-08-08', brand:'CMF', type:'new', text:'Clip Pro开放式耳夹耳机国行开售：10.8mm双磁单线圈动圈+LDAC+Hi-Res Audio Wireless认证+5.9g+Smart Dial智能旋钮充电盒+蓝牙5.4/IP54+32.5h续航，¥549起（礼盒¥599）', link:'https://www.toutiao.com/article/7671519012274110982' },
   { date:'2026-08-07', brand:'DITA', type:'new', text:'PROJECT M₂ 单动圈入耳式耳机上市：8.3mm PM1.8Ti碳化钛振膜+SUS304不锈钢内腔+双N45磁铁+冰蓝色慢注树脂外壳+37Ω/111dB+可换3.5/4.4插头，¥2188', link:'https://www.sina.cn/news/detail/5329238305279901.html' },
