@@ -437,6 +437,11 @@ const BRANDS = [
   // —— 2026-07-29 补录：三星/飞傲（此前仅加入PRICES与配色，未进入BRANDS矩阵）——
   { name:'三星', tag:'intl', country:'韩国', links:{ jd:'https://search.jd.com/Search?keyword=三星+耳机', tmall:'https://search.tmall.com/search.aspx?q=三星+耳机', official:'https://www.samsung.com.cn/' }, latest:'Galaxy Buds4 Pro 7.22发布 ¥1,899 + Galaxy Buds3 Pro / Music Frame / Q990F回音壁' },
   { name:'飞傲', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=飞傲+CD播放器', tmall:'https://search.tmall.com/search.aspx?q=飞傲+播放器', official:'https://www.fiio.com/' }, latest:'DM15 便携立体声CD播放器 7.22开售 ¥1,599（双AK4493S）' },
+  // —— 2026-08-11 新增：韶音/CMF/DITA/iBasso ——
+  { name:'韶音', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=韶音+耳机', tmall:'https://search.tmall.com/search.aspx?q=韶音+耳机', official:'https://www.shokz.com.cn/' }, latest:'OpenFit 2 AI 开放式耳机 8.9天猫上架 ¥1698（8/17正式发售，AI千问大模型+8GB本地存储）' },
+  { name:'CMF', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=CMF+耳机', official:'https://cmf.tech/' }, latest:'Clip Pro 开放式耳夹耳机 8.8国内开售，10.8mm双磁+LDAC+Smart Dial智能旋钮，¥549起' },
+  { name:'DITA', tag:'intl', country:'新加坡', links:{ official:'https://ditaaudio.com/', tmall:'https://search.tmall.com/search.aspx?q=DITA+耳机' }, latest:'PROJECT M₂ 单动圈入耳式耳机 8.7上市，8.3mm碳化钛振膜+不锈钢声学腔体+冰蓝树脂壳，¥2188' },
+  { name:'iBasso', tag:'cn', country:'中国', links:{ jd:'https://item.jd.com/100216603334.html', tmall:'https://search.tmall.com/search.aspx?q=iBasso+DC-Tonfa', official:'https://ibasso.cn/' }, latest:'DC-Tonfa R2R解码小尾巴 8.3开售，8通道全平衡分立R2R+飞秒时钟+800mW@32Ω，早鸟价¥1999（中日联合调音）' },
 ];
 
 /* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
@@ -554,6 +559,11 @@ const PRICES = [
   { brand:'Cleer', model:'ARC 6 音弧', orig:1399, promo:1214, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/51QxdAF8WgL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=Cleer+ARC+6' },
   // === 1MORE 万魔 耳机 ===
   { brand:'1MORE 万魔', model:'EVO 入耳降噪', orig:999, promo:699, category:'headphone', platform:'京东/天猫/官网', img:'https://m.media-amazon.com/images/I/41QxdAF8WgL._AC_SX500_SY500_.jpg', link:'https://search.jd.com/Search?keyword=万魔+EVO' },
+  // === 2026-08-11 新增 ===
+  { brand:'Nothing', model:'CMF Clip Pro 耳夹', orig:599, promo:549, category:'headphone', platform:'京东/天猫', img:'http://qqpublic.qpic.cn/qq_public/0/28-1342352488-A00504CF3E8146EDE9E203920E1420A4/0?fmt=jpg', link:'https://search.jd.com/Search?keyword=CMF+Clip+Pro' },
+  { brand:'韶音', model:'OpenFit 2 AI', orig:1698, promo:1698, category:'headphone', platform:'天猫（8/17开售）', img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0809%2F3545ba45j00tjhiej00erd000nu00r0p.jpg&thumbnail=660x2147483647&quality=80&type=jpg', link:'https://search.tmall.com/search.aspx?q=韶音+OpenFit+2+AI' },
+  { brand:'DITA', model:'PROJECT M₂ 钛振膜IEM', orig:2188, promo:2188, category:'headphone', platform:'天猫/微店', img:'https://cdn.shopify.com/s/files/1/0053/9967/4970/files/DITAProjectM2HeroImage_1_1024x.jpg', link:'https://ditaaudio.com/products/project-m2' },
+  { brand:'iBasso', model:'DC-Tonfa R2R小尾巴', orig:2399, promo:1999, category:'other', platform:'京东自营', img:'https://ibasso.cn/wp-content/uploads/2026/08/2026-08-036.jpg', link:'https://jingfen.jd.com/detail/H94lTl8qZizTlbQC4ytwTlb7PiA9D4_3MqeHvfk8zfXsZDwKZ.html' },
 
 ];
 
@@ -583,6 +593,10 @@ const PRICE_SEARCH = {
   'Cleer':'https://search.jd.com/Search?keyword=Cleer+耳机',
   '1MORE 万魔':'https://search.jd.com/Search?keyword=万魔+耳机',
   'Meta':'https://www.meta.com/',
+  '韶音':'https://search.jd.com/Search?keyword=韶音+OpenFit+2',
+  'CMF':'https://search.jd.com/Search?keyword=CMF+Clip+Pro',
+  'DITA':'https://search.tmall.com/search.aspx?q=DITA+耳机',
+  'iBasso':'https://search.jd.com/Search?keyword=iBasso+DC-Tonfa',
 
 };
 
@@ -699,7 +713,17 @@ const PUSH_NEWS = [
     desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
-  // —— 耳机（7.29 新增1条三星 + 7.26 新增2条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  // —— 耳机（8.11 新增2条Shokz/CMF + 7.29 新增1条三星 + 7.26 新增2条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  { date:'2026-08-09', brand:'韶音', type:'new', cat:'headphone',
+    title:'韶音 OpenFit 2 AI 开放式耳机天猫上架，AI千问大模型+8GB本地存储，¥1698（8/17正式发售）',
+    desc:'韶音8/9在天猫正式上架OpenFit 2 AI开放式耳机（8/17正式发售）：左右分体挂耳式海豚弧耳挂设计、贴耳处双层硅胶包裹（内层为Shokz Ultra-Soft Silicone 2.0超零度硅胶）+极细柔性钛合金丝耳挂；AI是核心升级——支持AI千问大模型，可实现AI总结、思维导图、多语种转写、会议洞察等功能；左右耳机各内置4GB存储芯片（合计8GB），可分别存储现场录音或通话录音，无需依赖手机即可本地录音+大模型实时整理；官方定价1698元。',
+    link:'https://www.163.com/dy/article/L3T00NF105561FZO.html',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0809%2F3545ba45j00tjhiej00erd000nu00r0p.jpg&thumbnail=660x2147483647&quality=80&type=jpg', scene:true },
+  { date:'2026-08-08', brand:'CMF', type:'new', cat:'headphone',
+    title:'Nothing CMF Clip Pro 开放式耳夹耳机国内开售，10.8mm双磁动圈+LDAC+Smart Dial旋钮，¥549起',
+    desc:'Nothing旗下子品牌CMF首款开放耳夹耳机国内8/8正式开售，三色（黑/白/珊瑚橙）：10.8mm双磁单线圈动圈（Ultra Bass Technology超重低音）+TPU+LCP复合振膜、LDAC+AAC+SBC三协议+Hi-Res Audio Wireless认证（100美元价位罕见LDAC）、5.9g轻量化+三触点C-bridge钛合金记忆丝开放式卡扣+IP54、蓝牙5.4+Google Fast Pair+双设备连接+游戏低延迟模式、单次10h/总32.5h（长续航模式36h）/通话6.5h+Type-C快充10min=4h；独家亮点：充电盒搭载Smart Dial智能旋钮（金属刻度阻尼触感，旋转调节音量/按压切歌/接听电话，盲操+戴手套可用），国行¥549（礼盒版¥599）。',
+    link:'https://www.toutiao.com/article/7671519012274110982',
+    img:'http://qqpublic.qpic.cn/qq_public/0/28-1342352488-A00504CF3E8146EDE9E203920E1420A4/0?fmt=jpg', scene:false },
   { date:'2026-07-22', brand:'三星', type:'new', cat:'headphone',
     title:'三星 Galaxy Buds4 Pro 正式发布，双路扬声器+增强ANC+AI同传，¥1,899',
     desc:'三星Galaxy全球新品发布会7/22推出Buds4 Pro真无线耳机：铝制金属饰面+半透明充电盒+映雪白/旷宇黑/绯霞金三色、进阶双路扬声器（低频单元振膜面积较上代大19.8%）+独立双功放+SSC 24-bit/96kHz超高音质、增强型自适应ANC+自适应噪音控制+语音检测+警报检测、6麦克风DNN超清晰通话+超宽带SWB、360音频+头部追踪、蓝牙6.1+LE Audio+Auracast、捏合控制+点头/摇头手势+IP57、Galaxy AI入耳式同传+实时翻译，国行¥1,899。',
@@ -845,7 +869,17 @@ const PUSH_NEWS = [
     desc:'对标华为 FreeClip 2，全能均衡型开放式耳夹耳机，上代首发定价 799 元，新品预计同价位段。',
     link:'https://www.oppo.com/en/newsroom/press/oppo-launches-enco-clip2/',
     img:'https://img1.mydrivers.com/img/20260428/12ace1e14dcd4e2a8cbae6fcb3783611.png', scene:true },
-  // —— Hi-Fi / 黑胶 / 展会（7.29 新增1条飞傲 + 6.25 新增9条Vienna展重磅 + 6.8 新增2条iFi/AMR + 6.5 新增2条Ortofon + 6.5 新增5条 Vienna展）——
+  // —— Hi-Fi / 黑胶 / 展会（8.11 新增1条DITA + 1条iBasso + 7.29 新增1条飞傲 + 6.25 新增9条Vienna展重磅 + 6.8 新增2条iFi/AMR + 6.5 新增2条Ortofon + 6.5 新增5条 Vienna展）——
+  { date:'2026-08-07', brand:'DITA', type:'new', cat:'hifi',
+    title:'DITA PROJECT M₂ 单动圈入耳式耳机正式上市，8.3mm碳化钛振膜+不锈钢声学腔体，¥2188',
+    desc:'DITA Audio PROJECT M系列时隔三年续作8/7正式上市，国行¥2188：8.3mm PM1.8Ti单动圈（钛金属球顶+碳化钛涂层，硬度和稳定性兼顾）+双N45钕铁硼磁铁（45 MGOe）打造强磁路、SUS304不锈钢内腔+专属双声障板精密调校腔体气流气压、Icy Blue冰蓝色慢注树脂外壳（透明可视内部金属腔体与线路）、37Ω低阻抗+111dB高灵敏度降低底噪、20Hz-20kHz频响、Awesome Plug 2可换插头（3.5mm单端+4.4mm平衡）、Cardas Audio定制MOCCA无氧铜线材、五款不同尺寸夜光TYPE-E耳塞+TANOS Systainer®硬质耳机盒。"纯动圈、无分频"设计延续DITA标志性自然连贯声底，单动圈架构追求三频一体流动的自然听感。',
+    link:'https://www.sina.cn/news/detail/5329238305279901.html',
+    img:'https://cdn.shopify.com/s/files/1/0053/9967/4970/files/DITAProjectM2HeroImage_1_1024x.jpg', scene:true },
+  { date:'2026-08-03', brand:'iBasso', type:'new', cat:'hifi',
+    title:'iBasso艾巴索 DC-Tonfa R2R解码小尾巴现货开售，8路全平衡分立R2R+飞秒时钟，¥1999起（早鸟价）',
+    desc:'iBasso×日本e☆イヤホン联合研发次旗舰便携解码耳放8/3 20:00国内现货开售（早鸟价¥1999，京东常卖¥1999/官方定价¥2399）：24bit分立元件8通道全平衡纯R2R DAC架构（台式级方案下放便携形态）+312颗Viking低温漂高精度金属膜电阻构成专属电阻网络（常规R2R小尾巴三倍）+60颗高精度补偿电阻硬件校正网络+iBasso自研FPGA软件算法（双重管控阻值误差与温度漂移）；双Accusilicon飞秒晶振抑制相位抖动+凌特LT3042超低噪声LDO（核心供电噪声0.8μV，PSRR达100dB，纯净度优于绝大多数便携电池直供方案）；2颗TI双运放+4颗BUF634A缓冲器，4.4mm平衡输出800mW+800mW@32Ω（足以驱动高阻大耳）、3.5mm单端219mW+219mW@32Ω；0.96英寸OLED屏+多功能实体旋钮盲操；UAC1.0/UAC2.0双协议（兼容PS5/Switch2游戏主机/手机电脑）；PCM 768kHz/原生DSD512+3.5mm SPDIF数字输出。机身61×34.6×15mm / 45g，三色（黑/蓝/红），日方"ゆーでぃ"主导中日联合调音，主打"真实、润泽、耐听"模拟暖润声底。',
+    link:'https://www.sohu.com/a/1058315051_448550',
+    img:'https://ibasso.cn/wp-content/uploads/2026/08/2026-08-036.jpg', scene:false },
   { date:'2026-07-22', brand:'飞傲', type:'new', cat:'hifi',
     title:'飞傲 DM15 便携立体声CD播放器上市，双AK4493S+4.4平衡，¥1,599',
     desc:'飞傲7/20发布DM15便携立体声CD播放器，7/22银色版开售、7/27黑色版上市：144×137×25.5mm全铝合金机身重471.5g、4700mAh电池续航超6h、可隔离电池作台机使用；双AKM AK4493S DAC+高通QCC3086蓝牙芯片支持aptX Lossless无损蓝牙、HiFi级USB声卡支持384kHz/32bit及DSD256、0.96英寸LCD屏、3.5mm单端+4.4mm平衡输出（台机模式平衡L+R≥1100mW+1100mW@32Ω），定价1599元。',
@@ -1077,6 +1111,10 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-08-09', brand:'韶音', type:'new', text:'OpenFit 2 AI开放式耳机天猫上架：左右分体海豚弧耳挂+AI千问大模型（AI总结/思维导图/多语种转写/会议洞察）+双4GB本地录音+Ultra-Soft Silicone 2.0，¥1698（8/17发售）', link:'https://www.163.com/dy/article/L3T00NF105561FZO.html' },
+  { date:'2026-08-08', brand:'CMF', type:'new', text:'Clip Pro开放式耳夹耳机国行开售：10.8mm双磁单线圈动圈+LDAC+Hi-Res Audio Wireless认证+5.9g+Smart Dial智能旋钮充电盒+蓝牙5.4/IP54+32.5h续航，¥549起（礼盒¥599）', link:'https://www.toutiao.com/article/7671519012274110982' },
+  { date:'2026-08-07', brand:'DITA', type:'new', text:'PROJECT M₂ 单动圈入耳式耳机上市：8.3mm PM1.8Ti碳化钛振膜+SUS304不锈钢内腔+双N45磁铁+冰蓝色慢注树脂外壳+37Ω/111dB+可换3.5/4.4插头，¥2188', link:'https://www.sina.cn/news/detail/5329238305279901.html' },
+  { date:'2026-08-03', brand:'iBasso', type:'new', text:'DC-Tonfa R2R小尾巴开售：8通道全平衡分立R2R DAC+飞秒时钟+凌特LT3042+800mW+800mW@32Ω+0.96寸OLED+多滤波（中日联合调音），早鸟价¥1999', link:'https://www.sohu.com/a/1058315051_448550' },
   { date:'2026-07-28', brand:'MORROR ART', type:'new', text:'莫纳 A2 全透明歌词音响发布：21.5寸FHD双透明屏+透明喇叭+11.5L声学腔体+双4寸单元+德国肖特玻璃振膜+AI MV+MORROR 电台，中文品牌名"莫纳"同步启用，¥3,899全渠道开售', link:'https://www.163.com/dy/article/L2V072D10514A42S.html' },
   { date:'2026-07-22', brand:'三星', type:'new', text:'Galaxy Buds4 Pro 正式发布：双路扬声器+独立双功放+SSC 24-bit/96kHz+增强型自适应ANC+AI同传+捏合/头部手势+IP57，国行¥1,899', link:'https://www.samsung.com.cn/audio-sound/galaxy-buds/galaxy-buds4-pro-black-sm-r640nzkachc/' },
   { date:'2026-07-22', brand:'飞傲', type:'new', text:'DM15 便携立体声CD播放器上市：双AKM AK4493S DAC+aptX Lossless+384kHz/32bit+DSD256+4.4mm平衡输出，¥1,599', link:'https://www.ithome.com/0/982/084.htm' },
@@ -1544,9 +1582,9 @@ const catMap  = { speaker:'音箱', headphone:'耳机', hifi:'Hi-Fi', vinyl:'黑
 const catClassDict = { speaker:'cat-speaker', headphone:'cat-headphone', hifi:'cat-hifi', vinyl:'cat-vinyl', portable:'cat-portable', luxury:'cat-luxury', instrument:'cat-instrument', soundbar:'cat-soundbar', wearable:'cat-wearable' };
 const typeClassDict = { new:'type-new', collab:'type-collab', color:'type-color', feature:'type-feature', event:'type-event' };
 const typeLabelDict = { new:'新品', collab:'联名', color:'新配色', feature:'功能', event:'展会' };
-const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'vivo':'V', 'TCL':'TCL', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL', 'Meze':'MEZE', '雅马哈':'YAMAHA', 'Noble':'NOBLE', 'Audeze':'AUDEZE', 'Ortofon':'ORTOFON', 'iFi':'iFi', 'AMR':'AMR', 'Sonos':'SONOS', 'Focal':'FOCAL', 'Cleer':'CLEER', '1MORE 万魔':'1MORE', 'Meta':'META', '水月雨':'MD', 'ROG':'ROG', 'iQOO':'iQOO', 'Jamo':'JAMO' };
-const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'vivo':'#415FFF', 'TCL':'#004B8D', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A', 'Meze':'#D4AF37', '雅马哈':'#D82C20', 'Noble':'#1A1A1A', 'Audeze':'#1A1A1A', 'Ortofon':'#1A1A1A', 'iFi':'#1A1A1A', 'AMR':'#1A1A1A', 'Sonos':'#1A1A1A', 'Focal':'#E8A838', 'Cleer':'#2ECC71', '1MORE 万魔':'#FF4757', 'Meta':'#1877F2', '水月雨':'#4A6FE3', 'ROG':'#FF0033', 'iQOO':'#FFB800', 'Jamo':'#8B5E3C' };
-const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'vivo':'#FFFFFF', 'TCL':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF', 'Meze':'#1A1A1A', '雅马哈':'#FFFFFF', 'Noble':'#FFFFFF', 'Audeze':'#FFFFFF', 'Ortofon':'#FFFFFF', 'iFi':'#FFFFFF', 'AMR':'#FFFFFF', '水月雨':'#FFFFFF', 'ROG':'#FFFFFF', 'iQOO':'#1A1A1A', 'Jamo':'#FFFFFF' };
+const brandInitials = { 'Bose':'B', 'B&O':'B&O', 'JBL':'JBL', 'Marshall':'M', '漫步者':'EDIFIER', '索尼':'SONY', '小米':'Mi', '行业':'Trend', 'OPPO':'OPPO', '飞利浦':'PHILIPS', 'BEAMS':'BEAMS', 'Denon':'DENON', '哈曼卡顿':'HK', '猫王':'RCAT', '惠威':'HiVi', '飞傲':'FiiO', '山灵':'SHAN', 'MORROR ART':'MA', '倍思':'Baseus', '杰士':'KLP', '安克':'ANKER', '荣耀':'HONOR', 'vivo':'V', 'TCL':'TCL', 'Hermès':'H', 'Chanel':'CC', 'LV':'LV', 'Devialet':'DVLT', 'LiberLive':'LL', '拿火':'LAVA', '恩雅':'ENYA', 'Donner':'DONNER', '梵尼诗':'FEN', '三星':'SAM', 'HIFIMAN':'HFM', 'Grell':'GRELL', 'Meze':'MEZE', '雅马哈':'YAMAHA', 'Noble':'NOBLE', 'Audeze':'AUDEZE', 'Ortofon':'ORTOFON', 'iFi':'iFi', 'AMR':'AMR', 'Sonos':'SONOS', 'Focal':'FOCAL', 'Cleer':'CLEER', '1MORE 万魔':'1MORE', 'Meta':'META', '水月雨':'MD', 'ROG':'ROG', 'iQOO':'iQOO', 'Jamo':'JAMO', '韶音':'SHOKZ', 'CMF':'CMF', 'DITA':'DITA', 'iBasso':'iBasso' };
+const brandColors = { 'Bose':'#1A1A1A', 'B&O':'#C8AA64', 'JBL':'#FF6600', 'Marshall':'#1A1A1A', '漫步者':'#0055A5', '索尼':'#000000', '小米':'#FF6700', '行业':'#333333', 'OPPO':'#1BA784', '飞利浦':'#0B3A8D', 'BEAMS':'#1A1A1A', 'Denon':'#0054A6', '哈曼卡顿':'#1A1A1A', '猫王':'#6B4226', '惠威':'#003366', '飞傲':'#2196F3', '山灵':'#333333', 'MORROR ART':'#1A1A1A', '丹拿':'#1A1A1A', '宝华韦健':'#1A1A1A', '森海塞尔':'#1A1A1A', '舒尔':'#1A1A1A', '铁三角':'#1A1A1A', 'AKG':'#1A1A1A', 'Nothing':'#1A1A1A', 'Teenage Engineering':'#1A1A1A', '倍思':'#00BCD4', '杰士':'#331A00', '安克':'#007AFF', '荣耀':'#0A84FF', 'vivo':'#415FFF', 'TCL':'#004B8D', 'Hermès':'#CC5500', 'Chanel':'#1A1A1A', 'LV':'#8B6914', 'Devialet':'#1A1A1A', 'LiberLive':'#00BFA5', '拿火':'#FF4444', '恩雅':'#3E2723', 'Donner':'#222222', '梵尼诗':'#2E1A0E', '三星':'#1428A0', 'HIFIMAN':'#1A1A1A', 'Grell':'#1A1A1A', 'Meze':'#D4AF37', '雅马哈':'#D82C20', 'Noble':'#1A1A1A', 'Audeze':'#1A1A1A', 'Ortofon':'#1A1A1A', 'iFi':'#1A1A1A', 'AMR':'#1A1A1A', 'Sonos':'#1A1A1A', 'Focal':'#E8A838', 'Cleer':'#2ECC71', '1MORE 万魔':'#FF4757', 'Meta':'#1877F2', '水月雨':'#4A6FE3', 'ROG':'#FF0033', 'iQOO':'#FFB800', 'Jamo':'#8B5E3C', '韶音':'#0066CC', 'CMF':'#1A1A1A', 'DITA':'#5DADE2', 'iBasso':'#1A1A1A' };
+const brandTextColors = { 'Bose':'#FFFFFF', 'B&O':'#1A1A1A', 'JBL':'#FFFFFF', 'Marshall':'#FFFFFF', '漫步者':'#FFFFFF', '索尼':'#FFFFFF', '小米':'#FFFFFF', '行业':'#AAAAAA', 'OPPO':'#FFFFFF', '飞利浦':'#FFFFFF', 'BEAMS':'#FFFFFF', 'Denon':'#FFFFFF', '哈曼卡顿':'#FFFFFF', '猫王':'#FFFFFF', '惠威':'#FFFFFF', '飞傲':'#FFFFFF', '山灵':'#FFFFFF', 'MORROR ART':'#FFFFFF', '丹拿':'#FFFFFF', '宝华韦健':'#FFFFFF', '森海塞尔':'#FFFFFF', '舒尔':'#FFFFFF', '铁三角':'#FFFFFF', 'AKG':'#FFFFFF', 'Nothing':'#FFFFFF', 'Teenage Engineering':'#FFFFFF', '倍思':'#FFFFFF', '杰士':'#FFFFFF', '安克':'#FFFFFF', '荣耀':'#FFFFFF', 'vivo':'#FFFFFF', 'TCL':'#FFFFFF', 'Hermès':'#FFFFFF', 'Chanel':'#FFFFFF', 'LV':'#FFFFFF', 'Devialet':'#FFFFFF', 'LiberLive':'#FFFFFF', '拿火':'#FFFFFF', '恩雅':'#FFFFFF', 'Donner':'#FFFFFF', '梵尼诗':'#FFFFFF', '三星':'#FFFFFF', 'HIFIMAN':'#FFFFFF', 'Grell':'#FFFFFF', 'Meze':'#1A1A1A', '雅马哈':'#FFFFFF', 'Noble':'#FFFFFF', 'Audeze':'#FFFFFF', 'Ortofon':'#FFFFFF', 'iFi':'#FFFFFF', 'AMR':'#FFFFFF', '水月雨':'#FFFFFF', 'ROG':'#FFFFFF', 'iQOO':'#1A1A1A', 'Jamo':'#FFFFFF', '韶音':'#FFFFFF', 'CMF':'#FFFFFF', 'DITA':'#FFFFFF', 'iBasso':'#FFFFFF' };
 
 function buildPushGrid(cat) {
   const grid = document.getElementById('pushGrid');
