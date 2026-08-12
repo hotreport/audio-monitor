@@ -443,6 +443,7 @@ const BRANDS = [
   { name:'DITA', tag:'intl', country:'新加坡', links:{ official:'https://ditaaudio.com/', tmall:'https://search.tmall.com/search.aspx?q=DITA+耳机' }, latest:'PROJECT M₂ 单动圈入耳式耳机 8.7上市，8.3mm碳化钛振膜+不锈钢声学腔体+冰蓝树脂壳，¥2188' },
   { name:'iBasso', tag:'cn', country:'中国', links:{ jd:'https://item.jd.com/100216603334.html', tmall:'https://search.tmall.com/search.aspx?q=iBasso+DC-Tonfa', official:'https://ibasso.cn/' }, latest:'DC-Tonfa R2R解码小尾巴 8.3开售，8通道全平衡分立R2R+飞秒时钟+800mW@32Ω，早鸟价¥1999（中日联合调音）' },
   { name:'唐农', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=Donner+VIVA', tmall:'https://search.tmall.com/search.aspx?q=Donner+VIVA', official:'https://www.donnermusic.com/zh-CN' }, latest:'VIVA 智能无弦吉他 8.6上市，碳膜触控指板+7×7 RGB灯阵+20W双分频扬声器+12轨乐队模式，¥1999（一人乐队场景）' },
+  { name:'小米', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=小米+音箱', tmall:'https://search.tmall.com/search.aspx?q=小米+蓝牙音箱', official:'https://home.mi.com/' }, latest:'磁吸蓝牙音箱磁吸版 8.12推出 ¥199/众筹¥132 + 首款耳夹式耳机 5.21发布 ¥799' },
 ];
 
 /* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
@@ -620,7 +621,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（8.11 新增1条ROG Gjallar + 7.29 新增1条MORROR ART A2 + 7.26 新增1条Jamo + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（8.12 新增1条小米磁吸音箱 + 8.11 新增1条ROG Gjallar + 7.29 新增1条MORROR ART A2 + 7.26 新增1条Jamo + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-08-12', brand:'小米', type:'new', cat:'speaker',
+    title:'小米磁吸蓝牙音箱发布：磁吸支架+MagSafe适配+IP67+蓝牙6.0+最多10台串联，众筹价¥132',
+    desc:'小米8/12正式推出Xiaomi蓝牙音箱磁吸版（建议零售价¥199/众筹价¥132，8/19 10:00启动众筹，小米有品平台）：底部内置高强磁吸环，既是磁吸音箱也是手机支架，深度适配苹果MagSafe生态（iPhone 12+即贴即用无需配件）+霍尔磁吸感应吸附自动开机（全程免按键）；1.5英寸3W全频喇叭+细腻编织网布+高密度金属饰环+底部RGB环形灯带（随音乐节奏声光同步）；两台可组立体声、最高10台无线串联扩展音场；IP67级防尘防水+蓝牙6.0+650mAh电池，整机约95g轻巧便携，适用横屏观影/竖屏浏览/户外移动/运动健身多场景。',
+    link:'https://finance.sina.com.cn/roll/2026-08-12/doc-inimzqcv4098687.shtml',
+    img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0812%2F705b911bj00tjmxg4003ud00140016dg.jpg', scene:true },
   { date:'2026-08-11', brand:'ROG', type:'new', cat:'speaker',
     title:'华硕ROG首款游戏音箱"加拉尔"国行版上市，2.1.2声道杜比全景声+全彩LCD控制台，¥3699',
     desc:'华硕玩家国度ROG旗下首款游戏音箱"Gjallar（加拉尔）"国行版8/11京东首发上市（首发¥3699/常规¥3999）：2.1.2声道杜比全景声游戏音响系统三大部分——回音壁内置1对高音单元+2组50mm全频单元（一组朝前、一组朝上投射，借助天花板反射实现天空声道）+6.5英寸无线低音炮（5GHz无线连接，65W功率，定额80W/最高160W，可自由摆放）+一体式多功能控制台（双AEC主动降噪麦克风+全彩LCD显示实时音源/EQ/灯效/动效+RGB灯效）；接口全面（蓝牙5.3+Toslink光纤+AUX+USB-C+HDMI IN/HDMI OUT eARC回传+USB-A分线器扩展键鼠耳机）；奥创软件支持深度调校声场参数/灯光逻辑，对PC/PS5/Xbox/Switch多平台游戏玩家桌面沉浸音频方案。',
@@ -1130,6 +1136,7 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-08-12', brand:'小米', type:'new', text:'磁吸蓝牙音箱磁吸版推出：底部磁吸环+MagSafe适配+霍尔自动开机+1.5寸3W全频+RGB灯带+IP67+蓝牙6.0+最高10台串联，众筹价¥132（零售¥199），8/19启动众筹', link:'https://finance.sina.com.cn/roll/2026-08-12/doc-inimzqcv4098687.shtml' },
   { date:'2026-08-12', brand:'韶音', type:'collab', text:'OpenDots 2"七夕限定礼盒"今日上线：BVLGARI宝格丽设计师Matteo Menotto打造+全新落樱粉配色+丝带系愿耳饰，京东/天猫/抖音/小红书同步发售', link:'https://finance.sina.cn/tech/2026-08-11/detail-inimxrnp4316296.d.html' },
   { date:'2026-08-12', brand:'唐农', type:'new', text:'DONNER VIVA 智能无弦吉他发布：碳膜触控指板+7×7 RGB灯阵+20W双分频扬声器+Donner Play APP乐队模式最高12轨同步编排，¥1999（京东/天猫官旗开售）', link:'https://life.china.com/2026-08/06/content_613763.html' },
   { date:'2026-08-11', brand:'ROG', type:'new', text:'Gjallar（加拉尔）国行版游戏音箱系统上市：ROG首款游戏音箱，2.1.2声道杜比全景声（回音壁：1对高音+4×2寸全频单元2组朝前/朝上投射）+6.5英寸无线低音炮（5GHz无线+65W，定额80W/峰值160W）+一体控制台（双AEC降噪麦克风+全彩LCD屏+实体旋钮调EQ/灯效/音源/麦克风+RGB），蓝牙5.3+HDMI eARC+光纤/USB-C/AUX+USB-A分线器，奥创软件深度调音，京东首发¥3699（常规¥3999）', link:'https://dcdv.zol.com.cn/1230/12306648.html' },
