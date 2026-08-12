@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-12 09:20:00",
-  "total": 91,
+  "generated_at": "2026-08-12 09:27:48",
+  "total": 95,
   "products": [
     {
       "brand": "Marshall",
@@ -903,6 +903,46 @@
       "search_query": "1MORE 万魔 EVO 入耳降噪 京东 价格 2026"
     },
     {
+      "brand": "Nothing",
+      "model": "CMF Clip Pro 耳夹",
+      "orig": 599,
+      "promo": 549,
+      "category": "headphone",
+      "platform": "京东/天猫",
+      "link": "https://search.jd.com/Search?keyword=CMF+Clip+Pro",
+      "search_query": "Nothing CMF Clip Pro 耳夹 京东 价格 2026"
+    },
+    {
+      "brand": "韶音",
+      "model": "OpenFit 2 AI",
+      "orig": 1698,
+      "promo": 1698,
+      "category": "headphone",
+      "platform": "天猫（8/17开售）",
+      "link": "https://search.tmall.com/search.aspx?q=韶音+OpenFit+2+AI",
+      "search_query": "韶音 OpenFit 2 AI 京东 价格 2026"
+    },
+    {
+      "brand": "DITA",
+      "model": "PROJECT M₂ 钛振膜IEM",
+      "orig": 2188,
+      "promo": 2188,
+      "category": "headphone",
+      "platform": "天猫/微店",
+      "link": "https://ditaaudio.com/products/project-m2",
+      "search_query": "DITA PROJECT M₂ 钛振膜IEM 京东 价格 2026"
+    },
+    {
+      "brand": "iBasso",
+      "model": "DC-Tonfa R2R小尾巴",
+      "orig": 2399,
+      "promo": 1999,
+      "category": "other",
+      "platform": "京东自营",
+      "link": "https://jingfen.jd.com/detail/H94lTl8qZizTlbQC4ytwTlb7PiA9D4_3MqeHvfk8zfXsZDwKZ.html",
+      "search_query": "iBasso DC-Tonfa R2R小尾巴 京东 价格 2026"
+    },
+    {
       "brand": "唐农",
       "model": "VIVA 智能无弦吉他",
       "orig": 1999,
@@ -910,7 +950,7 @@
       "category": "other",
       "platform": "京东/天猫官旗",
       "link": "https://search.jd.com/Search?keyword=Donner+VIVA",
-      "search_query": "唐农 DONNER VIVA 智能无弦吉他 京东 价格 2026"
+      "search_query": "唐农 VIVA 智能无弦吉他 京东 价格 2026"
     }
   ]
 }
