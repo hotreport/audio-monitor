@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-04 09:29:35",
-  "total": 90,
+  "generated_at": "2026-08-12 09:20:00",
+  "total": 91,
   "products": [
     {
       "brand": "Marshall",
@@ -901,6 +901,16 @@
       "platform": "京东/天猫/官网",
       "link": "https://search.jd.com/Search?keyword=万魔+EVO",
       "search_query": "1MORE 万魔 EVO 入耳降噪 京东 价格 2026"
+    },
+    {
+      "brand": "唐农",
+      "model": "VIVA 智能无弦吉他",
+      "orig": 1999,
+      "promo": 1999,
+      "category": "other",
+      "platform": "京东/天猫官旗",
+      "link": "https://search.jd.com/Search?keyword=Donner+VIVA",
+      "search_query": "唐农 DONNER VIVA 智能无弦吉他 京东 价格 2026"
     }
   ]
 }
