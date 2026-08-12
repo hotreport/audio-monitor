@@ -442,6 +442,7 @@ const BRANDS = [
   { name:'CMF', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=CMF+耳机', official:'https://cmf.tech/' }, latest:'Clip Pro 开放式耳夹耳机 8.8国内开售，10.8mm双磁+LDAC+Smart Dial智能旋钮，¥549起' },
   { name:'DITA', tag:'intl', country:'新加坡', links:{ official:'https://ditaaudio.com/', tmall:'https://search.tmall.com/search.aspx?q=DITA+耳机' }, latest:'PROJECT M₂ 单动圈入耳式耳机 8.7上市，8.3mm碳化钛振膜+不锈钢声学腔体+冰蓝树脂壳，¥2188' },
   { name:'iBasso', tag:'cn', country:'中国', links:{ jd:'https://item.jd.com/100216603334.html', tmall:'https://search.tmall.com/search.aspx?q=iBasso+DC-Tonfa', official:'https://ibasso.cn/' }, latest:'DC-Tonfa R2R解码小尾巴 8.3开售，8通道全平衡分立R2R+飞秒时钟+800mW@32Ω，早鸟价¥1999（中日联合调音）' },
+  { name:'唐农', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=Donner+VIVA', tmall:'https://search.tmall.com/search.aspx?q=Donner+VIVA', official:'https://www.donnermusic.com/zh-CN' }, latest:'VIVA 智能无弦吉他 8.6上市，碳膜触控指板+7×7 RGB灯阵+20W双分频扬声器+12轨乐队模式，¥1999（一人乐队场景）' },
 ];
 
 /* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
@@ -564,6 +565,8 @@ const PRICES = [
   { brand:'韶音', model:'OpenFit 2 AI', orig:1698, promo:1698, category:'headphone', platform:'天猫（8/17开售）', img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0809%2F3545ba45j00tjhiej00erd000nu00r0p.jpg&thumbnail=660x2147483647&quality=80&type=jpg', link:'https://search.tmall.com/search.aspx?q=韶音+OpenFit+2+AI' },
   { brand:'DITA', model:'PROJECT M₂ 钛振膜IEM', orig:2188, promo:2188, category:'headphone', platform:'天猫/微店', img:'https://cdn.shopify.com/s/files/1/0053/9967/4970/files/DITAProjectM2HeroImage_1_1024x.jpg', link:'https://ditaaudio.com/products/project-m2' },
   { brand:'iBasso', model:'DC-Tonfa R2R小尾巴', orig:2399, promo:1999, category:'other', platform:'京东自营', img:'https://ibasso.cn/wp-content/uploads/2026/08/2026-08-036.jpg', link:'https://jingfen.jd.com/detail/H94lTl8qZizTlbQC4ytwTlb7PiA9D4_3MqeHvfk8zfXsZDwKZ.html' },
+  // === 2026-08-12 新增（智能乐器） ===
+  { brand:'唐农', model:'VIVA 智能无弦吉他', orig:1999, promo:1999, category:'other', platform:'京东/天猫官旗', img:'https://mmx.prnasia.com/media/MS1964376/20260805052341EDT_image_4.jpg', link:'https://search.jd.com/Search?keyword=Donner+VIVA' },
 
 ];
 
@@ -597,6 +600,7 @@ const PRICE_SEARCH = {
   'CMF':'https://search.jd.com/Search?keyword=CMF+Clip+Pro',
   'DITA':'https://search.tmall.com/search.aspx?q=DITA+耳机',
   'iBasso':'https://search.jd.com/Search?keyword=iBasso+DC-Tonfa',
+  '唐农':'https://search.jd.com/Search?keyword=Donner+VIVA',
 
 };
 
@@ -718,7 +722,12 @@ const PUSH_NEWS = [
     desc:'与成都艺术家 FCCK 合作，将狂野视觉能量注入马年系列，手工水转印技术印制。',
     link:'https://www.marshall.cn/product/MD00234_4',
     img:'https://image-cdn.hypb.st/https%3A%2F%2Fs3.store.hypebeast.com%2Fmedia%2Fimage%2F74%2F9c%2Fmarshall-emberton-III-1-63d76.jpg?fit=max&w=720&q=90', scene:true },
-  // —— 耳机（8.11 新增2条Shokz/CMF + 7.29 新增1条三星 + 7.26 新增2条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  // —— 耳机（8.12 新增1条韶音OpenDots 2七夕礼盒 + 8.11 新增2条Shokz/CMF + 7.29 新增1条三星 + 7.26 新增2条 + 7.20 新增3条 + 7.9 新增1条 + 7.7 新增2条 + 6.25 新增3条 + 6.5 新增1条 + 历史整理）——
+  { date:'2026-08-12', brand:'韶音', type:'collab', cat:'wearable',
+    title:'韶音 OpenDots 2 七夕限定礼盒今日上线，宝格丽设计师+落樱粉新配色+丝带耳饰',
+    desc:'韶音与意大利奢侈品牌BVLGARI宝格丽设计师Matteo Menotto联名打造的OpenDots 2"七夕限定礼盒"今日（8/12）上线，京东/天猫/抖音/小红书同步发售：①全新落樱粉配色+丝带系愿耳饰（设计师定制，更具七夕氛围）；②礼盒包装采用更甜美设计。OpenDots 2本身延续Shokz 5/18发布的旗舰可穿戴规格——升级柔韧钛片形态工艺+9g预紧力动钛弧+耳前贴合/耳后轻扣水滴形澎音球+弧面能量舱、Shokz OpenBass 2.0+动态调音算法+全新升级杜比音效（5种音效模式）、骨导麦克风+骨气三麦通话系统+AI通话降噪（DNN）、耳机10h/整机40h续航+快充5min=2h+无线充电。',
+    link:'https://finance.sina.cn/tech/2026-08-11/detail-inimxrnp4316296.d.html',
+    img:'https://n.sinaimg.cn/spider20260811/10/w690h920/20260811/9481-825cc6eec5200fa8f8d61f1a41981c61.jpg', scene:true },
   { date:'2026-08-09', brand:'韶音', type:'new', cat:'headphone',
     title:'韶音 OpenFit 2 AI 开放式耳机天猫上架，AI千问大模型+8GB本地存储，¥1698（8/17正式发售）',
     desc:'韶音8/9在天猫正式上架OpenFit 2 AI开放式耳机（8/17正式发售）：左右分体挂耳式海豚弧耳挂设计、贴耳处双层硅胶包裹（内层为Shokz Ultra-Soft Silicone 2.0超零度硅胶）+极细柔性钛合金丝耳挂；AI是核心升级——支持AI千问大模型，可实现AI总结、思维导图、多语种转写、会议洞察等功能；左右耳机各内置4GB存储芯片（合计8GB），可分别存储现场录音或通话录音，无需依赖手机即可本地录音+大模型实时整理；官方定价1698元。',
@@ -1081,7 +1090,12 @@ const PUSH_NEWS = [
     desc:'Monogram穿孔压纹皮革+抛光哑光精钢+360°沉浸式音频+LED灯带，粉彩色系更新，延续2021年首发Horizon Light Up的时尚科技路线。',
     link:'https://nowre.com/tech/781496/louis-vuitton-horizon-light-up-bianxieyinxiangtuichuxinpeise/',
     img:'https://www.luxsphere.co/wp-content/uploads/louis-vuitton-horizon-light-up-speaker-4-.png', scene:true },
-  // —— 智能乐器（AI + 乐器创新品类）——
+  // —— 智能乐器（8.6 新增1条Donner VIVA + 7.29 历史1条拿火 + 8.12 历史1条LiberLive + 12.5 历史1条Donner HUSH-X PRO + 5.8 历史1条Donner HUSH C）——
+  { date:'2026-08-06', brand:'唐农', type:'new', cat:'instrument',
+    title:'唐农 DONNER VIVA 智能无弦吉他发布：碳膜触控指板+7×7 RGB灯阵+12轨乐队模式，¥1999',
+    desc:'唐农 Donner Music 8/6全球首发面向"一人乐队"场景的智能无弦吉他 DONNER VIVA，定价¥1999，京东/天猫唐农DonnerMusic官方旗舰店同步开售：① 0弦化结构 + 7×7 RGB LED灯阵（256级亮度）+ 炭膜触控指板，零基础5分钟上手；② DONNER自研IR脉冲响应采样 + 法国Dream专业级DSP + 7种真实乐器音色（民谣/古典/电吉他/钢琴等）+ 6套风格鼓机音色；③ 乐队模式（Donner Play APP + MIDI编曲引擎 + 多轨自动对齐，最高12轨同步编排，1:1智能复刻鼓/贝斯/键盘/Pad/弦乐等专业曲库）+ 自由弹唱（A/B双音色 + 50+节奏型预设 + "弹唱即停、弹对继续"智能跟随）；④ 20W悬浮式双分频扬声器（15W低音+5W高音）+ 可视化音量滑触，室内户外均无需外接设备；⑤ 琴颈磁吸可拆卸折叠（折叠后约为展开状态1/4大小，可入日常背包）+ 6小时续航。',
+    link:'https://life.china.com/2026-08/06/content_613763.html',
+    img:'https://mmx.prnasia.com/media/MS1964376/20260805052341EDT_image_4.jpg', scene:true },
   { date:'2025-12-12', brand:'Donner', type:'new', cat:'instrument',
     title:'Donner HUSH-X PRO 获 EBRUN 全球好物 Silver Award',
     desc:'2025旗舰无头便携智能电吉他：H-2芯片+7种吉他音色模拟+19种放大器模型+30+吉他效果器、Alnico V拾音器、USB-C OTG直连手机录音。',
@@ -1116,6 +1130,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-08-12', brand:'韶音', type:'collab', text:'OpenDots 2"七夕限定礼盒"今日上线：BVLGARI宝格丽设计师Matteo Menotto打造+全新落樱粉配色+丝带系愿耳饰，京东/天猫/抖音/小红书同步发售', link:'https://finance.sina.cn/tech/2026-08-11/detail-inimxrnp4316296.d.html' },
+  { date:'2026-08-12', brand:'唐农', type:'new', text:'DONNER VIVA 智能无弦吉他发布：碳膜触控指板+7×7 RGB灯阵+20W双分频扬声器+Donner Play APP乐队模式最高12轨同步编排，¥1999（京东/天猫官旗开售）', link:'https://life.china.com/2026-08/06/content_613763.html' },
   { date:'2026-08-11', brand:'ROG', type:'new', text:'Gjallar（加拉尔）国行版游戏音箱系统上市：ROG首款游戏音箱，2.1.2声道杜比全景声（回音壁：1对高音+4×2寸全频单元2组朝前/朝上投射）+6.5英寸无线低音炮（5GHz无线+65W，定额80W/峰值160W）+一体控制台（双AEC降噪麦克风+全彩LCD屏+实体旋钮调EQ/灯效/音源/麦克风+RGB），蓝牙5.3+HDMI eARC+光纤/USB-C/AUX+USB-A分线器，奥创软件深度调音，京东首发¥3699（常规¥3999）', link:'https://dcdv.zol.com.cn/1230/12306648.html' },
   { date:'2026-08-09', brand:'韶音', type:'new', text:'OpenFit 2 AI开放式耳机天猫上架：左右分体海豚弧耳挂+AI千问大模型（AI总结/思维导图/多语种转写/会议洞察）+双4GB本地录音+Ultra-Soft Silicone 2.0，¥1698（8/17发售）', link:'https://www.163.com/dy/article/L3T00NF105561FZO.html' },
   { date:'2026-08-08', brand:'CMF', type:'new', text:'Clip Pro开放式耳夹耳机国行开售：10.8mm双磁单线圈动圈+LDAC+Hi-Res Audio Wireless认证+5.9g+Smart Dial智能旋钮充电盒+蓝牙5.4/IP54+32.5h续航，¥549起（礼盒¥599）', link:'https://www.toutiao.com/article/7671519012274110982' },
