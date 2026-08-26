@@ -405,7 +405,7 @@ document.getElementById('lastUpdate').textContent = new Date().toLocaleDateStrin
 
 /* ===== 品牌数据 ===== */
 const BRANDS = [
-  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'Acton IV / Stanmore IV 四代 7.8发布 ¥2,499/¥3,499 即日开售 + Stockwell III 6.10发布 ¥1,699' },
+  { name:'Marshall', tag:'intl', country:'英国', links:{ jd:'https://search.jd.com/Search?keyword=Marshall+音箱', tmall:'https://search.tmall.com/search.aspx?q=Marshall+音箱', amazon:'https://www.amazon.cn/s?k=Marshall+Speaker', official:'https://www.marshall.cn/' }, latest:'x Hendrix 紫雾联名第二弹 8.26发布 Major V + Emberton III $180/$160 + Acton IV / Stanmore IV 四代 7.8发布 ¥2,499/¥3,499 + Stockwell III 6.10发布 ¥1,699' },
   { name:'B&O', tag:'intl', country:'丹麦', links:{ jd:'https://search.jd.com/Search?keyword=B%26O+音箱', tmall:'https://search.tmall.com/search.aspx?q=B%26O+音箱', amazon:'https://www.amazon.cn/s?k=Bang+Olufsen+speaker', official:'https://www.bang-olufsen.com/zh/cn' }, latest:'x Fragment Design 联名 5.20发售 + Beosound Haven' },
   { name:'JBL', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=JBL+音箱', tmall:'https://search.tmall.com/search.aspx?q=JBL+音箱', amazon:'https://www.amazon.cn/s?k=JBL+speaker', official:'https://cn.jbl.com' }, latest:'Vienna 悬浮歌词音箱 7.19发布 ¥8299 + PartyBox 330/130 + Xtreme 5/Go 5' },
   { name:'Bose', tag:'intl', country:'美国', links:{ jd:'https://search.jd.com/Search?keyword=Bose+音箱', tmall:'https://search.tmall.com/search.aspx?q=Bose+音箱', amazon:'https://www.amazon.cn/s?k=Bose+speaker', official:'https://www.bose.cn' }, latest:'QuietComfort Headphones 二代头戴 8.13开售 $359/€349.95/A$549.95（TrueSpatial+USB-C无损+6麦QuietControl+5色）+ Lifestyle Ultra系列 5.15发售 + SoundLink Plus' },
@@ -628,7 +628,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱（8.12 新增1条小米磁吸音箱 + 8.11 新增1条ROG Gjallar + 7.29 新增1条MORROR ART A2 + 7.26 新增1条Jamo + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  // —— 音箱（8.26 新增1条Marshall x Hendrix紫雾联名 + 8.12 新增1条小米磁吸音箱 + 8.11 新增1条ROG Gjallar + 7.29 新增1条MORROR ART A2 + 7.26 新增1条Jamo + 7.20 新增1条 + 7.9 新增1条 + 6.11 新增1条 + 6.5 新增1条 + 6.1 新增1条 + 5.26 新增1条 + 历史整理）——
+  { date:'2026-08-26', brand:'Marshall', type:'collab', cat:'speaker',
+    title:'马歇尔 x Hendrix 紫雾联名第二弹发布：Major V 头戴耳机 + Emberton III 便携音箱同步开售，$180/$160',
+    desc:'马歇尔 Marshall 与传奇吉他手 Jimi Hendrix 六十周年联名合作第二波新品 8/26 正式发布，纪念 "Hendrix 首次插上 Marshall 音箱" 60 周年，主打便携音频场景：① Major V 头戴式耳机 — 头梁内侧与耳罩印紫黑交织的"紫雾"漩涡纹样+外侧仿皮点缀，$180；② Emberton III 便携式蓝牙音箱 — 漩涡图案铺满整个网面和机身+播放键上银色"全视之眼"图案呼应 Hendrix 视觉符号，$160；③另推一款便携录音室音箱作为系列补充（同日开售）；④开机/连接提示音直接采样 Hendrix 歌曲片段作彩蛋仪式感；⑤Hendrix 妹妹 Janie 参与设计（"马歇尔音箱开得越大声越好听，他的音乐是真正的音乐，完美匹配"）。Marshall 官网已正式开售，9/9 起部分线下零售商上架。今年品牌还先后与 Sex Pistols、Green Day 主唱 Billie Joe Armstrong 推出合作款，艺术家联名路线密集发力。',
+    link:'https://www.163.com/dy/article/L57L1ESC05561FXI.html',
+    img:'https://ec-res.marshall.cn/2/2025/7/30/1753869587437687_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', scene:false, bg:'#FFFFFF' },
   { date:'2026-08-12', brand:'小米', type:'new', cat:'speaker',
     title:'小米磁吸蓝牙音箱发布：磁吸支架+MagSafe适配+IP67+蓝牙6.0+最多10台串联，众筹价¥132',
     desc:'小米8/12正式推出Xiaomi蓝牙音箱磁吸版（建议零售价¥199/众筹价¥132，8/19 10:00启动众筹，小米有品平台）：底部内置高强磁吸环，既是磁吸音箱也是手机支架，深度适配苹果MagSafe生态（iPhone 12+即贴即用无需配件）+霍尔磁吸感应吸附自动开机（全程免按键）；1.5英寸3W全频喇叭+细腻编织网布+高密度金属饰环+底部RGB环形灯带（随音乐节奏声光同步）；两台可组立体声、最高10台无线串联扩展音场；IP67级防尘防水+蓝牙6.0+650mAh电池，整机约95g轻巧便携，适用横屏观影/竖屏浏览/户外移动/运动健身多场景。',
@@ -1188,6 +1193,7 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-08-26', brand:'Marshall', type:'collab', text:'马歇尔 x Hendrix 紫雾联名第二弹发布：Major V 头戴耳机（$180）+ Emberton III 便携音箱（$160）同步开售，纪念 Hendrix 首次插上 Marshall 音箱60周年，Hendrix妹妹Janie参与设计，开机提示音采样Hendrix歌曲片段作彩蛋，Marshall官网已开售，9/9起部分线下零售商上架', link:'https://www.163.com/dy/article/L57L1ESC05561FXI.html' },
   { date:'2026-08-25', brand:'漫步者', type:'new', text:'Comfo Clip Q2智能耳夹耳机发布：上海海思谛听音频芯片+OpenHarmony开源鸿蒙系统全栈自研国产双架构+12mm长冲程动圈（PU+PET复合振膜）+智能动态低频补偿+AI翻译问答（豆包+DeepSeek双模型21种语言互译）+0.5mm镍钛金丝支架+单次8.5h/综合40.5h+IP56+蓝牙6.0+0.05s游戏低延迟+三色，京东¥399/¥449', link:'https://tech.sina.cn/2026-08-25/detail-inippews1699859.d.html' },
   { date:'2026-08-24', brand:'华为', type:'new', text:'FreeBuds 7 悦彰耳机开启预售：经典直杆回归设计+4.3g单耳+悦彰星环充电盒+半入耳主动降噪飞跃式升级+星闪E2.0（16Mbps/48kHz/24bit无损）+悦彰声学加持+30h续航+四色（日光橙/月光白/星空黑/仲夏紫），¥999起，9月正式上市', link:'https://www.163.com/dy/article/L53Q6TFM05119CHG.html' },
   { date:'2026-08-20', brand:'森海塞尔', type:'new', text:'MOMENTUM 真无线5代（MTW 5）发布：7mm TrueResponse动圈+蓝牙6.0+aptX Lossless+24bit/96kHz+可更换电池（耳机+充电盒）+杜比全景声头部追踪+6麦克+2骨传导语音加速传感器+AI语音提取+单次12h/总40h+Qi无线充电+快充8min=1h+IP54+5色，¥2,499（9/3开售）', link:'https://www.163.com/news/article/L540J6MB00019UD6.html' },
