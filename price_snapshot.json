@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03 13:15:39",
+  "generated_at": "2026-09-14 09:27:08",
   "total": 95,
   "products": [
     {
@@ -26,7 +26,7 @@
       "brand": "Marshall",
       "model": "Stanmore III",
       "orig": 3499,
-      "promo": 3027,
+      "promo": 2539,
       "category": "speaker",
       "platform": "京东/天猫",
       "link": "https://item.jd.com/100024554085.html",
@@ -35,8 +35,8 @@
     {
       "brand": "B&O",
       "model": "Beosound A1 3rd",
-      "orig": 2518,
-      "promo": 2758,
+      "orig": 2798,
+      "promo": 2518,
       "category": "speaker",
       "platform": "天猫官旗",
       "link": "https://item.jd.com/10150658657456.html",
@@ -416,7 +416,7 @@
       "brand": "MORROR ART",
       "model": "R1 唱片歌词音箱",
       "orig": 7750,
-      "promo": 7665,
+      "promo": 6975,
       "category": "speaker",
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/100233406494.html",
@@ -586,7 +586,7 @@
       "brand": "Bose",
       "model": "Ultra Open Earbuds",
       "orig": 2299,
-      "promo": 1999,
+      "promo": 1738,
       "category": "headphone",
       "platform": "京东/天猫",
       "link": "https://item.jd.com/100147884878.html",
@@ -916,7 +916,7 @@
       "brand": "韶音",
       "model": "OpenFit 2 AI",
       "orig": 1698,
-      "promo": 1698,
+      "promo": 1388,
       "category": "headphone",
       "platform": "天猫（8/17开售）",
       "link": "https://search.tmall.com/search.aspx?q=韶音+OpenFit+2+AI",
