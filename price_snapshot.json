@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20 09:28:20",
+  "generated_at": "2026-09-21 09:35:27",
   "total": 95,
   "products": [
     {
@@ -26,7 +26,7 @@
       "brand": "Marshall",
       "model": "Stanmore III",
       "orig": 3499,
-      "promo": 2380,
+      "promo": 2299,
       "category": "speaker",
       "platform": "京东/天猫",
       "link": "https://item.jd.com/100024554085.html",
@@ -35,7 +35,7 @@
     {
       "brand": "B&O",
       "model": "Beosound A1 3rd",
-      "orig": 2798,
+      "orig": 2898,
       "promo": 2438,
       "category": "speaker",
       "platform": "天猫官旗",
@@ -366,7 +366,7 @@
       "brand": "Teenage Engineering",
       "model": "OP-1 Field",
       "orig": 4499,
-      "promo": 4299,
+      "promo": 14316,
       "category": "other",
       "platform": "官网",
       "link": "https://teenage.engineering/products/op-1-field",
@@ -596,7 +596,7 @@
       "brand": "索尼",
       "model": "WH-1000XM6",
       "orig": 3499,
-      "promo": 2399,
+      "promo": 2107,
       "category": "headphone",
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/100222127764.html",
@@ -736,7 +736,7 @@
       "brand": "三星",
       "model": "Galaxy Buds3 Pro",
       "orig": 1599,
-      "promo": 999,
+      "promo": 1295,
       "category": "headphone",
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/100130841425.html",
