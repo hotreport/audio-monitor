@@ -463,11 +463,11 @@ const BRANDS = [
   { name:'唐农', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=Donner+VIVA', tmall:'https://search.tmall.com/search.aspx?q=Donner+VIVA', official:'https://www.donnermusic.com/zh-CN' }, latest:'VIVA 智能无弦吉他 8.6上市，碳膜触控指板+7×7 RGB灯阵+20W双分频扬声器+12轨乐队模式，¥1999（一人乐队场景）' },
   // —— 2026-08-25 新增：Fostex（森海MOMENTUM真无线5代+Fostex T50RP-BT补录）——
   { name:'Fostex', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=Fostex+耳机', tmall:'https://search.tmall.com/search.aspx?q=Fostex+耳机', amazon:'https://www.amazon.cn/s?k=Fostex+headphone', official:'https://www.fostex.jp/' }, latest:'T50RP-BT 无线平板振膜耳机 8.20发布（RP系列50年首款无线+第四代RP驱动单元+aptX Lossless+24bit/96kHz+USB-C收发器20ms低延迟+48h续航+342g+可插拔麦克风，开放价格，8月下旬出货）' },
-  { name:'小米', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=小米+音箱', tmall:'https://search.tmall.com/search.aspx?q=小米+蓝牙音箱', official:'https://home.mi.com/' }, latest:'磁吸蓝牙音箱磁吸版 8.12推出 ¥199/众筹¥132 + 首款耳夹式耳机 5.21发布 ¥799' },
+  { name:'小米', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=小米+音箱', tmall:'https://search.tmall.com/search.aspx?q=小米+蓝牙音箱', official:'https://home.mi.com/' }, latest:'REDMI Buds 8S 9.22 开售 ¥229（半入耳降噪较上代提升70%+LHDC 5.0+4.2g）+ 磁吸蓝牙音箱磁吸版 8.12推出 ¥199/众筹¥132 + 首款耳夹式耳机 5.21发布 ¥799' },
   // —— 2026-08-14 新增：恩雅（智能乐器）——
   { name:'恩雅', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=恩雅+赛博吉他', tmall:'https://search.tmall.com/search.aspx?q=恩雅+赛博吉他', official:'https://www.enya-music.com/' }, latest:'口袋赛博吉他（山姆特供版）8.13独家进驻山姆会员商店' },
   // —— 2026-09-14 新增：安克（×飞书AI会议耳机）——
-  { name:'安克', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=安克+耳机', tmall:'https://search.tmall.com/search.aspx?q=安克+耳机', official:'https://www.anker.com/' }, latest:'×飞书 AI 会议耳机 9.14京东上架 ¥1,799（飞书妙记AI纪要+AI实时双语翻译+彩色触控屏充电盒+深度降噪吉尼斯认证）+ Liberty 5 Pro Max 5.22发布' },
+  { name:'安克', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=安克+耳机', tmall:'https://search.tmall.com/search.aspx?q=安克+耳机', official:'https://www.anker.com/' }, latest:'Soundcore Space 2 Pro/Liberty Buds 2/AeroClip 2 美版 9.22 开售 $200/$130/$170（自研 Thus AI 芯片）+ ×飞书 AI 会议耳机 9.14京东上架 ¥1,799 + Liberty 5 Pro Max 5.22发布' },
   // —— 2026-09-20 新增：达尔优（A5 系列游戏耳机）——
   { name:'达尔优', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=达尔优+A5+耳机', tmall:'https://search.tmall.com/search.aspx?q=达尔优+A5+耳机', official:'https://www.dareu.com/' }, latest:'A5 系列头戴式游戏耳机 9.19 发布、9.21 20:00 全平台开售（Pro 预售 ¥369 / Max ¥459，30000mm³ 大音腔+鲸腔声学结构+自研玄听 5.1 芯片+280h 续航+三模连接）' },
 ];
@@ -647,7 +647,12 @@ const PUSH_NEWS = [
   // 仅收录已落地音频新品（非促销/传闻/未发布），不限品牌，按时间从新到旧排序
   // 链接优先级：官网/公众号 > 软文 > 媒体资讯（须带图或视频，不要纯文字版）
 
-  // —— 音箱/耳机（9.21 新增1条 达音科PRS6 + 9.18 新增1条 Apple AirPods 5 国行开售 + 9.18 新增2条 Bose Ultra Open 2代 + Sport Open + 9.15 新增2条 Fender ELIE + MIX + 9.14 下午新增2条 拜雅AVENTHO Y + EarFun Wave Pro X + 9.14 新增2条 声阔Boom Go 3i + Oriolus EJ 01 + 9.3 新增1条 Sonos Play 便携音箱中国发布 + 9.2 新增1条七彩虹 Colorfly "琢" + 9.1 新增Sonos Beam Ultra回音壁 + Sonos Ace Ultra头戴 + 9.1 新增JBL Cove + HyperX Cloud Alpha Air + Plaud One + SOUND GLASS 音频眼镜 + 9.1 新增beyerdynamic MMX 100 Wireless + 8.27 新增1条铁三角 + 8.27 新增1条网易有道 + 8.25 新增1条漫步者Q2 + 8.24 新增1条华为FB7 + 8.20 新增1条森海 + 8.20 新增1条CMF + 8.14 新增1条水月雨综合 + 8.13 新增1条Bose QC二代 + 8.13 新增1条1MORE + 8.11 新增1条CMF + 8.9 新增1条韶音 + 8.7 新增1条DITA + 8.3 新增1条iBasso）——
+  // —— 音箱/耳机（9.22 新增1条 REDMI Buds 8S 开售 + 9.21 新增1条 达音科PRS6 + 9.18 新增1条 Apple AirPods 5 国行开售 + 9.18 新增2条 Bose Ultra Open 2代 + Sport Open + 9.15 新增2条 Fender ELIE + MIX + 9.14 下午新增2条 拜雅AVENTHO Y + EarFun Wave Pro X + 9.14 新增2条 声阔Boom Go 3i + Oriolus EJ 01 + 9.3 新增1条 Sonos Play 便携音箱中国发布 + 9.2 新增1条七彩虹 Colorfly "琢" + 9.1 新增Sonos Beam Ultra回音壁 + Sonos Ace Ultra头戴 + 9.1 新增JBL Cove + HyperX Cloud Alpha Air + Plaud One + SOUND GLASS 音频眼镜 + 9.1 新增beyerdynamic MMX 100 Wireless + 8.27 新增1条铁三角 + 8.27 新增1条网易有道 + 8.25 新增1条漫步者Q2 + 8.24 新增1条华为FB7 + 8.20 新增1条森海 + 8.20 新增1条CMF + 8.14 新增1条水月雨综合 + 8.13 新增1条Bose QC二代 + 8.13 新增1条1MORE + 8.11 新增1条CMF + 8.9 新增1条韶音 + 8.7 新增1条DITA + 8.3 新增1条iBasso）——
+  { date:'2026-09-22', brand:'小米', type:'new', cat:'headphone',
+    title:'REDMI Buds 8S 今日 10 点开售：半入耳主动降噪降噪量提升70%+LHDC 5.0，¥229',
+    desc:'REDMI Buds 8S 9/22 上午 10 点正式开售，售价 ¥229，REDMI 全新入门级半入耳降噪耳机：单耳仅 4.2g 人体工学半入耳设计（基于百万级耳部点云数据优化）；11mm 高性能动圈+大磁路设计+多层复合振膜+高强度球顶，支持 SBC/AAC/LHDC 5.0 编码与 96kHz/24bit 无损传输，Hi-Res Wireless 金标认证，5 档预置 EQ+10 段自定义调音；综合降噪量较上代提升 70%，支持深度/均衡两档降噪+耳道自适应降噪+单耳降噪；3 麦 AI 通话降噪+小米自研抗风噪算法（12m/s 抗风噪）；澎湃智联生态开盖弹窗快连+双设备连接+音频流转；单次 7.5h/总 40h 续航，充电 10 分钟约听歌 2 小时；IP54 防尘防水；脂白/暮黑/苔绿三色。',
+    link:'https://new.qq.com/rain/a/20260922A04S7100',
+    img:'https://q7.itc.cn/q_70/images03/20260922/b66458ba24424c9f8f565edc03e95da5.png', scene:false, bg:'#FFFFFF' },
   { date:'2026-09-21', brand:'达音科', type:'new', cat:'hifi',
     title:'达音科 PRS6 京东发售：首款圈铁MEMS混合入耳 四分频六单元，¥1,680',
     desc:'达音科（DUNU）首款圈铁 MEMS 混合入耳耳机 PRS6 9/21 京东发售，定价 ¥1,680：四分频六单元声学架构（1×10mm 低频动圈+2×中频动铁+2×中高频动铁+1×无源硅基 MEMS 至高频单元）；冰晶纹纯钛金属面板，经高温烧灼、慢速冷却与酸洗处理呈现结晶纹理，阳极氧化上色+精密铝合金中框；标配高品质单晶铜镀银线，凹陷式 0.78 2pin 插针+Q-Lock Mini 可换插头系统，附赠 4.4mm 平衡与 3.5mm 单端插头。',
@@ -1340,6 +1345,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-09-22', brand:'安克', type:'new', text:'Soundcore 美版三款今日开售（IFA 2026 阵容首批落地，均搭载自研 Thus AI 芯片）：Space 2 Pro 头戴 $200（264g 轻量化+8 传感器阵列自适应 ANC+14 麦克风+35mm 单元+LDAC+30h/60h 续航）、Liberty Buds 2 真无线 $130（9.2mm 羊毛纸振膜+Comfort ANC+12h/46h 续航+IPX55）、AeroClip 2 开放式耳夹 $170（8h 续航+LDAC）；AeroClip 2 Pro（AI 会议转写）上市日期未公布', link:'https://www.slashgear.com/2259810/new-anker-products-announced-september-2026' },
+  { date:'2026-09-22', brand:'小米', type:'new', text:'REDMI Buds 8S 今日 10 点开售 ¥229：半入耳降噪耳机，单耳 4.2g+11mm 动圈+LHDC 5.0 无损+Hi-Res 金标+综合降噪量较上代提升 70%+耳道自适应降噪+3 麦 AI 通话降噪（12m/s 抗风噪）+澎湃智联+7.5h/40h 续航+IP54，脂白/暮黑/苔绿三色', link:'https://new.qq.com/rain/a/20260922A04S7100' },
   { date:'2026-09-21', brand:'飞傲', type:'new', text:'FX25 一圈二铁四静电七单元混合入耳天猫上架，首发价 ¥4,999：10mm 锂镁合金振膜动圈+2×楼氏定制动铁+4×声扬静电单元，频响 10Hz-40kHz；轻量化碳纤维腔体单只约 7g（暮山棕）+S.Turbo 专利涡轮声学结构+RLC 二阶带阻滤波电路+0.78 2pin 可换线，标配 1.2m 液氮冷冻 6N 单晶铜镀银线（20Ω/106dB 易驱动）', link:'https://www.donews.com/news/detail/8/6718403.html' },
   { date:'2026-09-21', brand:'达音科', type:'new', text:'首款圈铁 MEMS 混合入耳 PRS6 京东发售 ¥1,680：四分频六单元（10mm 低频动圈+2中频动铁+2中高频动铁+1无源硅基MEMS至高频）+冰晶纹纯钛面板+铝合金中框+单晶铜镀银线+Q-Lock Mini 可换插头（附4.4平衡/3.5单端），官网海外店同步上架', link:'https://www.163.com/dy/article/L7BRHBI20511B8LM.html' },
   { date:'2026-09-20', brand:'1MORE 万魔', type:'new', text:'S20 Ultra 耳夹式耳机全球发售（PRNewswire 官宣，建议零售价 $79.99，首月 8 折，官网/Amazon 等全球渠道同步上架）：首款三磁体喇叭声学架构+SDT 定向声场 2.0 防漏音+钛镍记忆丝 C 型耳夹（万次弯折）+BalanceAIR+ 3.0 云感气垫+Hi-Res Wireless 金标+LDAC+蓝牙6.0+四麦 ENC 通话降噪+8.5h/40h 续航+IPX5（国行京东 ¥361 起，已售多月，本轮为海外市场正式落地）', link:'https://usa.1more.com/products/1more-s20-ultra-open-ear-clip-on-earbuds-hi-res-ldac-audio-sdt-2-0-focused-sound-balanceair-3-0-4-mic-ai-clear-calls-40h-playtime-bluetooth-6-0-sports-running-gym-workouts-travel-walk-glasses' },
