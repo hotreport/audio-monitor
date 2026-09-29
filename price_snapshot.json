@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28 09:24:53",
+  "generated_at": "2026-09-29 09:30:43",
   "total": 95,
   "products": [
     {
@@ -49,7 +49,7 @@
       "promo": 10980,
       "category": "speaker",
       "platform": "官网/天猫",
-      "link": "https://www.bang-olufsen.com/zh/cn/speakers/beosound-a5",
+      "link": "https://www.bang-olufsen.com/zh-cn/int/yangshengqi/beosound-a5",
       "search_query": "B&O Beosound A5 京东 价格 2026"
     },
     {
@@ -86,7 +86,7 @@
       "brand": "Bose",
       "model": "SoundLink Max 2",
       "orig": 2999,
-      "promo": 2815,
+      "promo": 2529,
       "category": "speaker",
       "platform": "天猫官旗",
       "link": "https://item.jd.com/100112376940.html",
@@ -369,7 +369,7 @@
       "promo": 14316,
       "category": "other",
       "platform": "官网",
-      "link": "https://teenage.engineering/products/op-1-field",
+      "link": "https://teenage.engineering/store/op-1-field",
       "search_query": "Teenage Engineering OP-1 Field 京东 价格 2026"
     },
     {
@@ -529,7 +529,7 @@
       "promo": 11980,
       "category": "speaker",
       "platform": "官网/天猫",
-      "link": "https://www.bang-olufsen.com/zh/cn/speakers/beosound-level",
+      "link": "https://www.bang-olufsen.com/zh-cn/int/yangshengqi/beosound-level",
       "search_query": "B&O Beosound Level 京东 价格 2026"
     },
     {
@@ -805,8 +805,8 @@
     {
       "brand": "索尼",
       "model": "HT-A7100 回音壁",
-      "orig": 8999,
-      "promo": 6999,
+      "orig": 5282,
+      "promo": 3884,
       "category": "soundbar",
       "platform": "京东/天猫/官网",
       "link": "https://item.jd.com/10219692654605.html",
@@ -816,7 +816,7 @@
       "brand": "索尼",
       "model": "HT-B500 杜比全景声",
       "orig": 2999,
-      "promo": 2299,
+      "promo": 1690,
       "category": "soundbar",
       "platform": "京东/天猫/官网",
       "link": "https://search.jd.com/Search?keyword=索尼+HT-B500",
