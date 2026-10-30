@@ -405,6 +405,7 @@ document.getElementById('lastUpdate').textContent = new Date().toLocaleDateStrin
 
 /* ===== 品牌数据 ===== */
 const BRANDS = [
+  { name:'HIFIMAN', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=HIFIMAN', official:'https://www.hifiman.cn/' }, latest:'HE6 WiFi 无线流媒体平板头戴 10.29 发布即开售 ¥3,999（耳机内置 WiFi 模组+左右独立 R-2R DAC 与耳放，768kHz/32bit·DSD512、QPlay/ROON READY/Qobuz，隐形磁体+次世代超纳米振膜 Gen.2，399g，WiFi 约7h/蓝牙 23h）' },
   { name:'Amazon', tag:'intl', country:'美国', links:{ official:'https://www.amazon.com/' }, latest:'新款 Echo Dot 智能音箱 10.28 发布即开售 $99.99（首次内置智能家居中枢 Zigbee/Matter/Thread+eero Wi-Fi 扩展+AZ3 芯片端侧 AI+低音提升 50%，四色）；同场 Echo Studio 带摄像头版 $249.99 当日开售 + Echo Show 16 $499.99 预订' },
   { name:'final', tag:'intl', country:'日本', links:{ official:'https://www.final-inc.com/', amazon:'https://www.amazon.co.jp/s?k=final+PORTA' }, latest:'PORTA 超轻无线贴耳头戴 10.23 日本开售 ¥12,800 日元（约 ¥600，10/16 官网预售）：整机约 40g+单细金属线 Air Wire 头梁减少头顶接触面+可换耳垫橙/黑+蓝牙 5.4 SBC/AAC+续航约 8h+IPX4，左右腔体需分别充电、无 ANC' },
   { name:'Acoustune', tag:'intl', country:'日本', links:{ jd:'https://search.jd.com/Search?keyword=Acoustune', official:'https://acoustune.com/' }, latest:'AS2200 便携 USB 耳放 10.23 日本发布并开售 ¥52,800 日元（约 ¥2,241）：AK4493SEQ DAC+3.5mm 单端/4.4mm 平衡双输出+32bit/768kHz PCM·DSD512+6 种预设音色+CNC 铝合金机身带 OLED 状态屏+套装含硅胶套/磁吸支架/收纳盒' },
@@ -422,7 +423,7 @@ const BRANDS = [
   { name:'QCY', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=QCY+Crossky+C70', official:'https://www.qcy.com/' }, latest:'Crossky C70 耳夹式开放式耳机 10.6 开售 ¥399（10.8mm 动圈+8mm 压电陶瓷双单元+LDAC/Hi-Res+6麦骨声纹+50h 续航+IPX6，亮银/午夜黑）' },
   { name:'罗技', tag:'intl', country:'瑞士', links:{ jd:'https://search.jd.com/Search?keyword=%E7%BD%97%E6%8A%80+G+PRO+X3+%E8%80%B3%E6%9C%BA', official:'https://www.logitech.com/zh-cn' }, latest:'G PRO X3 LIGHTSPEED 新一代旗舰电竞耳机 9.28 国行开售 ¥1,799（50mm PRO-G 石墨烯+48kHz/16bit 录音室级可拆麦克风+三模连接+70h 续航，黑/白/粉三色）' },
   { name:'西伯利亚', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=%E8%A5%BF%E4%BC%AF%E5%88%A9%E4%BA%9A+%E8%80%B3%E6%9C%BA', official:'https://www.xiberia.net/' }, latest:'W30 高性能手游 TWS 耳机 9.23 京东独家首发 ¥299（2.4G+蓝牙6.0 双模+0.03s 低延迟+13mm 动圈+LDAC/Hi-Res 双金标+-45dB 降噪+IP67，品牌首款 TWS 游戏耳机）' },
-  { name:'Apple', tag:'intl', country:'美国', links:{ official:'https://www.apple.com.cn/airpods/' }, latest:'HomePod mini 2 10.13 发布 国行¥1,099（$149，10.30 开售，S10芯片+Sound Glow灯效+四只组全景声须配 Apple TV 4K 四代）；同场 HomeView ¥2,005/$299、Apple TV 4K 四代 HK$2,399；AirPods 5 9.18 国行开售 ¥999起（全系半入耳主动降噪较AirPods 4最高提升50%+多孔声学架构+自适应均衡；无线充电盒版¥1,149）' },
+  { name:'Apple', tag:'intl', country:'美国', links:{ official:'https://www.apple.com.cn/airpods/' }, latest:'HomePod mini 2 10.30 国行正式开售 ¥1,099（S10芯片+Wi-Fi 6E/蓝牙6.0+Sound Glow灯效+四只组全景声须配 Apple TV 4K 四代）；AirPods 5 9.18 国行开售 ¥999起（全系半入耳主动降噪较AirPods 4最高提升50%+多孔声学架构+自适应均衡；无线充电盒版¥1,149）' },
   { name:'Fender', tag:'intl', country:'美国', links:{ official:'https://us.fenderaudio.com/' }, latest:'ELIE 便携音箱系列 E6/E12 $299/$399 + MIX 模块化头戴 $299 9.14美国开售（音箱内置低音炮+Waves SOC+XLR乐器直插FRFR；耳机40mm石墨烯+混合ANC+100h续航）' },
   { name:'IKEA', tag:'intl', country:'瑞典', links:{ official:'https://www.ikea.cn/' }, latest:'Badkruka 家用蓝牙音箱 9.14 欧洲开售 €50/$60（25W+光纤输入+Spotify Tap+立体声配对，粉/黑双色）' },
   { name:'绿联', tag:'cn', country:'中国', links:{ jd:'https://search.jd.com/Search?keyword=%E7%BB%BF%E8%81%94+%E8%80%B3%E6%9C%BA', tmall:'https://search.tmall.com/search.aspx?q=%E7%BB%BF%E8%81%94+%E8%80%B3%E6%9C%BA', official:'https://www.lulian.cn/' }, latest:'HiTune T9 降噪耳机 10.12上市 ¥399（安声科技联合调校，-60dB深度降噪+8麦通话+70h综合续航）' },
@@ -540,7 +541,7 @@ const PRICES = [
   { brand:'Teenage Engineering', model:'OP-XY 合成器', orig:11499, promo:9999, category:'other', platform:'京东/官网', img:'https://assets.teenage.engineering/_img/67bc9f02504ead596b7cd4e2_128.webp', link:'https://item.jd.com/100236883516.html' },
   { brand:'Teenage Engineering', model:'OB-4 蓝牙音箱', orig:1999, promo:1599, category:'speaker', platform:'官网', img:'https://assets.teenage.engineering/_img/64e4bae0f6978f8fbc213275_128.webp', link:'https://teenage.engineering/products/ob-4' },
   { brand:'MORROR ART', model:'A2 全透明歌词音响', orig:3899, promo:3899, category:'speaker', platform:'京东/天猫/官网', img:'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2026%2F0728%2F69da40adj00tivxe0000td000hs00bwg.jpg', link:'https://item.jd.com/100233406494.html' },
-  { brand:'MORROR ART', model:'R1 唱片歌词音箱', orig:8216, promo:5775, category:'speaker', platform:'京东/天猫/官网', img:'https://2d.zol-img.com.cn/product/229_698x437/147/cez3rDVlzjaig.jpg', link:'https://item.jd.com/100233406494.html' },
+  { brand:'MORROR ART', model:'R1 唱片歌词音箱', orig:8216, promo:6899, category:'speaker', platform:'京东/天猫/官网', img:'https://2d.zol-img.com.cn/product/229_698x437/147/cez3rDVlzjaig.jpg', link:'https://item.jd.com/100233406494.html' },
   { brand:'MORROR ART', model:'M2 桌面歌词音箱', orig:2699, promo:2294, category:'speaker', platform:'京东/天猫/官网', img:'https://future-mirror.com/picture/M2_001.jpg', link:'https://item.jd.com/10030773005368.html' },
   { brand:'MORROR ART', model:'T2 壁画歌词音箱', orig:4999, promo:4699, category:'speaker', platform:'京东/天猫/官网', img:'https://future-mirror.com/picture/T2_001.jpg', link:'https://item.jd.com/10052623282330.html' },
   { brand:'MORROR ART', model:'S1 边柜舒眠音箱', orig:2799, promo:2399, category:'speaker', platform:'京东/天猫/官网', img:'https://future-mirror.com/picture/S1_001.jpg', link:'https://search.jd.com/Search?keyword=MORROR+ART+S1' },
@@ -682,6 +683,17 @@ const PUSH_NEWS = [
   // —— 10.26 新增1条（10.21 国行上市）：Marshall BROMLEY 150 便携派对音箱 ——
   // —— 10.28 新增1条（10.23 日本发布、现已开售）：Acoustune AS2200 便携 USB 耳放 ——
   // —— 10.29 新增1条（10.28 美区发布当日开售）：亚马逊新款 Echo Dot 智能音箱 ——
+  // —— 10.30 新增2条：苹果 HomePod mini 2 国行 10.30 正式发售 + HIFIMAN HE6 WiFi 10.29 发布即开售 ——
+  { date:'2026-10-30', brand:'Apple', type:'new', cat:'speaker',
+    title:'苹果 HomePod mini 2 国行正式发售 ¥1,099：时隔六年换代+S10 芯片+Wi-Fi 6E+Sound Glow 律动灯效',
+    desc:'苹果第二代 HomePod mini 10/30 在国内正式发售，官方定价 ¥1,099（白色/粉色/绿色/蓝色/午夜色五色，附 20W USB-C 电源适配器），是 HomePod mini 产品线时隔六年的首次正式换代：芯片由初代 S5 升级为 Apple Watch Series 10 同款 S10，算力提升带来更强的实时计算音频能力，可动态优化音乐的动态范围、响度与声学表现；无线由 Wi-Fi 4 升至 Wi-Fi 6E + 蓝牙 6.0，内置 Thread 网络协议与超宽带芯片，显著改善前代 AirPlay 投送延迟偏高的问题；声学仍是全频驱动单元+双振动抵消无源辐射器、360° 声场，两只可组立体声，首次支持四只（或与全尺寸 HomePod 2 混搭，前后成对）搭配第四代 Apple TV 4K 组成家庭影院环绕声并自动识别位置校准；顶部新增 Sound Glow 律动灯光随音乐节奏与专辑配色变化；可直接设为 Mac 默认音频输出、无需重复 AirPlay 投送；保留温湿度传感、烟雾/一氧化碳警报声音识别与家居中枢能力，支持 Matter；Siri AI 需后续软件更新（国行不支持该功能）',
+    link:'https://finance.sina.cn/tech/2026-10-30/detail-iniwxzqf8401743.d.html?vt=4',
+    img:'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-mini-202610-gallery-1?wid=2824&hei=2400&fmt=jpeg&qlt=90&.v=YzU1Y3psR3RXUUN2a25lejU4Tnk4d1BZazdnQTN5RFRJZDZnd1ZLZm0zNVBYRGd0WXZEWTBDN0dwM2JBaTVNTTE1UUxLT2t0cW42N3FvQzVqaGhrVVZNSWZJMWtLSEgxeVlHRVRJdmx6N3ArYWpGdS9XeFgvbS9ITnNYOEhYaG4', scene:false, objPos:'50% 50%' },
+  { date:'2026-10-29', brand:'HIFIMAN', type:'new', cat:'headphone',
+    title:'HIFIMAN HE6 WiFi 无线流媒体平板头戴发布即开售 ¥3,999：耳机自带 R-2R DAC+耳放，768kHz/32bit·DSD512',
+    desc:'HIFIMAN 海菲曼 10/29 秋季发布会推出 WiFi 流媒体头戴平板耳机 HE6 WiFi，定价 ¥3,999（发布会上公布，现已在天猫/京东等各平台开售），把 WiFi 流媒体接收、解码、耳放与电池整套塞进耳机腔体——官方称之为「一副耳机装下一整套台机 HiFi 结构」：自研 WiFi 流媒体模组支持 DLNA/AirPlay/QPlay（TME Connect 升级）与 HIFISTYLE 点对点无线直连，兼容 QQ 音乐（臻品音质硬件合作伙伴）、网易云音乐、ROON READY、Qobuz 等平台，最高 PCM 768kHz/32bit 与 DSD512 native 硬解；左右声道各一枚自研 HYMALAYA Mini R-2R DAC 与专用放大电路，声道分离度 110dB@1kHz（较 HE1000 WiFi 的 105dB 提升），THD+N 0.0055% @-9dB/1kHz；发声单元沿用 HE600 的次世代超纳米振膜 Gen.2（8Hz~65kHz）与无稀土增强磁体，并补上 HE600 所缺的钕铁硼隐形磁体（增强磁体与隐形磁体各 50%，激光切割优化磁隙气流与反射）；整机仅 399g（HE600 为 389g，Arya WiFi 为 452g），蛋形腔体+蜂窝开孔格栅+次世代人体工学头带 Gen.2，腔体底部无 3.5mm 插孔，改为电源键/模式切换键/音量±与 USB-C；WiFi 模式续航约 7 小时、蓝牙模式 23 小时、待机 >30 天，蓝牙支持 SBC/aptX/aptX HD/LDAC，另支持 USB Audio 有线模式',
+    link:'https://post.smzdm.com/p/ak8l9gr9',
+    img:'https://dingyue.ws.126.net/2026/1030/1efa34c8j00tnp2gh002nd200u000mlg00zk00qr.jpg', scene:false, objPos:'50% 50%' },
   { date:'2026-10-28', brand:'Amazon', type:'new', cat:'speaker',
     title:'亚马逊新款 Echo Dot 发布即开售 $99.99：首次内置智能家居中枢+eero Wi-Fi 扩展+低音提升 50%',
     desc:'亚马逊 10/28 发布五款 Alexa+ 智能家居新品，其中四款当日开售：全新 Echo Dot $99.99（石墨灰/冰川白/龙舌兰绿/珊瑚粉四色，儿童版 $109.99 起）——首次内置智能家居中枢，开箱即连 Zigbee/Matter/Thread 兼容设备，集成 eero Wi-Fi 扩展器（扩大覆盖约 93㎡），搭载自研 AZ3 芯片与端侧 AI 加速器（本地处理语音识别与背景噪声过滤）+Omnisense 传感技术（感知室温与人员活动联动自动化），全频单元低音较上代提升 50%、四麦克风阵列；同场：Echo Studio 带摄像头版（Home Camera）$249.99 当日开售（保留高冲程低音单元+三全频+杜比全景声，Alexa+ 可视觉识别物体、远程查看房间，另有无摄像头版 $219.99 在售）、Echo Time 床头智能钟 $199.99（超声感知呼吸无感唤醒）、Alexa Photo Frame 数码相框 $199.99 起、Echo Show 16 智能屏 $499.99 预订年内发货（13MP 广角+夜视+内置 Fire TV）；无国行信息',
@@ -1588,6 +1600,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-10-30', brand:'Apple', type:'new', text:'苹果 HomePod mini 2 今日（10.30）国行正式发售 ¥1,099，五色（白/粉/绿/蓝/午夜色）：S10 芯片+Wi-Fi 6E/蓝牙 6.0+Thread 与 UWB+Sound Glow 律动灯效+可设 Mac 默认输出，首次支持四只搭配第四代 Apple TV 4K 组家庭影院环绕声；Siri AI 需后续软件更新且国行不支持（详见音箱卡片）', link:'https://finance.sina.cn/tech/2026-10-30/detail-iniwxzqf8401743.d.html?vt=4' },
+  { date:'2026-10-29', brand:'HIFIMAN', type:'new', text:'HIFIMAN HE6 WiFi 无线流媒体平板头戴 10.29 秋季发布会公布售价 ¥3,999 并已全平台开售：耳机内置 WiFi 流媒体模组+左右独立自研 R-2R DAC（HYMALAYA Mini）与放大电路+电池，支持 768kHz/32bit 与 DSD512、QPlay/ROON READY/Qobuz 推流，399g、WiFi 续航约 7h/蓝牙 23h（详见耳机卡片）', link:'https://post.smzdm.com/p/ak8l9gr9' },
   { date:'2026-10-28', brand:'铁三角', type:'new', text:'铁三角推出 ATH-M50xSTS-WL 无线耳麦套装 10.28 发布（基于 ATH-M50xSTS 监听耳机+AT20 系列麦克风，新台币区域上市、无国行信息，仅记简讯）：2.4GHz 低延迟无线连接+45mm CCAW 音圈驱动单元+心形指向电容麦克风+悬臂抬起快速静音，内置电池最长约 24h 续航，频响 20~22000Hz / 99dB/mW，售价 9,980 新台币（约 ¥2,055），随附网布与皮革双耳罩', link:'https://news.qq.com/rain/a/20261029A06AEE00' },
   { date:'2026-10-28', brand:'Amazon', type:'new', text:'亚马逊发布五款 Alexa+ 智能家居新品：新款 Echo Dot $99.99、Echo Studio 带摄像头版 $249.99、Echo Time $199.99、Alexa Photo Frame $199.99 起 10.28 当日开售，Echo Show 16 $499.99 预订年内发货（详见音箱卡片）', link:'https://news.qq.com/rain/a/20261028A0D08A00' },
   { date:'2026-10-28', brand:'Esoteric', type:'new', text:'Esoteric Grandioso K1XE 旗舰 SACD/CD 播放器与可选外置电源 PS1XE 10.21 全球官宣、11.1 全球发售（未开售仅记简讯，修正此前 10.24 简讯「发布并开售」口径）：K1XE $45,000/€44,000/£37,999、PS1XE $19,000；10.23-25 TIAS2026 东京国际音响展完成公众首展并获「音频铭机赏 2027」金赏——VRDS-ATLAS 转盘+第二代自研离散 DAC（FPGA 多电平 ΔΣ+64bit/512Fs+完全双单声道+5 组独立线性电源）+ES-LINK 5 超宽带数字输入+10MHz 时钟同步', link:'https://www.163.com/dy/article/LAB7C6S10514DAKM.html' },
