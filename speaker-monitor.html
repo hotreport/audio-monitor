@@ -496,14 +496,14 @@ const BRANDS = [
   { name:'OPPO', tag:'cn', country:'中国', links:{ official:'https://www.oppo.com/cn/' }, latest:'Enco X4 旗舰真无线降噪 9.22发布 ¥1,199 首销¥1,099 9.24开售（第四代丹拿共研同轴双单元+双DAC分频+2.3Mbps全链路无损+6nm降噪芯片+AI实时翻译24语言+53h续航，柔白/粉金/钛灰）' },
   { name:'Beats', tag:'intl', country:'美国', links:{ official:'https://www.beatsbydre.com/' }, latest:'360 全新旗舰头戴 9.22发布 ¥2,999（首创可换耳罩+头梁软垫设计，4色机身×8种耳罩最高256种组合，替换套件上架apple.com）' },
   { name:'雷蛇', tag:'intl', country:'美国', links:{ official:'https://www.razer.com/' }, latest:'梭鱼 V2 专业版（Barracuda V2 Pro）10.15 发布 美区 $199.99（TriForce 40mm+THX 7.1.4+双模麦克风+285g 可折叠，官网产品页未上线/国行待公布）；战锤狂鲨 V3 幻彩版有线游戏耳机 10.12 发布即开售 ¥599（90°弯折USB-C+11mm+6mm双单元+ANC+PC端7.1环绕声+Chroma RGB+IPX4）；Mako 灰鲭鲨 X 桌面游戏音箱 10.15 国行正式开售 ¥799（全球10/6上市 $99.99；Mako带低音炮12月 $149.99）' },
-  { name:'海贝', tag:'cn', country:'中国', links:{ official:'https://www.hiby.com/' }, latest:'R6III SE 便携播放器 10.31 上市 ¥1,798（4× CS43198+A/AB 类耳放切换）+ RS2 II 纯音播放器 9.23上市 ¥2,798（RS8 II同款DARWIN III架构R2R+35K FPGA+THD+N<0.0008%+四通道OPA1622耳放+3.55寸全面屏；黄铜限量版¥3,498 10月中）' },
+  { name:'海贝', tag:'cn', country:'中国', links:{ official:'https://www.hiby.com/' }, latest:'FC4 屏幕版解码耳放 11.10 京东上架 ¥336（首发 ¥311，黑/银/绿三色：双 CS43131+1.1 英寸 OLED 彩屏+PCM 768kHz/DSD512+MQA 8X+4.4mm 平衡 151mW+直连 PS5/Switch）+ R6III SE 便携播放器 10.31 上市 ¥1,798（4× CS43198+A/AB 类耳放切换）+ RS2 II 纯音播放器 9.23上市 ¥2,798（RS8 II同款DARWIN III架构R2R+35K FPGA+THD+N<0.0008%+四通道OPA1622耳放+3.55寸全面屏；黄铜限量版¥3,498 10月中）' },
   // —— 2026-10-13 新增：荣耀（Earbuds X10 蓝牙耳机）——
   { name:'荣耀', tag:'cn', country:'中国', links:{ official:'https://www.honor.com/cn/' }, latest:'WIN 电竞真无线耳机 10.31 正式开售 ¥269（40ms 游戏延迟+55dB 深度降噪+12.4mm 镀钛振膜+LHDC 5.0/Hi-Res 金标+单次 8.5h/综合 42h+IP54）+ 新一代 Earbuds 耳夹式开放式耳机 10.18 开售 ¥449（单耳5.6g+Hi-Res Wireless金标+LHDC 5.0+单次10h/综合40h+双设备流转）+ Earbuds X10 蓝牙耳机 10.13 开售 ¥149（12.4mm动圈+52dB深度降噪+3麦AI通话抗风噪+IP54+8h/41h续航+秒级配对/双设备连接/实时翻译）' },
 ];
 
 /* ===== 价格数据（修复索尼SRS-XG500错误图片） ===== */
 const PRICES = [
-  { brand:'Marshall', model:'Emberton III', orig:1449, promo:1115, category:'speaker', platform:'京东/天猫/官网', img:'https://ec-res.marshall.cn/2/2025/7/30/1753869587437687_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100137193368.html' },
+  { brand:'Marshall', model:'Emberton III', orig:1449, promo:1190, category:'speaker', platform:'京东/天猫/官网', img:'https://ec-res.marshall.cn/2/2025/7/30/1753869587437687_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100137193368.html' },
   { brand:'Marshall', model:'Acton III BT', orig:2399, promo:1699, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/10/14/17604101329699684_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100035465065.html' },
   { brand:'Marshall', model:'Stanmore III', orig:3499, promo:2549, category:'speaker', platform:'京东/天猫', img:'https://ec-res.marshall.cn/2/2025/7/30/1753870430157424_1800x1800.png?x-oss-process=image/format,webp/resize,w_1800', link:'https://item.jd.com/100024554085.html' },
   { brand:'B&O', model:'Beosound A1 3rd', orig:2898, promo:2438, category:'speaker', platform:'天猫官旗', img:'https://m.media-amazon.com/images/I/71gT0XSdL3L._AC_SX500_SY500_.jpg', link:'https://item.jd.com/10150658657456.html' },
@@ -697,6 +697,12 @@ const PUSH_NEWS = [
   // —— 11.09 09:30 补录1条（11.7 10:00 正式开售，承接 11.06 待查转正）：飞傲 R7 R2R 桌面一体机 ——
   // —— 11.09 12:35 新增1条（11.7 上架预约、11.9 20:00 正式开售）：漫步者 W900NB 30 周年典藏版头戴降噪耳机 ——
   // —— 11.09 15:40 新增2条（11 月初海外上市即开售）：宝碟 Debut Carbon – The Original 黑胶唱盘 + Schiit Magni 6 桌面耳放 ——
+  // —— 11.11 12:35 新增1条（11.10 京东上架在售）：海贝 FC4 屏幕版解码耳放 ——
+  { date:'2026-11-10', brand:'海贝', type:'new', cat:'hifi',
+    title:'海贝 HiBy FC4 屏幕版解码耳放 11.10 京东上架 ¥336（首发 ¥311）：双 CS43131+1.1 英寸 OLED 彩屏，黑/银/绿三色',
+    desc:'海贝 11/10 在京东上架 FC4 屏幕版解码耳放（小尾巴），定价 ¥336、首发价 ¥311（领 25 元券后），黑/银/绿三色，赛博机甲风格：正面 1.1 英寸 OLED 彩色显示屏直观显示运行状态与音频参数，侧边 30 级实体硬件音量按键+功能键并带音量记忆；双 CS43131 DAC 芯片+45.1584MHz/49.152MHz 双专用音频晶振降低时钟抖动，硬解 PCM 768kHz/32bit 与 DSD512，Hi-Res 认证+配合支持音乐 App 可 MQA 8X 展开；3.5mm 单端 70mW@32Ω（信噪比 123dB）+4.4mm 平衡 151mW@32Ω（信噪比 124dB），频响 20Hz-90kHz；支持 iOS/Android/macOS/Windows，Mac 与 Win10 免驱即插即用，兼容 UAC1.0/2.0 可直连 PS5、Switch 等游戏主机；63×26×13mm / 约 21g',
+    link:'https://www.ithome.com/1/025/113.htm',
+    img:'https://img.ithome.com/newsuploadfiles/2026/11/ad9d4164-133f-468b-828e-9da5aa1d30e5.png', scene:true, objPos:'50% 35%' },
   { date:'2026-11-09', brand:'Pro-Ject', type:'new', cat:'vinyl',
     title:'宝碟 Debut Carbon – The Original 黑胶唱盘 $649 上市：复刻 1999 初代配方，8.6" 一体碳纤维臂+Pre-installed Pick it S2 MM',
     desc:'Pro-Ject（宝碟）11 月初推出 Debut Carbon – The Original，把 1999 年初代 Debut 的配方原样重建，定价 $649（比升级版 Debut Carbon EVO 2 的 $699 低 $50）：皮带驱动，33/45 双转速；8.6 英寸一体式碳纤维唱臂（有效长度 218.5mm、有效质量 7g、超距 18.5mm），碳纤维臂管把臂与唱头的共振降低最多 50%；出厂预装 Ortofon 唱头部门代工、宝碟团队调音的 Pick it S2 MM（椭圆针尖、分离式磁极），开箱即用无需调校；300mm／1.7kg 重型钢盘+毛毡垫（配玻纤增强 ABS 副盘），主轴承为黄铜轴套内高精度不锈钢轴；电机悬挂结构与底座解耦，隔绝电机振动传到唱盘与唱针；抖晃率 33 转 ±0.17%／45 转 ±0.15%，转速漂移 ±0.50%／±0.60%，信噪比 68dB；不含内置唱放，需外接唱头放大器或带 Phono 输入的功放（与 1999 原版一致）；随附 15V DC/0.8A 电源。首发胡桃木饰面，哑光黑后续跟进。',
@@ -1713,6 +1719,8 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-11-11', brand:'索尼', type:'event', text:'（大事件·跳票）索尼 Pulse Elevate（首款原生 PS5 Tempest 3D Audio 桌面音箱）原定 11.12 发售，官方一纸公告因生产问题无限期延期、未给新档期：大量玩家已预售锁单后被紧急叫停；平面磁振膜+独立低音单元+PlayStation Link 私有无线协议（游戏声音与手机语音同步），是市面上唯一能启用 PS5 扬声器专属空间音效的桌面音箱——业内猜测跳票主因为一对音箱间 PlayStation Link 时钟同步的量产一致性难题或平面振膜良品率', link:'https://www.163.com/dy/article/LBEPHLRV0518QAON.html' },
+  { date:'2026-11-10', brand:'海贝', type:'new', text:'（详见 HiFi 卡片）海贝 HiBy FC4 屏幕版解码耳放 11.10 京东上架 ¥336（首发 ¥311，黑/银/绿三色）：双 CS43131 DAC+双专用音频晶振+1.1 英寸 OLED 彩屏（30 级实体音量键+音量记忆）+PCM 768kHz/32bit 与 DSD512 硬解+Hi-Res 认证+MQA 8X+3.5mm 70mW/4.4mm 平衡 151mW 双输出+UAC1.0/2.0 直连 PS5/Switch，63×26×13mm 约 21g', link:'https://www.ithome.com/1/025/113.htm' },
   { date:'2026-11-10', brand:'索尼', type:'new', text:'（未开售，仅记）索尼官宣国行版 MDR-3R 复古有线耳机 11.17 中午 12:00 亮相（预热语「从 1979 年到 2026 年，新声，如故」）：海外版 11.5 已上市 $59.99（详见卡片），国行定价待公布', link:'https://www.163.com/dy/article/LBCJ519J051191D6.html' },
   { date:'2026-11-10', brand:'卡萨帝', type:'new', text:'（详见回音壁卡片）卡萨帝首款杜比全景声回音壁 KSM990 11.10 国行上市：行业首个 KEF 联合调音，物理 7.1.4 声道+15 单元经 KEF 欧洲实验室分频校准+双 8 吋低音下潜 25Hz+720W，联动卡萨帝电视升级物理 7.1.6；售价待核', link:'https://new.qq.com/rain/a/20261110A09K3700' },
   { date:'2026-11-10', brand:'Marshall', type:'new', text:'（详见回音壁卡片）Marshall 首款回音壁 Heston 系列：Heston 120 一体式 5.1.2 声道+杜比全景声+DTS:X+空间校准，国行 ¥7,999（双十一到手 7000 出头，京东自营史低 7,199.10）；Heston 60 机身 73cm 主打卧室小客厅，可搭 Sub 200 低音炮（双十一组合到手 ¥6,549、24 期免息）；Movie/Music/Voice/Night 四种声效模式，吉他音箱造型格栅+PU 皮革复古设计，HDMI（ARC）/光纤连接', link:'https://post.smzdm.com/p/arzdppxq' },
