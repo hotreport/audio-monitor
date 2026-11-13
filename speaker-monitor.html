@@ -405,6 +405,7 @@ document.getElementById('lastUpdate').textContent = new Date().toLocaleDateStrin
 
 /* ===== 品牌数据 ===== */
 const BRANDS = [
+  { name:'雅马哈', tag:'intl', country:'日本', links:{ official:'https://www.yamaha.com.cn/' }, latest:'R200A 入门 HiFi 立体声功放国行官网 11.13 新款上市（替代 R-S202，11 月上市 $299.95：100W×2+蓝牙 Multipoint+MM 唱放输入+低音炮输出+AM/FM 40 预设，黑/银两色）+ NX-70A 无线音箱 £2,587 十年首款回归' },
   { name:'卡萨帝', tag:'cn', country:'中国', links:{ official:'https://www.casarte.com/' }, latest:'首款杜比全景声回音壁 KSM990 11.10 国行上市（行业首个 KEF 联合调音：物理 7.1.4+15 单元欧洲实验室分频校准+双 8 吋低音下潜 25Hz+720W，联动卡萨帝电视升物理 7.1.6；售价待核）' },
   { name:'Tribit', tag:'cn', country:'中国', links:{ official:'https://www.tribitaudio.com/', jd:'https://search.jd.com/Search?keyword=Tribit+%E9%9F%B3%E7%AE%B1' }, latest:'XSound Go 升级版（26 版）便携蓝牙音箱 11.3 上架 ¥279（20W 双单元立体声+XBass 2.0+蓝牙 6.0+IPX7+约 24h 续航+TWS 互联，黑/蓝两色）' },
   { name:'Pro-Ject', tag:'intl', country:'奥地利', links:{ official:'https://www.project-audio.com/en/', amazon:'https://www.amazon.com/s?k=Pro-Ject+turntable' }, latest:'Debut Carbon – The Original 黑胶唱盘 11 月初海外上市 $649（复刻 1999 初代配方：8.6 英寸一体碳纤维臂+Ortofon 代工 Pick it S2 MM 椭圆针原厂预装+300mm 1.7kg 钢盘+玻纤 ABS 副盘+33/45 双转速，首发胡桃木、哑光黑后续跟进）' },
@@ -698,6 +699,12 @@ const PUSH_NEWS = [
   // —— 11.09 12:35 新增1条（11.7 上架预约、11.9 20:00 正式开售）：漫步者 W900NB 30 周年典藏版头戴降噪耳机 ——
   // —— 11.09 15:40 新增2条（11 月初海外上市即开售）：宝碟 Debut Carbon – The Original 黑胶唱盘 + Schiit Magni 6 桌面耳放 ——
   // —— 11.11 12:35 新增1条（11.10 京东上架在售）：海贝 FC4 屏幕版解码耳放 ——
+  // —— 11.13 18:40 新增1条（国行官网 11.13 新款上市）：雅马哈 R200A 入门 HiFi 立体声功放 ——
+  { date:'2026-11-13', brand:'雅马哈', type:'new', cat:'hifi',
+    title:'雅马哈 R200A 入门 HiFi 立体声功放国行新款上市（11 月上市 $299.95）：100W×2+蓝牙 Multipoint+MM 唱放输入，替代 R-S202',
+    desc:'雅马哈国行官网 11/13 刊发新款上市消息（美国官网 10/1 发布、11 月上市，建议零售 $299.95）：新一代两声道 HiFi 立体声接收机，替代长销机型 R-S202，定位新手入门 Hi-Fi 之旅；每声道 100W（8Ω）可驱动两对音箱（A/B 选择），内部全新设计——中央梁（center beam）底盘抑制振动干扰+强化接地电路+重新设计散热器与精选元器件；蓝牙 Multipoint 双设备无线串流+专用 MM 唱头输入（黑胶直连）+专用低音炮输出+AM/FM 调谐器 40 个可编程预设+绑柱式音箱端子；黑色/银色两色。',
+    link:'https://usa.yamaha.com/audio/home-audio/news/2026/Yamaha-Launches-a-New-Generation-Stereo-Receiver.html',
+    img:'https://usa.yamaha.com/files/Th-Yamaha-R200A_black_lifestyle_hero_1920x1080_tcm152-3248198.jpg', scene:true, objPos:'50% 50%' },
   { date:'2026-11-10', brand:'海贝', type:'new', cat:'hifi',
     title:'海贝 HiBy FC4 屏幕版解码耳放 11.10 京东上架 ¥336（首发 ¥311）：双 CS43131+1.1 英寸 OLED 彩屏，黑/银/绿三色',
     desc:'海贝 11/10 在京东上架 FC4 屏幕版解码耳放（小尾巴），定价 ¥336、首发价 ¥311（领 25 元券后），黑/银/绿三色，赛博机甲风格：正面 1.1 英寸 OLED 彩色显示屏直观显示运行状态与音频参数，侧边 30 级实体硬件音量按键+功能键并带音量记忆；双 CS43131 DAC 芯片+45.1584MHz/49.152MHz 双专用音频晶振降低时钟抖动，硬解 PCM 768kHz/32bit 与 DSD512，Hi-Res 认证+配合支持音乐 App 可 MQA 8X 展开；3.5mm 单端 70mW@32Ω（信噪比 123dB）+4.4mm 平衡 151mW@32Ω（信噪比 124dB），频响 20Hz-90kHz；支持 iOS/Android/macOS/Windows，Mac 与 Win10 免驱即插即用，兼容 UAC1.0/2.0 可直连 PS5、Switch 等游戏主机；63×26×13mm / 约 21g',
@@ -1719,6 +1726,7 @@ const PUSH_NEWS = [
 
 /* ===== 完整动态列表 ===== */
 const NEWS = [
+  { date:'2026-11-13', brand:'雅马哈', type:'new', text:'（国行新款上市，详见今日卡片）雅马哈入门 HiFi 立体声功放 R200A 国行官网 11.13 新款上市：100W×2（8Ω）+蓝牙 Multipoint 双设备串流+MM 唱头输入（黑胶直连）+低音炮输出+AM/FM 40 预设，替代 R-S202，美国 10.1 发布、11 月上市 $299.95，黑/银两色', link:'https://usa.yamaha.com/audio/home-audio/news/2026/Yamaha-Launches-a-New-Generation-Stereo-Receiver.html' },
   { date:'2026-11-13', brand:'iFi', type:'new', text:'（海外上架·仅记）iFi 旗舰耳放 iCAN Phantom 1.5 上架官网 £3,749/$3,749（初代 Phantom 同价且已售罄）：平衡输出 15,000mW@16Ω（600Ω 下 27V+）+静电耳放专口 500-640V 可调偏压+晶体管 J-FET 与 GE 5670 电子管双甲类三模式（Transistor/Tube/Tube+）+0/12/24dB 增益+升级 iEMatch+XBass Pro/XSpace Pro+Nexis App 遥控，1.5 版新增增益档位与连接控制；上架即售罄', link:'https://seerocklive.com/ifi-ican-phantom-1-5-reference-headphone-amp' },
   { date:'2026-11-13', brand:'Cambridge Audio', type:'new', text:'（海外上市·仅记）Cambridge Audio L/R M 主动式立体声音箱英国上市（£1,199/€1,399/$1,599 起、Real Walnut 版 £1,299；欧美 12 月铺货）：旗舰 L/R X 技术下放的紧凑书架式设计——28mm 环形腔高音+双 4 英寸低音+双 4.75 英寸力抵消无源辐射器，300W 总功率+64bit DSP；内置 StreamMagic（Spotify/TIDAL/Qobuz Connect、AirPlay、Google Cast、Roon 等）+HDMI eARC+MM 唱放+USB-C 互连（24bit/96kHz），六色可选带可调底部灯效；同步推出 RoomMagic 自动房间校正（11.11 起免费 OTA 推送 L/R M 与 L/R X，手机麦克风两次测量、仅校正低频保留原音色）', link:'https://www.hifipig.com/wp-content/uploads/static-fallback/posts/cambridge-audio-l-r-m-active-speakers-launch-with-roommagic-room-correction/index.html' },
   { date:'2026-11-10', brand:'Noble', type:'new', text:'（海外上市·仅记）Noble Audio 三单元混合真无线 Astrid 11.10 起官网及指定零售商全球开售（$539/£499/€579，定位 Rex5 与 Prestige Encore II 之间）：单边 8.3mm 动圈（PU 振膜+铝镁合金球顶）+6mm 平板+动铁三单元混合，蓝牙 6.0 QCC3091（LDAC/aptX Adaptive/aptX/AAC/SBC）+双设备多点连接，Audiodo 听力档案个性化调音+Audiodo EQ 三段调节，玻璃纤维面板银纹饰面+同设计充电盒，ANC/通透+通话抗风噪+IPX4，单次 11h/含盒 40h、USB-C 或无线充电', link:'https://www.hifipig.com/wp-content/uploads/static-fallback/posts/noble-audio-astrid-true-wireless-earphones/index.html' },
